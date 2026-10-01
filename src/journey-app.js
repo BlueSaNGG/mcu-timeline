@@ -1,5 +1,5 @@
 import {loadCatalog} from './data.js';
-import {mountCatalog} from './cinema-timeline.js';
+import {mountCatalog} from './journey-view.js';
 
 export function startApplication({document, load = loadCatalog, mount = mountCatalog} = {}) {
   if (!document) throw new TypeError('document is required');
@@ -11,7 +11,7 @@ export function startApplication({document, load = loadCatalog, mount = mountCat
     const timeline = document.getElementById('timeline');
     timeline.replaceChildren();
     document.getElementById('result-count').textContent = '正在整理时间线…';
-    const controls = [...document.querySelectorAll('.controls button, .controls input, #clear')];
+    const controls = [...document.querySelectorAll('.controls button, .controls input, #clear, #activate-route, #route-remaining, [data-route], [data-spoiler]')];
     controls.forEach(control => {control.disabled = true;});
     try {
       const catalog = await load();

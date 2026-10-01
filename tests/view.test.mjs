@@ -2,14 +2,15 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {JSDOM} from 'jsdom';
-import {mountCatalog} from '../src/cinema-timeline.js';
-import {startApplication} from '../src/cinema-app.js';
+import {mountCatalog} from '../src/journey-view.js';
+import {startApplication} from '../src/journey-app.js';
 
 const html=await readFile(new URL('../index.html',import.meta.url),'utf8');
 const catalog=JSON.parse(await readFile(new URL('../data/catalog.json',import.meta.url),'utf8'));
 const fixed=Date.parse('2026-10-01T00:00:00Z');
-function setup(data=catalog, now=fixed) {
+function setup(data=catalog, now=fixed, saved={}) {
   const dom=new JSDOM(html,{url:'https://example.test/mcu-timeline/'});
+  Object.entries(saved).forEach(([key,value])=>dom.window.localStorage.setItem(key,value));
   let scheduled=0,cancelled=0;
   const dispose=mountCatalog(data,{document:dom.window.document,now:()=>now,schedule:()=>{scheduled++;return 42;},cancel:id=>{assert.equal(id,42);cancelled++;}});
   return {dom,document:dom.window.document,dispose,scheduled:()=>scheduled,cancelled:()=>cancelled};
@@ -65,4 +66,25 @@ test('watched state persists and progress navigation shows watched works',()=>{
  d.getElementById('progress-link').click();assert.equal(cards(d).length,1);assert.equal(d.getElementById('view-title').textContent,'我的进度');
  d.querySelector('[data-watch]').click();assert.match(d.getElementById('timeline').textContent,/还没有观看记录/);
  d.getElementById('clear').click();assert.equal(cards(d).length,68);x.dispose();x.dom.window.close();
+});
+
+test('loose watched records do not activate a route; preview and activation are separate',()=>{
+ const x=setup(),d=x.document;d.querySelector('#timeline [data-watch="iron-man-2008"]').click();
+ assert.equal(x.dom.window.localStorage.getItem('mcu-route-v1'),null);assert.equal(d.getElementById('feature-title').textContent,'钢铁侠');
+ d.querySelector('[data-route="chrono"]').click();assert.equal(x.dom.window.localStorage.getItem('mcu-route-v1'),null);
+ d.getElementById('activate-route').click();assert.equal(x.dom.window.localStorage.getItem('mcu-route-v1'),'chrono');
+ assert.equal(d.getElementById('feature-title').textContent,'美国队长：复仇者先锋');assert.equal(d.getElementById('route-list').children.length,23);
+ d.querySelector('#route-list [data-watch="captain-america-the-first-avenger-2011"]').click();
+ assert.notEqual(d.getElementById('feature-title').textContent,'美国队长：复仇者先锋');assert.match(d.getElementById('journey-status').textContent,/2 \/ 23/);
+ const index=d.querySelector('#route-list li:last-child .route-index').textContent;d.getElementById('route-remaining').click();assert.equal(d.getElementById('route-list').children.length,21);assert.equal(d.querySelector('#route-list li:last-child .route-index').textContent,index);x.dispose();x.dom.window.close();
+});
+test('active route and next movie restore on reload, switching routes preserves progress',()=>{
+ const saved={'mcu-watched-v1':JSON.stringify(['iron-man-2008']),'mcu-route-v1':'release'};
+ const x=setup(catalog,fixed,saved),d=x.document;assert.equal(d.getElementById('feature-title').textContent,'无敌浩克');assert.match(d.getElementById('start-route').textContent,/无敌浩克/);assert.match(d.getElementById('feature-image').getAttribute('src'),/^https:/);
+ d.querySelector('[data-route="chrono"]').click();d.getElementById('activate-route').click();assert.deepEqual(JSON.parse(x.dom.window.localStorage.getItem('mcu-watched-v1')),['iron-man-2008']);
+ d.getElementById('feature-image').dispatchEvent(new x.dom.window.Event('error'));assert.equal(d.getElementById('feature-image').hidden,true);assert.ok(d.getElementById('feature-title').textContent);x.dispose();x.dom.window.close();
+});
+test('completed route shows complete state and does not reset or recommend outside route',()=>{
+ const ids=catalog.works.filter(x=>x.type==='film'&&x.phase<=3).map(x=>x.id);const x=setup(catalog,fixed,{'mcu-watched-v1':JSON.stringify(ids),'mcu-route-v1':'release'}),d=x.document;
+ assert.equal(d.getElementById('feature-title').textContent,'路线已完成');assert.match(d.getElementById('start-route').textContent,/完成/);assert.equal(d.getElementById('route-progress').value,23);assert.equal(d.getElementById('feature-image').hidden,true);assert.equal(JSON.parse(x.dom.window.localStorage.getItem('mcu-watched-v1')).length,23);x.dispose();x.dom.window.close();
 });

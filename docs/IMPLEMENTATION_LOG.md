@@ -48,3 +48,11 @@ style 内容按原文提取，没有重新设计。npm dev 是本地静态预览
 - Added browser-local watched records, undo, remaining filter and a watched-only progress view. The start/continue action browses the catalog and never marks a work watched by itself. These are browsing shortcuts, not the complete curated-route model planned for subsequent phases.
 - `npm run check`: 14 tests passed, including new spoiler confirmation/search and local progress coverage. Data fact audit remains pending. Real browser deployment review is separate from these DOM tests.
 - Typography-first artwork fallback is intentional: verified movie artwork, normalized data migration, full route model and progress export/import remain outstanding.
+
+## 2026-10-01 — Journey iteration
+
+- Dynamic hero follows the explicitly active route, including next title, artwork, ordinal and completed state. Loose watched records do not implicitly select a route.
+- Added fixed 23-film Infinity Saga release and story-order routes. Preview is separate from activation; route changes preserve watched records. Full/remaining lists retain original numbering.
+- Verified 10 official Disney Japan artwork references and image responses; direct external images have load/error fallback and source links. Remaining works retain typography fallback. Artwork copyright is not represented as open reuse permission.
+- Added `tests/visual.html`, a developer-only same-origin iframe harness for genuine 320/390/768px layout inspection. No navigation link is exposed in the product.
+- 17 checks cover route preview/activation, restored recommendation, completion, preserved progress, artwork fallback and existing spoiler/search/loading behavior. Full catalog fact audit remains pending.

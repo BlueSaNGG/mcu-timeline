@@ -63,8 +63,8 @@
   <header class="hero">
     <div class="stamp">资料快照：2026 年 9 月 30 日</div>
     <div class="hero-grid">
-      <div><h1>从远古<br>到<strong>毁灭日</strong></h1><p class="lead">把六个阶段、四条连续性与七十一部作品排进同一张图谱。默认按宇宙内编年史浏览，也可切回上映顺序；争议时间点均保留说明。</p><div class="stats"><div class="stat"><b id="total-stat">71</b><span>部作品</span></div><div class="stat"><b>6</b><span>个阶段</span></div><div class="stat"><b>4</b><span>条连续性</span></div></div></div>
-      <aside class="countdown" aria-label="复仇者联盟毁灭日上映倒计时"><div class="countdown-title"><strong>《复仇者联盟5：毁灭日》</strong><span>AVENGERS: DOOMSDAY</span></div><div class="clock" aria-live="polite"><div class="timebox"><b id="days">—</b><small>天</small></div><div class="timebox"><b id="hours">—</b><small>时</small></div><div class="timebox"><b id="mins">—</b><small>分</small></div><div class="timebox"><b id="secs">—</b><small>秒</small></div></div><p class="release-date"><span>北美上映</span><em>2026 · 12 · 18</em></p></aside>
+      <div><h1>从远古<br>到<strong>毁灭日</strong></h1><p class="lead">把六个阶段、四条连续性与六十八部作品排进同一张图谱。默认按宇宙内编年史浏览，也可切回上映顺序；争议时间点均保留说明。</p><div class="stats"><div class="stat"><b id="total-stat">68</b><span>部作品</span></div><div class="stat"><b>6</b><span>个阶段</span></div><div class="stat"><b>4</b><span>条连续性</span></div></div></div>
+      <aside class="countdown" id="countdown" aria-label="下一部待上映电影倒计时"><div class="countdown-title"><strong id="countdown-name">—</strong><span id="countdown-en">—</span></div><div class="clock" aria-live="polite"><div class="timebox"><b id="days">—</b><small>天</small></div><div class="timebox"><b id="hours">—</b><small>时</small></div><div class="timebox"><b id="mins">—</b><small>分</small></div><div class="timebox"><b id="secs">—</b><small>秒</small></div></div><p class="release-date"><span>北美上映</span><em id="countdown-date">—</em></p></aside>
     </div>
   </header>
   <main class="shell">
@@ -83,1278 +83,1657 @@
   </main>
 </div>
 <script>
-const DATA = [
-  {
-    "zh": "钢铁侠",
-    "en": "Iron Man",
-    "format": "电影",
-    "phase": 1,
-    "saga": "无限传奇",
-    "release": "2008-05-02",
-    "desc": "军火商托尼·斯塔克被绑架后打造出钢铁战甲，化身超级英雄钢铁侠。",
-    "chars": [
-      "托尼·斯塔克",
-      "佩珀·波茨",
-      "奥巴代亚·斯坦",
-      "詹姆斯·罗德"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2008年"
-  },
-  {
-    "zh": "无敌浩克",
-    "en": "The Incredible Hulk",
-    "format": "电影",
-    "phase": 1,
-    "saga": "无限传奇",
-    "release": "2008-06-13",
-    "desc": "布鲁斯·班纳躲避军方追捕寻找治愈之法，最终在哈莱姆与憎恶决战。",
-    "chars": [
-      "布鲁斯·班纳",
-      "贝蒂·罗斯",
-      "埃米尔·布朗斯基",
-      "撒迪厄斯·罗斯"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2010年（与《钢铁侠2》《雷神》同期）"
-  },
-  {
-    "zh": "钢铁侠2",
-    "en": "Iron Man 2",
-    "format": "电影",
-    "phase": 1,
-    "saga": "无限传奇",
-    "release": "2010-05-07",
-    "desc": "公开身份的托尼·斯塔克应对政府施压，并迎战复仇心切的鞭索。",
-    "chars": [
-      "托尼·斯塔克",
-      "佩珀·波茨",
-      "罗德/战争机器",
-      "伊万·万科",
-      "娜塔莎·罗曼诺夫"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2010年"
-  },
-  {
-    "zh": "雷神",
-    "en": "Thor",
-    "format": "电影",
-    "phase": 1,
-    "saga": "无限传奇",
-    "release": "2011-05-06",
-    "desc": "被放逐到地球的索尔学会谦卑，挫败弟弟洛基的阴谋。",
-    "chars": [
-      "索尔",
-      "洛基",
-      "奥丁",
-      "简·福斯特"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2010年"
-  },
-  {
-    "zh": "美国队长：复仇者先锋",
-    "en": "Captain America: The First Avenger",
-    "format": "电影",
-    "phase": 1,
-    "saga": "无限传奇",
-    "release": "2011-07-22",
-    "desc": "二战期间，史蒂夫·罗杰斯接受超级士兵改造，成为美国队长对抗红骷髅。",
-    "chars": [
-      "史蒂夫·罗杰斯",
-      "佩吉·卡特",
-      "巴基·巴恩斯",
-      "红骷髅",
-      "霍华德·斯塔克"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "1943–1945年"
-  },
-  {
-    "zh": "复仇者联盟",
-    "en": "The Avengers",
-    "format": "电影",
-    "phase": 1,
-    "saga": "无限传奇",
-    "release": "2012-05-04",
-    "desc": "尼克·弗瑞集结六位英雄，抵御洛基与齐塔瑞大军的纽约入侵。",
-    "chars": [
-      "钢铁侠",
-      "美国队长",
-      "雷神",
-      "浩克",
-      "黑寡妇",
-      "鹰眼",
-      "洛基",
-      "尼克·弗瑞"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2012年"
-  },
-  {
-    "zh": "钢铁侠3",
-    "en": "Iron Man 3",
-    "format": "电影",
-    "phase": 2,
-    "saga": "无限传奇",
-    "release": "2013-05-03",
-    "desc": "战甲被毁、身份暴露的托尼·斯塔克追查\"满大人\"与绝境病毒阴谋。",
-    "chars": [
-      "托尼·斯塔克",
-      "佩珀·波茨",
-      "罗德",
-      "奥尔德里奇·基利安"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2013年"
-  },
-  {
-    "zh": "雷神2：黑暗世界",
-    "en": "Thor: The Dark World",
-    "format": "电影",
-    "phase": 2,
-    "saga": "无限传奇",
-    "release": "2013-11-08",
-    "desc": "索尔与洛基联手阻止黑暗精灵玛勒基斯用以太粒子吞噬九界。",
-    "chars": [
-      "索尔",
-      "简·福斯特",
-      "洛基",
-      "玛勒基斯"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2013年"
-  },
-  {
-    "zh": "美国队长2：冬日战士",
-    "en": "Captain America: The Winter Soldier",
-    "format": "电影",
-    "phase": 2,
-    "saga": "无限传奇",
-    "release": "2014-04-04",
-    "desc": "美国队长揭露神盾局被九头蛇渗透，并与昔日好友冬日战士对决。",
-    "chars": [
-      "史蒂夫·罗杰斯",
-      "巴基·巴恩斯",
-      "娜塔莎·罗曼诺夫",
-      "山姆·威尔逊",
-      "尼克·弗瑞"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2014年"
-  },
-  {
-    "zh": "银河护卫队",
-    "en": "Guardians of the Galaxy",
-    "format": "电影",
-    "phase": 2,
-    "saga": "无限传奇",
-    "release": "2014-08-01",
-    "desc": "星爵率领一群宇宙罪犯组成护卫队，阻止罗南用力量宝石毁灭山达尔星。",
-    "chars": [
-      "星爵",
-      "卡魔拉",
-      "德拉克斯",
-      "火箭浣熊",
-      "格鲁特",
-      "罗南"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2014年"
-  },
-  {
-    "zh": "复仇者联盟2：奥创纪元",
-    "en": "Avengers: Age of Ultron",
-    "format": "电影",
-    "phase": 2,
-    "saga": "无限传奇",
-    "release": "2015-05-01",
-    "desc": "复仇者们阻止托尼与班纳意外创造的人工智能奥创灭绝人类。",
-    "chars": [
-      "复仇者联盟",
-      "奥创",
-      "幻视",
-      "绯红女巫",
-      "快银"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2015年"
-  },
-  {
-    "zh": "蚁人",
-    "en": "Ant-Man",
-    "format": "电影",
-    "phase": 2,
-    "saga": "无限传奇",
-    "release": "2015-07-17",
-    "desc": "斯科特·朗接受汉克·皮姆训练成为蚁人，阻止达伦·克劳斯的阴谋。",
-    "chars": [
-      "斯科特·朗",
-      "汉克·皮姆",
-      "霍普·范·戴恩",
-      "达伦·克劳斯"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2015年"
-  },
-  {
-    "zh": "美国队长3：内战",
-    "en": "Captain America: Civil War",
-    "format": "电影",
-    "phase": 3,
-    "saga": "无限传奇",
-    "release": "2016-05-06",
-    "desc": "复仇者因《索科维亚协议》分裂为美队与钢铁侠两派并爆发内战。",
-    "chars": [
-      "史蒂夫·罗杰斯",
-      "托尼·斯塔克",
-      "巴基·巴恩斯",
-      "黑豹",
-      "蜘蛛侠",
-      "泽莫"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2016年"
-  },
-  {
-    "zh": "奇异博士",
-    "en": "Doctor Strange",
-    "format": "电影",
-    "phase": 3,
-    "saga": "无限传奇",
-    "release": "2016-11-04",
-    "desc": "车祸后的天才外科医生拜师古一，成为至尊法师抵御多玛姆。",
-    "chars": [
-      "史蒂芬·斯特兰奇",
-      "古一",
-      "莫度",
-      "卡西利亚斯",
-      "王"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2016–2017年"
-  },
-  {
-    "zh": "银河护卫队2",
-    "en": "Guardians of the Galaxy Vol. 2",
-    "format": "电影",
-    "phase": 3,
-    "saga": "无限传奇",
-    "release": "2017-05-05",
-    "desc": "护卫队揭开星爵生父伊戈吞噬宇宙的阴谋。",
-    "chars": [
-      "星爵",
-      "卡魔拉",
-      "德拉克斯",
-      "火箭",
-      "格鲁特",
-      "伊戈",
-      "螳螂女",
-      "勇度"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2014年（紧接第一部数月后）"
-  },
-  {
-    "zh": "蜘蛛侠：英雄归来",
-    "en": "Spider-Man: Homecoming",
-    "format": "电影",
-    "phase": 3,
-    "saga": "无限传奇",
-    "release": "2017-07-07",
-    "desc": "彼得·帕克在钢铁侠注视下平衡高中生活，并打击秃鹫的军火交易。",
-    "chars": [
-      "彼得·帕克",
-      "托尼·斯塔克",
-      "秃鹫",
-      "内德",
-      "MJ"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2016年"
-  },
-  {
-    "zh": "雷神3：诸神黄昏",
-    "en": "Thor: Ragnarok",
-    "format": "电影",
-    "phase": 3,
-    "saga": "无限传奇",
-    "release": "2017-11-03",
-    "desc": "索尔联合浩克、女武神与洛基对抗死亡女神海拉。",
-    "chars": [
-      "索尔",
-      "洛基",
-      "海拉",
-      "浩克",
-      "女武神"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2017年"
-  },
-  {
-    "zh": "黑豹",
-    "en": "Black Panther",
-    "format": "电影",
-    "phase": 3,
-    "saga": "无限传奇",
-    "release": "2018-02-16",
-    "desc": "特查拉回国继承瓦坎达王位，直面堂弟克尔芒戈的挑战。",
-    "chars": [
-      "特查拉",
-      "埃里克·克尔芒戈",
-      "苏睿",
-      "奥克耶",
-      "娜吉雅"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2017年"
-  },
-  {
-    "zh": "复仇者联盟3：无限战争",
-    "en": "Avengers: Infinity War",
-    "format": "电影",
-    "phase": 3,
-    "saga": "无限传奇",
-    "release": "2018-04-27",
-    "desc": "灭霸集齐六颗无限宝石响指消灭宇宙半数生命，英雄们惨败。",
-    "chars": [
-      "灭霸",
-      "钢铁侠",
-      "美国队长",
-      "雷神",
-      "奇异博士",
-      "星爵"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2018年"
-  },
-  {
-    "zh": "蚁人2：黄蜂女现身",
-    "en": "Ant-Man and the Wasp",
-    "format": "电影",
-    "phase": 3,
-    "saga": "无限传奇",
-    "release": "2018-07-06",
-    "desc": "蚁人与黄蜂女深入量子领域营救初代黄蜂女珍妮特。",
-    "chars": [
-      "斯科特·朗",
-      "霍普·范·戴恩",
-      "汉克·皮姆",
-      "珍妮特",
-      "幽灵"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2018年（《无限战争》前）"
-  },
-  {
-    "zh": "惊奇队长",
-    "en": "Captain Marvel",
-    "format": "电影",
-    "phase": 3,
-    "saga": "无限传奇",
-    "release": "2019-03-08",
-    "desc": "卡罗尔·丹弗斯找回记忆成为惊奇队长，揭露克里帝国的谎言。",
-    "chars": [
-      "卡罗尔·丹弗斯",
-      "尼克·弗瑞",
-      "塔罗斯",
-      "勇·罗格"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "1995年"
-  },
-  {
-    "zh": "复仇者联盟4：终局之战",
-    "en": "Avengers: Endgame",
-    "format": "电影",
-    "phase": 3,
-    "saga": "无限传奇",
-    "release": "2019-04-26",
-    "desc": "幸存英雄穿越时间集齐宝石逆转响指，最终击败灭霸。",
-    "chars": [
-      "钢铁侠",
-      "美国队长",
-      "黑寡妇",
-      "鹰眼",
-      "灭霸"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2018–2023年"
-  },
-  {
-    "zh": "蜘蛛侠：英雄远征",
-    "en": "Spider-Man: Far From Home",
-    "format": "电影",
-    "phase": 3,
-    "saga": "无限传奇",
-    "release": "2019-07-02",
-    "desc": "彼得在欧洲旅行中揭穿神秘客用无人机编造元素众威胁的骗局。",
-    "chars": [
-      "彼得·帕克",
-      "MJ",
-      "内德",
-      "神秘客",
-      "哈皮"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2024年"
-  },
-  {
-    "zh": "旺达幻视",
-    "en": "WandaVision",
-    "format": "剧集（9集）",
-    "phase": 4,
-    "saga": "多元宇宙传奇",
-    "release": "2021-01-15",
-    "desc": "旺达在悲痛中用混沌魔法创造西景镇幻象世界，与幻视过起情景喜剧式生活。",
-    "chars": [
-      "旺达·马克西莫夫",
-      "幻视",
-      "阿加莎·哈克尼斯",
-      "莫妮卡·兰博"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2023年"
-  },
-  {
-    "zh": "猎鹰与冬兵",
-    "en": "The Falcon and the Winter Soldier",
-    "format": "剧集（6集）",
-    "phase": 4,
-    "saga": "多元宇宙传奇",
-    "release": "2021-03-19",
-    "desc": "山姆·威尔逊与巴基阻止旗帜粉碎者，山姆最终接过美队盾牌。",
-    "chars": [
-      "山姆·威尔逊",
-      "巴基·巴恩斯",
-      "泽莫",
-      "约翰·沃克",
-      "莎朗·卡特"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2024年"
-  },
-  {
-    "zh": "洛基 第一季",
-    "en": "Loki S1",
-    "format": "剧集（6集）",
-    "phase": 4,
-    "saga": "多元宇宙传奇",
-    "release": "2021-06-09",
-    "desc": "被捕的洛基变体协助 TVA 追捕另一变体希尔维，揭开时间管理局的真相。",
-    "chars": [
-      "洛基",
-      "希尔维",
-      "莫比乌斯",
-      "遗留之人"
-    ],
-    "continuity": "Branch（TVA，时间线之外）",
-    "time": "时间线之外；Disney+ 按叙事置于《终局之战》后"
-  },
-  {
-    "zh": "无限可能：假如…？ 第一季",
-    "en": "What If...? S1",
-    "format": "动画剧集（9集）",
-    "phase": 4,
-    "saga": "多元宇宙传奇",
-    "release": "2021-08-11",
-    "desc": "观察者讲述多元宇宙中关键事件走向不同结局的分支故事。",
-    "chars": [
-      "观察者",
-      "卡特队长",
-      "至尊奇异博士"
-    ],
-    "continuity": "Branch（多元宇宙选集）",
-    "time": "多元宇宙各分支；时间线之外"
-  },
-  {
-    "zh": "黑寡妇",
-    "en": "Black Widow",
-    "format": "电影",
-    "phase": 4,
-    "saga": "多元宇宙传奇",
-    "release": "2021-07-09",
-    "desc": "娜塔莎直面红房子过往，与叶莲娜等人摧毁德雷科夫的寡妇计划。",
-    "chars": [
-      "娜塔莎·罗曼诺夫",
-      "叶莲娜·贝洛娃",
-      "阿列克谢",
-      "梅丽娜",
-      "模仿大师"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2016年（《内战》与《无限战争》之间）"
-  },
-  {
-    "zh": "尚气与十环传奇",
-    "en": "Shang-Chi and the Legend of the Ten Rings",
-    "format": "电影",
-    "phase": 4,
-    "saga": "多元宇宙传奇",
-    "release": "2021-09-03",
-    "desc": "尚气为争夺十环与父亲文武决裂，保卫大罗村庄。",
-    "chars": [
-      "尚气",
-      "凯蒂",
-      "文武",
-      "夏灵"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2024年"
-  },
-  {
-    "zh": "永恒族",
-    "en": "Eternals",
-    "format": "电影",
-    "phase": 4,
-    "saga": "多元宇宙传奇",
-    "release": "2021-11-05",
-    "desc": "永恒族成员重聚阻止天神组提亚穆特神现，并对抗伊卡瑞斯。",
-    "chars": [
-      "瑟西",
-      "伊卡瑞斯",
-      "蒂娜",
-      "阿贾克"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2024年"
-  },
-  {
-    "zh": "鹰眼",
-    "en": "Hawkeye",
-    "format": "剧集（6集）",
-    "phase": 4,
-    "saga": "多元宇宙传奇",
-    "release": "2021-11-24",
-    "desc": "克林特·巴顿在圣诞季指导凯特·毕肖普，并清算浪人时期的旧账。",
-    "chars": [
-      "克林特·巴顿",
-      "凯特·毕肖普",
-      "叶莲娜·贝洛娃",
-      "玛雅·洛佩兹",
-      "金并"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2024年12月"
-  },
-  {
-    "zh": "蜘蛛侠：英雄无归",
-    "en": "Spider-Man: No Way Home",
-    "format": "电影",
-    "phase": 4,
-    "saga": "多元宇宙传奇",
-    "release": "2021-12-17",
-    "desc": "身份曝光的彼得请奇异博士施咒失误，引来多元宇宙反派与三代蜘蛛侠。",
-    "chars": [
-      "彼得·帕克",
-      "奇异博士",
-      "绿魔",
-      "章鱼博士",
-      "MJ",
-      "内德"
-    ],
-    "continuity": "Sacred Timeline（联动多元宇宙访客）",
-    "time": "2024年"
-  },
-  {
-    "zh": "月光骑士",
-    "en": "Moon Knight",
-    "format": "剧集（6集）",
-    "phase": 4,
-    "saga": "多元宇宙传奇",
-    "release": "2022-03-30",
-    "desc": "多重人格的马克·史派克特成为孔苏化身，对抗亚瑟·哈罗。",
-    "chars": [
-      "马克·史派克特/史蒂文·格兰特",
-      "蕾拉",
-      "亚瑟·哈罗",
-      "孔苏"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2025年"
-  },
-  {
-    "zh": "奇异博士2：疯狂多元宇宙",
-    "en": "Doctor Strange in the Multiverse of Madness",
-    "format": "电影",
-    "phase": 4,
-    "saga": "多元宇宙传奇",
-    "release": "2022-05-06",
-    "desc": "奇异博士保护穿越多元宇宙的阿美莉卡，对抗黑化的绯红女巫。",
-    "chars": [
-      "奇异博士",
-      "旺达·马克西莫夫",
-      "王",
-      "阿美莉卡·查韦兹"
-    ],
-    "continuity": "Sacred Timeline（穿越多元宇宙）",
-    "time": "2024年"
-  },
-  {
-    "zh": "惊奇女士",
-    "en": "Ms. Marvel",
-    "format": "剧集（6集）",
-    "phase": 4,
-    "saga": "多元宇宙传奇",
-    "release": "2022-06-08",
-    "desc": "泽西市少女卡玛拉·汗获得手镯能量成为惊奇女士，追溯家族血脉。",
-    "chars": [
-      "卡玛拉·汗",
-      "布鲁诺",
-      "娜吉雅"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2025年"
-  },
-  {
-    "zh": "雷神4：爱与雷霆",
-    "en": "Thor: Love and Thunder",
-    "format": "电影",
-    "phase": 4,
-    "saga": "多元宇宙传奇",
-    "release": "2022-07-08",
-    "desc": "索尔与化身女雷神的简·福斯特联手阻止屠神者格尔。",
-    "chars": [
-      "索尔",
-      "简·福斯特",
-      "女武神",
-      "格尔"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2025年"
-  },
-  {
-    "zh": "我是格鲁特 第一季",
-    "en": "I Am Groot S1",
-    "format": "动画短片（5集）",
-    "phase": 4,
-    "saga": "多元宇宙传奇",
-    "release": "2022-08-10",
-    "desc": "小格鲁特的一系列搞笑短片冒险。",
-    "chars": [
-      "格鲁特"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2014–2015年（《银护1》与《银护2》之间）"
-  },
-  {
-    "zh": "女浩克",
-    "en": "She-Hulk: Attorney at Law",
-    "format": "剧集（9集）",
-    "phase": 4,
-    "saga": "多元宇宙传奇",
-    "release": "2022-08-18",
-    "desc": "律师珍妮弗·沃尔特斯意外获得浩克血液，兼顾法庭与英雄生活。",
-    "chars": [
-      "珍妮弗·沃尔特斯",
-      "布鲁斯·班纳",
-      "埃米尔·布朗斯基",
-      "夜魔侠",
-      "王"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2025年"
-  },
-  {
-    "zh": "暗夜狼人",
-    "en": "Werewolf by Night",
-    "format": "特别篇",
-    "phase": 4,
-    "saga": "多元宇宙传奇",
-    "release": "2022-10-07",
-    "desc": "猎魔人杰克·罗素在血石家族猎杀仪式中变身狼人，结识艾尔莎·血石。",
-    "chars": [
-      "杰克·罗素",
-      "艾尔莎·血石",
-      "类人体"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2025年秋"
-  },
-  {
-    "zh": "黑豹2：瓦坎达万岁",
-    "en": "Black Panther: Wakanda Forever",
-    "format": "电影",
-    "phase": 4,
-    "saga": "多元宇宙传奇",
-    "release": "2022-11-11",
-    "desc": "苏睿在特查拉去世后继承黑豹之位，对抗纳摩的塔洛坎。",
-    "chars": [
-      "苏睿",
-      "纳摩",
-      "奥克耶",
-      "拉蒙达女王",
-      "莉莉·威廉姆斯"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2025年"
-  },
-  {
-    "zh": "银河护卫队：圣诞特别篇",
-    "en": "The Guardians of the Galaxy Holiday Special",
-    "format": "特别篇",
-    "phase": 4,
-    "saga": "多元宇宙传奇",
-    "release": "2022-11-25",
-    "desc": "德拉克斯与螳螂女为让星爵开心过圣诞，绑架了凯文·贝肯。",
-    "chars": [
-      "星爵",
-      "德拉克斯",
-      "螳螂女",
-      "星云",
-      "凯文·贝肯"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2025年圣诞"
-  },
-  {
-    "zh": "蚁人与黄蜂女：量子狂潮",
-    "en": "Ant-Man and the Wasp: Quantumania",
-    "format": "电影",
-    "phase": 5,
-    "saga": "多元宇宙传奇",
-    "release": "2023-02-17",
-    "desc": "蚁人一家被困量子领域，直面征服者康的威胁。",
-    "chars": [
-      "斯科特·朗",
-      "霍普",
-      "汉克·皮姆",
-      "珍妮特",
-      "凯茜",
-      "征服者康"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2026年"
-  },
-  {
-    "zh": "银河护卫队3",
-    "en": "Guardians of the Galaxy Vol. 3",
-    "format": "电影",
-    "phase": 5,
-    "saga": "多元宇宙传奇",
-    "release": "2023-05-05",
-    "desc": "护卫队为拯救火箭浣熊杀入反地球，对抗至高进化。",
-    "chars": [
-      "星爵",
-      "卡魔拉",
-      "火箭",
-      "星云",
-      "德拉克斯",
-      "螳螂女",
-      "亚当术士",
-      "至高进化"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2026年（圣诞特别篇之后）"
-  },
-  {
-    "zh": "秘密入侵",
-    "en": "Secret Invasion",
-    "format": "剧集（6集）",
-    "phase": 5,
-    "saga": "多元宇宙传奇",
-    "release": "2023-06-21",
-    "desc": "尼克·弗瑞揭露斯克鲁激进派格拉维克渗透地球高层的阴谋。",
-    "chars": [
-      "尼克·弗瑞",
-      "塔罗斯",
-      "盖亚",
-      "格拉维克",
-      "索尼娅·法尔斯沃斯"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2026年"
-  },
-  {
-    "zh": "我是格鲁特 第二季",
-    "en": "I Am Groot S2",
-    "format": "动画短片（5集）",
-    "phase": 5,
-    "saga": "多元宇宙传奇",
-    "release": "2023-09-06",
-    "desc": "小格鲁特的更多短片冒险。",
-    "chars": [
-      "格鲁特"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2014–2015年"
-  },
-  {
-    "zh": "洛基 第二季",
-    "en": "Loki S2",
-    "format": "剧集（6集）",
-    "phase": 5,
-    "saga": "多元宇宙传奇",
-    "release": "2023-10-05",
-    "desc": "洛基与莫比乌斯修复时间线分支危机，洛基最终成为镇守多元宇宙之神。",
-    "chars": [
-      "洛基",
-      "希尔维",
-      "莫比乌斯",
-      "OUROBOROS",
-      "维克多·泰姆利"
-    ],
-    "continuity": "Branch（TVA，时间线之外）",
-    "time": "时间线之外"
-  },
-  {
-    "zh": "惊奇队长2",
-    "en": "The Marvels",
-    "format": "电影",
-    "phase": 5,
-    "saga": "多元宇宙传奇",
-    "release": "2023-11-10",
-    "desc": "惊奇队长、莫妮卡·兰博与惊奇女士因能量纠缠联手对抗达尔·本。",
-    "chars": [
-      "卡罗尔·丹弗斯",
-      "莫妮卡·兰博",
-      "卡玛拉·汗",
-      "尼克·弗瑞",
-      "达尔·本"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2026年"
-  },
-  {
-    "zh": "无限可能：假如…？ 第二季",
-    "en": "What If...? S2",
-    "format": "动画剧集（9集）",
-    "phase": 5,
-    "saga": "多元宇宙传奇",
-    "release": "2023-12-22",
-    "desc": "观察者继续讲述多元宇宙分支故事，引入卡霍丽等新英雄。",
-    "chars": [
-      "观察者",
-      "卡特队长",
-      "卡霍丽"
-    ],
-    "continuity": "Branch",
-    "time": "多元宇宙各分支"
-  },
-  {
-    "zh": "回声",
-    "en": "Echo",
-    "format": "剧集（5集）",
-    "phase": 5,
-    "saga": "多元宇宙传奇",
-    "release": "2024-01-09",
-    "desc": "玛雅·洛佩兹逃离金并回到家乡，直面家族与乔克托传承。",
-    "chars": [
-      "玛雅·洛佩兹",
-      "金并",
-      "夜魔侠"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2025年（《鹰眼》之后）"
-  },
-  {
-    "zh": "X战警'97 第一季",
-    "en": "X-Men '97 S1",
-    "format": "动画剧集（10集）",
-    "phase": 5,
-    "saga": "多元宇宙传奇",
-    "release": "2024-03-20",
-    "desc": "经典动画续作：X教授离去后，万磁石领导变种人面对人类敌意。",
-    "chars": [
-      "镭射眼",
-      "琴·葛蕾",
-      "金刚狼",
-      "暴风女",
-      "万磁石",
-      "魔形女",
-      "牌皇"
-    ],
-    "continuity": "Branch（Earth-92131；未列入 Disney+ 官方时间线）",
-    "time": "1997–1998年（分支宇宙）"
-  },
-  {
-    "zh": "死侍与金刚狼",
-    "en": "Deadpool & Wolverine",
-    "format": "电影",
-    "phase": 5,
-    "saga": "多元宇宙传奇",
-    "release": "2024-07-26",
-    "desc": "死侍为拯救自己的宇宙，从虚空拉来金刚狼变体对抗卡桑德拉·诺瓦。",
-    "chars": [
-      "韦德·威尔逊",
-      "金刚狼",
-      "卡桑德拉·诺瓦",
-      "悖论先生"
-    ],
-    "continuity": "Mutant Universe（Earth-10005 + TVA/虚空）",
-    "time": "韦德所在宇宙约2024年；TVA/虚空在时间之外"
-  },
-  {
-    "zh": "阿加莎",
-    "en": "Agatha All Along",
-    "format": "剧集（9集）",
-    "phase": 5,
-    "saga": "多元宇宙传奇",
-    "release": "2024-09-18",
-    "desc": "阿加莎集结女巫团踏上女巫之路，寻找恢复魔法的真相。",
-    "chars": [
-      "阿加莎·哈克尼斯",
-      "里奥·维达尔/死亡",
-      "比利·马克西莫夫",
-      "莉莉娅·考尔德鲁"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2026年（《旺达幻视》三年后）"
-  },
-  {
-    "zh": "无限可能：假如…？ 第三季",
-    "en": "What If...? S3",
-    "format": "动画剧集（8集）",
-    "phase": 5,
-    "saga": "多元宇宙传奇",
-    "release": "2024-12-22",
-    "desc": "观察者最终章，多元宇宙守护者集结对抗时间变体。",
-    "chars": [
-      "观察者",
-      "卡特队长"
-    ],
-    "continuity": "Branch",
-    "time": "多元宇宙各分支"
-  },
-  {
-    "zh": "蜘蛛侠：你的友好邻居 第一季",
-    "en": "Your Friendly Neighborhood Spider-Man S1",
-    "format": "动画剧集（10集）",
-    "phase": 5,
-    "saga": "多元宇宙传奇",
-    "release": "2025-01-29",
-    "desc": "在诺曼·奥斯本成为导师的分支宇宙中，少年彼得的早期英雄生涯。",
-    "chars": [
-      "彼得·帕克",
-      "诺曼·奥斯本",
-      "哈利·奥斯本",
-      "尼科·米诺鲁",
-      "章鱼博士"
-    ],
-    "continuity": "Branch（内战前分歧的平行宇宙）",
-    "time": "分支宇宙（对应《内战》前时间点）"
-  },
-  {
-    "zh": "美国队长4：勇敢新世界",
-    "en": "Captain America: Brave New World",
-    "format": "电影",
-    "phase": 5,
-    "saga": "多元宇宙传奇",
-    "release": "2025-02-14",
-    "desc": "山姆·威尔逊调查罗斯总统遇袭阴谋，直面红浩克与领袖。",
-    "chars": [
-      "山姆·威尔逊",
-      "撒迪厄斯·罗斯/红浩克",
-      "以赛亚·布拉德利",
-      "华金·托雷斯",
-      "塞缪尔·史登"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2026年11月–2027年4月（片中白宫邀请函日期 2027-04-16）"
-  },
-  {
-    "zh": "夜魔侠：重生 第一季",
-    "en": "Daredevil: Born Again S1",
-    "format": "剧集（9集）",
-    "phase": 5,
-    "saga": "多元宇宙传奇",
-    "release": "2025-03-04",
-    "desc": "马特·默多克在金并当选市长后重披战衣，对抗反义警特遣队。",
-    "chars": [
-      "马特·默多克",
-      "威尔逊·菲斯克",
-      "凯伦·佩吉",
-      "雾吉·尼尔森",
-      "弗兰克·卡索",
-      "靶眼"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "2025–2027年（跨数年）"
-  },
-  {
-    "zh": "雷霆特攻队*",
-    "en": "Thunderbolts*",
-    "format": "电影",
-    "phase": 5,
-    "saga": "多元宇宙传奇",
-    "release": "2025-05-02",
-    "desc": "瓦伦蒂娜组建的反英雄小队在死亡陷阱中被迫直面过去，对抗哨兵。",
-    "chars": [
-      "叶莲娜·贝洛娃",
-      "巴基·巴恩斯",
-      "红色守卫者",
-      "美国密探",
-      "幽灵",
-      "哨兵",
-      "瓦伦蒂娜"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2027年（《美队4》之后；片尾14个月后接《毁灭日》）"
-  },
-  {
-    "zh": "钢铁之心",
-    "en": "Ironheart",
-    "format": "剧集（6集）",
-    "phase": 5,
-    "saga": "多元宇宙传奇",
-    "release": "2025-06-24",
-    "desc": "天才少女莉莉·威廉姆斯打造钢铁战甲，在芝加哥对抗神秘反派胡德。",
-    "chars": [
-      "莉莉·威廉姆斯",
-      "帕克·罗宾斯/胡德",
-      "娜塔莉"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "紧接《黑豹2》之后（约2025–2026年；官方未给确切年份）"
-  },
-  {
-    "zh": "神奇四侠：初露锋芒",
-    "en": "The Fantastic Four: First Steps",
-    "format": "电影",
-    "phase": 6,
-    "saga": "多元宇宙传奇",
-    "release": "2025-07-25",
-    "desc": "复古未来风平行宇宙中，神奇四侠为保护地球与新生儿富兰克林对抗行星吞噬者。",
-    "chars": [
-      "里德·理查兹",
-      "苏·斯托姆",
-      "约翰尼·斯托姆",
-      "本·格林姆",
-      "行星吞噬者",
-      "银影侠",
-      "富兰克林·理查兹"
-    ],
-    "continuity": "Earth-828",
-    "time": "Earth-828：1960年起源/主线约1964年/片尾1968年；片尾飞船抵达神圣时间线"
-  },
-  {
-    "zh": "瓦坎达之眼",
-    "en": "Eyes of Wakanda",
-    "format": "动画剧集（4集）",
-    "phase": 6,
-    "saga": "多元宇宙传奇",
-    "release": "2025-08-01",
-    "desc": "瓦坎达战犬特工穿越历史，追回流失的振金神器。",
-    "chars": [
-      "诺妮",
-      "狮子/恩卡蒂",
-      "梅姆农",
-      "铁拳乔拉尼",
-      "塔法里王子"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "各集：公元前1260年（特洛伊）、15世纪中国、1896年阿杜瓦等"
-  },
-  {
-    "zh": "漫威丧尸",
-    "en": "Marvel Zombies",
-    "format": "动画剧集（4集）",
-    "phase": 6,
-    "saga": "多元宇宙传奇",
-    "release": "2025-10-03",
-    "desc": "丧尸病毒席卷的分支宇宙中，蜘蛛侠、惊奇女士等幸存英雄求生。",
-    "chars": [
-      "蜘蛛侠",
-      "惊奇女士",
-      "尚气",
-      "凯特·毕肖普",
-      "叶莲娜·贝洛娃"
-    ],
-    "continuity": "Branch（源自《假如…？》丧尸宇宙）",
-    "time": "分支宇宙"
-  },
-  {
-    "zh": "神力人（暂译）",
-    "en": "Wonder Man",
-    "format": "剧集（8集；Marvel Spotlight）",
-    "phase": 6,
-    "saga": "多元宇宙传奇",
-    "release": "2026-01-27",
-    "desc": "好莱坞落魄演员西蒙·威廉姆斯试镜《神力人》电影，意外发现自己真有超能力。",
-    "chars": [
-      "西蒙·威廉姆斯",
-      "特雷弗·斯拉特里",
-      "埃里克·威廉姆斯/死神"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2027–2028年（官方未明确）"
-  },
-  {
-    "zh": "夜魔侠：重生 第二季",
-    "en": "Daredevil: Born Again S2",
-    "format": "剧集（8集）",
-    "phase": 6,
-    "saga": "多元宇宙传奇",
-    "release": "2026-03-24",
-    "desc": "马特联合杰西卡·琼斯等人，反抗菲斯克市长的高压统治。",
-    "chars": [
-      "马特·默多克",
-      "威尔逊·菲斯克",
-      "杰西卡·琼斯",
-      "凯伦·佩吉",
-      "靶眼"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2027年（第一季之后）"
-  },
-  {
-    "zh": "制裁者：最后一击（暂译）",
-    "en": "The Punisher: One Last Kill",
-    "format": "特别篇（51分钟）",
-    "phase": 6,
-    "saga": "多元宇宙传奇",
-    "release": "2026-05-12",
-    "desc": "试图放下复仇的弗兰克·卡索被黑帮女首领格努奇夫人拖回战场。",
-    "chars": [
-      "弗兰克·卡索",
-      "格努奇夫人",
-      "凯伦·佩吉",
-      "柯蒂斯·霍伊尔"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "约2027年（《重生》S1之后）"
-  },
-  {
-    "zh": "X战警'97 第二季",
-    "en": "X-Men '97 S2",
-    "format": "动画剧集（9集）",
-    "phase": 6,
-    "saga": "多元宇宙传奇",
-    "release": "2026-07-01",
-    "desc": "被抛散到不同时代的X战警寻找归途，对抗天启。",
-    "chars": [
-      "镭射眼",
-      "琴·葛蕾",
-      "金刚狼",
-      "暴风女",
-      "万磁石",
-      "天启"
-    ],
-    "continuity": "Branch（Earth-92131；未列入 Disney+ 官方时间线）",
-    "time": "1990年代及各时间时代（分支宇宙）"
-  },
-  {
-    "zh": "蜘蛛侠：崭新的一天（暂译）",
-    "en": "Spider-Man: Brand New Day",
-    "format": "电影",
-    "phase": 6,
-    "saga": "多元宇宙传奇",
-    "release": "2026-07-31（已上映）",
-    "desc": "被世界遗忘的彼得·帕克全职打击犯罪，身体异变成为对抗无形新威胁的关键。",
-    "chars": [
-      "彼得·帕克",
-      "MJ",
-      "内德",
-      "惩罚者",
-      "布鲁斯·班纳",
-      "蝎子",
-      "叶莲娜·贝洛娃"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "《英雄无归》数年后（约2028年；官方未确认，存争议）"
-  },
-  {
-    "zh": "蜘蛛侠：你的友好邻居 第二季",
-    "en": "Your Friendly Neighborhood Spider-Man S2",
-    "format": "动画剧集",
-    "phase": 6,
-    "saga": "多元宇宙传奇",
-    "release": "2026年秋季（已官宣，具体日期待定）",
-    "desc": "引入毒液共生体与格温·史黛西，诺曼·奥斯本加速黑化。",
-    "chars": [
-      "彼得·帕克",
-      "诺曼·奥斯本",
-      "格温·史黛西",
-      "夜魔侠",
-      "章鱼博士"
-    ],
-    "continuity": "Branch（平行宇宙）",
-    "time": "分支宇宙"
-  },
-  {
-    "zh": "幻视之旅（暂译）",
-    "en": "VisionQuest",
-    "format": "剧集（8集）",
-    "phase": 6,
-    "saga": "多元宇宙传奇",
-    "release": "2026-10-14（已官宣）",
-    "desc": "白色幻视在逃亡中探索自我，奥创以人类形态在其意识中现身。",
-    "chars": [
-      "白色幻视",
-      "奥创",
-      "汤米·马克西莫夫",
-      "乔卡斯塔",
-      "圣骑士帕拉丁"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "《阿加莎》之后（约2028年；官方未确认）"
-  },
-  {
-    "zh": "复仇者联盟5：毁灭日（暂译）",
-    "en": "Avengers: Doomsday",
-    "format": "电影",
-    "phase": 6,
-    "saga": "多元宇宙传奇",
-    "release": "2026-12-18（已官宣；多源确认）",
-    "desc": "毁灭博士现身，三个宇宙的英雄集结对抗，多元宇宙传奇高潮开篇。",
-    "chars": [
-      "维克多·冯·杜姆/毁灭博士",
-      "雷神",
-      "神奇四侠",
-      "洛基",
-      "叶莲娜·贝洛娃",
-      "史蒂夫·罗杰斯",
-      "X战警"
-    ],
-    "continuity": "Sacred Timeline（碰撞 Earth-828 与变种人宇宙）",
-    "time": "《雷霆特攻队*》片尾14个月后（约2028/2029年）"
-  },
-  {
-    "zh": "夜魔侠：重生 第三季",
-    "en": "Daredevil: Born Again S3",
-    "format": "剧集",
-    "phase": 6,
-    "saga": "多元宇宙传奇",
-    "release": "2027年（已官宣，具体日期待定）",
-    "desc": "剧情未公布。",
-    "chars": [
-      "马特·默多克",
-      "威尔逊·菲斯克（预计）"
-    ],
-    "continuity": "Sacred Timeline",
-    "time": "待定"
-  },
-  {
-    "zh": "复仇者联盟6：秘密战争（暂译）",
-    "en": "Avengers: Secret Wars",
-    "format": "电影",
-    "phase": 6,
-    "saga": "多元宇宙传奇",
-    "release": "2027-12-17（已官宣）",
-    "desc": "多元宇宙传奇终章；剧情与完整阵容未公布。",
-    "chars": [
-      "待定（预计：毁灭博士",
-      "复仇者",
-      "X战警",
-      "神奇四侠）"
-    ],
-    "continuity": "待定（预计跨多宇宙）",
-    "time": "《毁灭日》之后"
-  }
-];
-const CHRONO_ORDER=["Eyes of Wakanda","Captain America: The First Avenger","Captain Marvel","X-Men '97 S1","X-Men '97 S2","Iron Man","Iron Man 2","The Incredible Hulk","Thor","The Avengers","Thor: The Dark World","Iron Man 3","Captain America: The Winter Soldier","Guardians of the Galaxy","Guardians of the Galaxy Vol. 2","I Am Groot S1","I Am Groot S2","Avengers: Age of Ultron","Ant-Man","Captain America: Civil War","Black Widow","Spider-Man: Homecoming","Doctor Strange","Black Panther","Thor: Ragnarok","Ant-Man and the Wasp","Avengers: Infinity War","Avengers: Endgame","Loki S1","What If...? S1","Marvel Zombies","Loki S2","WandaVision","The Falcon and the Winter Soldier","Shang-Chi and the Legend of the Ten Rings","Eternals","Spider-Man: Far From Home","Spider-Man: No Way Home","Doctor Strange in the Multiverse of Madness","Hawkeye","Echo","Moon Knight","Black Panther: Wakanda Forever","Ironheart","She-Hulk: Attorney at Law","Ms. Marvel","Thor: Love and Thunder","Werewolf by Night","The Guardians of the Galaxy Holiday Special","Ant-Man and the Wasp: Quantumania","Guardians of the Galaxy Vol. 3","Secret Invasion","The Marvels","Agatha All Along","What If...? S2","What If...? S3","Your Friendly Neighborhood Spider-Man S1","Deadpool & Wolverine","Daredevil: Born Again S1","Captain America: Brave New World","Thunderbolts*","The Fantastic Four: First Steps","Wonder Man","Daredevil: Born Again S2","The Punisher: One Last Kill","Spider-Man: Brand New Day","Your Friendly Neighborhood Spider-Man S2","VisionQuest","Avengers: Doomsday","Daredevil: Born Again S3","Avengers: Secret Wars"];
+const SOURCE_DATA = {
+  "meta": {
+    "version": "1.0",
+    "updated": "2026-09-30",
+    "project": "MCU 交互式时间线网站 · 作品数据库",
+    "notes": "上映日期以公开报道为准交叉核实；宇宙内时间参考漫威官方时间线书与 Disney+ 时间线排序，无定论的在 in_universe.note 说明。universe 取值：sacred=神圣时间线主宇宙，earth-828=神奇四侠宇宙，xmen=变种人动画宇宙，branch=其他分支宇宙，tva=时间变异管理局（时间之外）。"
+  },
+  "works": [
+    {
+      "id": "iron-man-2008",
+      "title": "Iron Man",
+      "title_cn": "钢铁侠",
+      "type": "film",
+      "phase": 1,
+      "saga": "Infinity Saga",
+      "release_date": "2008-05-02",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2008",
+        "end": null,
+        "note": "MCU 开篇，官方时间线定为 2008 年"
+      },
+      "key_characters": [
+        "Tony Stark",
+        "Pepper Potts",
+        "James Rhodes",
+        "Obadiah Stane"
+      ],
+      "synopsis_cn": "军火商托尼·斯塔克在阿富汗遇袭重伤，被迫在山洞中打造出第一套钢铁战甲，从此走上超级英雄之路。"
+    },
+    {
+      "id": "the-incredible-hulk-2008",
+      "title": "The Incredible Hulk",
+      "title_cn": "无敌浩克",
+      "type": "film",
+      "phase": 1,
+      "saga": "Infinity Saga",
+      "release_date": "2008-06-13",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2008",
+        "end": null,
+        "note": "与《钢铁侠2》《雷神》同属“弗瑞的忙碌一周”前后"
+      },
+      "key_characters": [
+        "Bruce Banner",
+        "Betty Ross",
+        "Emil Blonsky",
+        "Thaddeus Ross"
+      ],
+      "synopsis_cn": "布鲁斯·班纳为治愈体内的浩克而四处逃亡，却被军方改造成“憎恶”的布朗斯基逼入绝境。"
+    },
+    {
+      "id": "iron-man-2-2010",
+      "title": "Iron Man 2",
+      "title_cn": "钢铁侠2",
+      "type": "film",
+      "phase": 1,
+      "saga": "Infinity Saga",
+      "release_date": "2010-05-07",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2009",
+        "end": null,
+        "note": "第一部约半年后；官方时间线对具体年份有争议，待核实"
+      },
+      "key_characters": [
+        "Tony Stark",
+        "Pepper Potts",
+        "James Rhodes",
+        "Natasha Romanoff",
+        "Ivan Vanko"
+      ],
+      "synopsis_cn": "托尼被钯元素毒害生命垂危，俄国物理学家之子伊万·万科打造鞭索战甲前来复仇，罗德首次披上战争机器。"
+    },
+    {
+      "id": "thor-2011",
+      "title": "Thor",
+      "title_cn": "雷神",
+      "type": "film",
+      "phase": 1,
+      "saga": "Infinity Saga",
+      "release_date": "2011-05-06",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2009",
+        "end": null,
+        "note": "与《钢铁侠2》同期；官方时间线对具体年份有争议，待核实"
+      },
+      "key_characters": [
+        "Thor",
+        "Loki",
+        "Jane Foster",
+        "Odin"
+      ],
+      "synopsis_cn": "被放逐到地球的雷神索尔失去神力，在与弟弟洛基的阴谋对抗中重新证明自己配得上雷神之锤。"
+    },
+    {
+      "id": "captain-america-the-first-avenger-2011",
+      "title": "Captain America: The First Avenger",
+      "title_cn": "美国队长：复仇者先锋",
+      "type": "film",
+      "phase": 1,
+      "saga": "Infinity Saga",
+      "release_date": "2011-07-22",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "1943",
+        "end": "1945",
+        "note": "二战时期；片头与片尾为现代（2011 年左右）"
+      },
+      "key_characters": [
+        "Steve Rogers",
+        "Peggy Carter",
+        "Bucky Barnes",
+        "Red Skull"
+      ],
+      "synopsis_cn": "瘦弱青年史蒂夫·罗杰斯接受超级士兵改造成为美国队长，在二战中率领咆哮突击队对抗九头蛇。"
+    },
+    {
+      "id": "the-avengers-2012",
+      "title": "The Avengers",
+      "title_cn": "复仇者联盟",
+      "type": "film",
+      "phase": 1,
+      "saga": "Infinity Saga",
+      "release_date": "2012-05-04",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2012",
+        "end": null,
+        "note": null
+      },
+      "key_characters": [
+        "Tony Stark",
+        "Steve Rogers",
+        "Thor",
+        "Bruce Banner",
+        "Natasha Romanoff",
+        "Clint Barton",
+        "Loki"
+      ],
+      "synopsis_cn": "洛基率齐塔瑞大军入侵地球，尼克·弗瑞集结六位英雄组成复仇者联盟，在纽约展开决战。"
+    },
+    {
+      "id": "iron-man-3-2013",
+      "title": "Iron Man 3",
+      "title_cn": "钢铁侠3",
+      "type": "film",
+      "phase": 2,
+      "saga": "Infinity Saga",
+      "release_date": "2013-05-03",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2012",
+        "end": null,
+        "note": "圣诞节期间，《复仇者联盟》约半年后；部分资料标为 2013 年"
+      },
+      "key_characters": [
+        "Tony Stark",
+        "Pepper Potts",
+        "James Rhodes",
+        "Aldrich Killian"
+      ],
+      "synopsis_cn": "托尼遭遇绝境病毒改造人基利安的恐怖袭击，在失去战甲的绝境中重新找回钢铁侠的本心。"
+    },
+    {
+      "id": "thor-the-dark-world-2013",
+      "title": "Thor: The Dark World",
+      "title_cn": "雷神2：黑暗世界",
+      "type": "film",
+      "phase": 2,
+      "saga": "Infinity Saga",
+      "release_date": "2013-11-08",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2013",
+        "end": null,
+        "note": null
+      },
+      "key_characters": [
+        "Thor",
+        "Loki",
+        "Jane Foster",
+        "Malekith"
+      ],
+      "synopsis_cn": "黑暗精灵玛勒基斯为夺取以太粒子（现实宝石）重现宇宙，索尔被迫与洛基联手迎战。"
+    },
+    {
+      "id": "captain-america-the-winter-soldier-2014",
+      "title": "Captain America: The Winter Soldier",
+      "title_cn": "美国队长2：冬日战士",
+      "type": "film",
+      "phase": 2,
+      "saga": "Infinity Saga",
+      "release_date": "2014-04-04",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2014",
+        "end": null,
+        "note": null
+      },
+      "key_characters": [
+        "Steve Rogers",
+        "Natasha Romanoff",
+        "Sam Wilson",
+        "Bucky Barnes",
+        "Nick Fury"
+      ],
+      "synopsis_cn": "美国队长发现神盾局已被九头蛇渗透，还要面对失忆的昔日挚友——冬日战士巴基。"
+    },
+    {
+      "id": "guardians-of-the-galaxy-2014",
+      "title": "Guardians of the Galaxy",
+      "title_cn": "银河护卫队",
+      "type": "film",
+      "phase": 2,
+      "saga": "Infinity Saga",
+      "release_date": "2014-08-01",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2014",
+        "end": null,
+        "note": null
+      },
+      "key_characters": [
+        "Peter Quill",
+        "Gamora",
+        "Drax",
+        "Rocket",
+        "Groot"
+      ],
+      "synopsis_cn": "星爵为争夺宇宙灵球与四个怪咖结成乌合之众，在被追杀的逃亡中逐渐成为真正的团队。"
+    },
+    {
+      "id": "avengers-age-of-ultron-2015",
+      "title": "Avengers: Age of Ultron",
+      "title_cn": "复仇者联盟2：奥创纪元",
+      "type": "film",
+      "phase": 2,
+      "saga": "Infinity Saga",
+      "release_date": "2015-05-01",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2015",
+        "end": null,
+        "note": null
+      },
+      "key_characters": [
+        "Tony Stark",
+        "Steve Rogers",
+        "Thor",
+        "Bruce Banner",
+        "Natasha Romanoff",
+        "Clint Barton",
+        "Wanda Maximoff"
+      ],
+      "synopsis_cn": "托尼打造的维和 AI 奥创失控，复仇者们在索科维亚阻止其灭世计划，团队自此出现裂痕。"
+    },
+    {
+      "id": "ant-man-2015",
+      "title": "Ant-Man",
+      "title_cn": "蚁人",
+      "type": "film",
+      "phase": 2,
+      "saga": "Infinity Saga",
+      "release_date": "2015-07-17",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2015",
+        "end": null,
+        "note": null
+      },
+      "key_characters": [
+        "Scott Lang",
+        "Hank Pym",
+        "Hope van Dyne",
+        "Darren Cross"
+      ],
+      "synopsis_cn": "刑满释放的斯科特·朗被汉克·皮姆招募，穿上蚁人战衣阻止黄衫侠达伦·克劳斯的阴谋。"
+    },
+    {
+      "id": "captain-america-civil-war-2016",
+      "title": "Captain America: Civil War",
+      "title_cn": "美国队长3：内战",
+      "type": "film",
+      "phase": 3,
+      "saga": "Infinity Saga",
+      "release_date": "2016-05-06",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2016",
+        "end": null,
+        "note": null
+      },
+      "key_characters": [
+        "Steve Rogers",
+        "Tony Stark",
+        "Bucky Barnes",
+        "Natasha Romanoff",
+        "Sam Wilson",
+        "T'Challa",
+        "Peter Parker"
+      ],
+      "synopsis_cn": "索科维亚协议让复仇者分裂为美队与钢铁侠两派，在莱比锡机场爆发内战，蜘蛛侠与黑豹首次登场。"
+    },
+    {
+      "id": "doctor-strange-2016",
+      "title": "Doctor Strange",
+      "title_cn": "奇异博士",
+      "type": "film",
+      "phase": 3,
+      "saga": "Infinity Saga",
+      "release_date": "2016-11-04",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2016",
+        "end": "2017",
+        "note": "故事横跨约一年，斯特兰奇从学徒成长为至尊法师"
+      },
+      "key_characters": [
+        "Stephen Strange",
+        "Wong",
+        "Kaecilius",
+        "The Ancient One"
+      ],
+      "synopsis_cn": "车祸致手部重伤的外科医生斯特兰奇拜师古一，学会神秘术对抗多玛姆，最终成为至尊法师。"
+    },
+    {
+      "id": "guardians-of-the-galaxy-vol-2-2017",
+      "title": "Guardians of the Galaxy Vol. 2",
+      "title_cn": "银河护卫队2",
+      "type": "film",
+      "phase": 3,
+      "saga": "Infinity Saga",
+      "release_date": "2017-05-05",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2014",
+        "end": null,
+        "note": "故事紧接第一部数月后"
+      },
+      "key_characters": [
+        "Peter Quill",
+        "Gamora",
+        "Drax",
+        "Rocket",
+        "Groot",
+        "Ego"
+      ],
+      "synopsis_cn": "星爵找到自称其父的天神族伊戈，却发现对方的真实目的是吞噬星球，团队为守护彼此而战。"
+    },
+    {
+      "id": "spider-man-homecoming-2017",
+      "title": "Spider-Man: Homecoming",
+      "title_cn": "蜘蛛侠：英雄归来",
+      "type": "film",
+      "phase": 3,
+      "saga": "Infinity Saga",
+      "release_date": "2017-07-07",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2016",
+        "end": null,
+        "note": "紧接《内战》数月后；片头“八年后”字幕为著名穿帮，已被官方时间线修正"
+      },
+      "key_characters": [
+        "Peter Parker",
+        "Tony Stark",
+        "Adrian Toomes",
+        "Michelle Jones"
+      ],
+      "synopsis_cn": "高中生彼得·帕克在钢铁侠的注视下打击军火贩秃鹫，证明自己配得上复仇者之名。"
+    },
+    {
+      "id": "thor-ragnarok-2017",
+      "title": "Thor: Ragnarok",
+      "title_cn": "雷神3：诸神黄昏",
+      "type": "film",
+      "phase": 3,
+      "saga": "Infinity Saga",
+      "release_date": "2017-11-03",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2017",
+        "end": null,
+        "note": null
+      },
+      "key_characters": [
+        "Thor",
+        "Loki",
+        "Hulk",
+        "Hela",
+        "Valkyrie"
+      ],
+      "synopsis_cn": "索尔被流放到萨卡星，在角斗场重遇浩克，与女武神联手对抗死亡女神海拉，诸神黄昏降临阿斯加德。"
+    },
+    {
+      "id": "black-panther-2018",
+      "title": "Black Panther",
+      "title_cn": "黑豹",
+      "type": "film",
+      "phase": 3,
+      "saga": "Infinity Saga",
+      "release_date": "2018-02-16",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2016",
+        "end": null,
+        "note": "《内战》约一周后"
+      },
+      "key_characters": [
+        "T'Challa",
+        "Killmonger",
+        "Shuri",
+        "Nakia",
+        "Okoye"
+      ],
+      "synopsis_cn": "特查拉继位为瓦坎达国王，堂弟埃里克·克尔芒戈为王位与振金归来复仇，瓦坎达向世界敞开大门。"
+    },
+    {
+      "id": "avengers-infinity-war-2018",
+      "title": "Avengers: Infinity War",
+      "title_cn": "复仇者联盟3：无限战争",
+      "type": "film",
+      "phase": 3,
+      "saga": "Infinity Saga",
+      "release_date": "2018-04-27",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2018",
+        "end": null,
+        "note": null
+      },
+      "key_characters": [
+        "Tony Stark",
+        "Steve Rogers",
+        "Thor",
+        "Thanos",
+        "Doctor Strange",
+        "Peter Parker"
+      ],
+      "synopsis_cn": "灭霸集齐六颗无限宝石打出响指，宇宙半数生命灰飞烟灭，英雄们在瓦坎达与泰坦星双线惨败。"
+    },
+    {
+      "id": "ant-man-and-the-wasp-2018",
+      "title": "Ant-Man and the Wasp",
+      "title_cn": "蚁人2：黄蜂女现身",
+      "type": "film",
+      "phase": 3,
+      "saga": "Infinity Saga",
+      "release_date": "2018-07-06",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2018",
+        "end": null,
+        "note": "故事发生在响指之前，片尾彩蛋衔接响指时刻"
+      },
+      "key_characters": [
+        "Scott Lang",
+        "Hope van Dyne",
+        "Hank Pym",
+        "Janet van Dyne"
+      ],
+      "synopsis_cn": "斯科特与霍普深入量子领域营救初代黄蜂女珍妮特，却在归来时撞上响指，斯科特被困量子领域五年。"
+    },
+    {
+      "id": "captain-marvel-2019",
+      "title": "Captain Marvel",
+      "title_cn": "惊奇队长",
+      "type": "film",
+      "phase": 3,
+      "saga": "Infinity Saga",
+      "release_date": "2019-03-08",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "1995",
+        "end": null,
+        "note": "主线 1995 年；片头片尾涉及 2018 年"
+      },
+      "key_characters": [
+        "Carol Danvers",
+        "Nick Fury",
+        "Talos",
+        "Yon-Rogg"
+      ],
+      "synopsis_cn": "失忆的克里族战士卡罗尔·丹弗斯回到 1995 年的地球，找回身为惊奇队长的记忆，并揭开斯克鲁人的真相。"
+    },
+    {
+      "id": "avengers-endgame-2019",
+      "title": "Avengers: Endgame",
+      "title_cn": "复仇者联盟4：终局之战",
+      "type": "film",
+      "phase": 3,
+      "saga": "Infinity Saga",
+      "release_date": "2019-04-26",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2018",
+        "end": "2023",
+        "note": "开篇响指五年后，主线为 2023 年时间劫持"
+      },
+      "key_characters": [
+        "Tony Stark",
+        "Steve Rogers",
+        "Natasha Romanoff",
+        "Thor",
+        "Bruce Banner",
+        "Clint Barton"
+      ],
+      "synopsis_cn": "幸存英雄们穿越回过去集齐宝石逆转响指，钢铁侠以响指终结灭霸，自己也献出生命；美队回到过去与佩吉团聚。"
+    },
+    {
+      "id": "spider-man-far-from-home-2019",
+      "title": "Spider-Man: Far From Home",
+      "title_cn": "蜘蛛侠：英雄远征",
+      "type": "film",
+      "phase": 3,
+      "saga": "Infinity Saga",
+      "release_date": "2019-07-02",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2024",
+        "end": null,
+        "note": "《终局之战》约 8 个月后"
+      },
+      "key_characters": [
+        "Peter Parker",
+        "Mysterio",
+        "Michelle Jones",
+        "Nick Fury"
+      ],
+      "synopsis_cn": "彼得在欧洲修学旅行中被神秘客利用，在无人接班的真空里学会独当一面；片尾身份曝光埋下危机。"
+    },
+    {
+      "id": "black-widow-2021",
+      "title": "Black Widow",
+      "title_cn": "黑寡妇",
+      "type": "film",
+      "phase": 4,
+      "saga": "Multiverse Saga",
+      "release_date": "2021-07-09",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2016",
+        "end": null,
+        "note": "《内战》与《无限战争》之间"
+      },
+      "key_characters": [
+        "Natasha Romanoff",
+        "Yelena Belova",
+        "Alexei Shostakov",
+        "Melina"
+      ],
+      "synopsis_cn": "娜塔莎直面红房子与“模仿大师”，与妹妹叶莲娜联手摧毁这个培养黑寡妇的组织。"
+    },
+    {
+      "id": "shang-chi-2021",
+      "title": "Shang-Chi and the Legend of the Ten Rings",
+      "title_cn": "尚气与十环传奇",
+      "type": "film",
+      "phase": 4,
+      "saga": "Multiverse Saga",
+      "release_date": "2021-09-03",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2024",
+        "end": null,
+        "note": "《终局之战》之后"
+      },
+      "key_characters": [
+        "Shang-Chi",
+        "Wenwu",
+        "Katy",
+        "Xialing"
+      ],
+      "synopsis_cn": "隐姓埋名的尚气被父亲文武召回争夺十环，在大罗村直面家族宿命，十环的来历成谜。"
+    },
+    {
+      "id": "eternals-2021",
+      "title": "Eternals",
+      "title_cn": "永恒族",
+      "type": "film",
+      "phase": 4,
+      "saga": "Multiverse Saga",
+      "release_date": "2021-11-05",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "公元前5000年",
+        "end": "2024",
+        "note": "横跨数千年，主线在 2024 年"
+      },
+      "key_characters": [
+        "Sersi",
+        "Ikaris",
+        "Thena",
+        "Kingo",
+        "Phastos"
+      ],
+      "synopsis_cn": "隐居地球数千年的永恒族为阻止“神现”重新集结，伊卡瑞斯的背叛撕裂了团队，蒂亚穆特化作孤岛。"
+    },
+    {
+      "id": "spider-man-no-way-home-2021",
+      "title": "Spider-Man: No Way Home",
+      "title_cn": "蜘蛛侠：英雄无归",
+      "type": "film",
+      "phase": 4,
+      "saga": "Multiverse Saga",
+      "release_date": "2021-12-17",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2024",
+        "end": null,
+        "note": "紧接《英雄远征》"
+      },
+      "key_characters": [
+        "Peter Parker",
+        "Doctor Strange",
+        "Green Goblin",
+        "Doc Ock",
+        "Michelle Jones"
+      ],
+      "synopsis_cn": "奇异博士的咒语失控撕开多元宇宙，三代蜘蛛侠联手对抗来自各宇宙的反派，彼得选择被世界遗忘。"
+    },
+    {
+      "id": "doctor-strange-in-the-multiverse-of-madness-2022",
+      "title": "Doctor Strange in the Multiverse of Madness",
+      "title_cn": "奇异博士2：疯狂多元宇宙",
+      "type": "film",
+      "phase": 4,
+      "saga": "Multiverse Saga",
+      "release_date": "2022-05-06",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2024",
+        "end": null,
+        "note": null
+      },
+      "key_characters": [
+        "Stephen Strange",
+        "Wanda Maximoff",
+        "America Chavez",
+        "Wong"
+      ],
+      "synopsis_cn": "旺达为夺取穿越多元宇宙的能力化身绯红女巫，奇异博士带着阿美莉卡穿越万界阻止她。"
+    },
+    {
+      "id": "thor-love-and-thunder-2022",
+      "title": "Thor: Love and Thunder",
+      "title_cn": "雷神4：爱与雷霆",
+      "type": "film",
+      "phase": 4,
+      "saga": "Multiverse Saga",
+      "release_date": "2022-07-08",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2024",
+        "end": null,
+        "note": "官方未明确具体年份，普遍推测在 2024–2025 年间，存疑"
+      },
+      "key_characters": [
+        "Thor",
+        "Jane Foster",
+        "Valkyrie",
+        "Gorr"
+      ],
+      "synopsis_cn": "简·福斯特举起雷神之锤成为女雷神，与索尔并肩对抗弑神者格尔。"
+    },
+    {
+      "id": "black-panther-wakanda-forever-2022",
+      "title": "Black Panther: Wakanda Forever",
+      "title_cn": "黑豹2：瓦坎达万岁",
+      "type": "film",
+      "phase": 4,
+      "saga": "Multiverse Saga",
+      "release_date": "2022-11-11",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2025",
+        "end": null,
+        "note": "特查拉去世约一年后"
+      },
+      "key_characters": [
+        "Shuri",
+        "Namor",
+        "Ramonda",
+        "Okoye",
+        "Riri Williams"
+      ],
+      "synopsis_cn": "瓦坎达在失去国王后遭纳摩与塔洛坎袭击，苏睿继承黑豹之名，带领瓦坎达迎战海底王国。"
+    },
+    {
+      "id": "ant-man-and-the-wasp-quantumania-2023",
+      "title": "Ant-Man and the Wasp: Quantumania",
+      "title_cn": "蚁人3：量子狂潮",
+      "type": "film",
+      "phase": 5,
+      "saga": "Multiverse Saga",
+      "release_date": "2023-02-17",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2026",
+        "end": null,
+        "note": "官方未明确年份；按卡西年龄推测约 2026 年，存疑"
+      },
+      "key_characters": [
+        "Scott Lang",
+        "Hope van Dyne",
+        "Kang",
+        "Cassie Lang"
+      ],
+      "synopsis_cn": "一家五口被吸入量子领域，遭遇被放逐的征服者康，量子领域的秘密与康议会就此揭开。"
+    },
+    {
+      "id": "guardians-of-the-galaxy-vol-3-2023",
+      "title": "Guardians of the Galaxy Vol. 3",
+      "title_cn": "银河护卫队3",
+      "type": "film",
+      "phase": 5,
+      "saga": "Multiverse Saga",
+      "release_date": "2023-05-05",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2026",
+        "end": null,
+        "note": "圣诞特别篇之后；官方未明确年份，存疑"
+      },
+      "key_characters": [
+        "Peter Quill",
+        "Gamora",
+        "Rocket",
+        "Nebula",
+        "Adam Warlock"
+      ],
+      "synopsis_cn": "银河护卫队为救火箭深入反地球对抗至高进化者，团队迎来告别与新生。"
+    },
+    {
+      "id": "the-marvels-2023",
+      "title": "The Marvels",
+      "title_cn": "惊奇队长2",
+      "type": "film",
+      "phase": 5,
+      "saga": "Multiverse Saga",
+      "release_date": "2023-11-10",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2026",
+        "end": null,
+        "note": "官方未明确年份，普遍推测 2026 年，存疑"
+      },
+      "key_characters": [
+        "Carol Danvers",
+        "Monica Rambeau",
+        "Kamala Khan"
+      ],
+      "synopsis_cn": "三位“漫威”因能量纠缠不断互换位置，被迫组队对抗克里指控者达尔-本恩；片尾彩蛋通向变种人宇宙。"
+    },
+    {
+      "id": "deadpool-and-wolverine-2024",
+      "title": "Deadpool & Wolverine",
+      "title_cn": "死侍与金刚狼",
+      "type": "film",
+      "phase": 5,
+      "saga": "Multiverse Saga",
+      "release_date": "2024-07-26",
+      "status": "released",
+      "universe": "branch",
+      "in_universe": {
+        "start": "2024",
+        "end": null,
+        "note": "死侍自述为《死侍2》六年后；涉及 TVA 与虚空之地"
+      },
+      "key_characters": [
+        "Wade Wilson",
+        "Logan",
+        "Cassandra Nova",
+        "Paradox"
+      ],
+      "synopsis_cn": "死侍被 TVA 招募，在虚空之地找到“最差金刚狼”，联手阻止卡桑德拉·诺瓦吞噬多元宇宙。"
+    },
+    {
+      "id": "captain-america-brave-new-world-2025",
+      "title": "Captain America: Brave New World",
+      "title_cn": "美国队长4：美丽新世界",
+      "type": "film",
+      "phase": 5,
+      "saga": "Multiverse Saga",
+      "release_date": "2025-02-14",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2027",
+        "end": null,
+        "note": "故事约在 2027 年 4 月"
+      },
+      "key_characters": [
+        "Sam Wilson",
+        "Thaddeus Ross",
+        "Isaiah Bradley",
+        "Joaquin Torres"
+      ],
+      "synopsis_cn": "山姆·威尔逊正式接任美国队长，卷入罗斯总统与“天神岛”振金争夺的阴谋，还要面对红浩克。"
+    },
+    {
+      "id": "thunderbolts-2025",
+      "title": "Thunderbolts*",
+      "title_cn": "雷霆特攻队*",
+      "type": "film",
+      "phase": 5,
+      "saga": "Multiverse Saga",
+      "release_date": "2025-05-02",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2027",
+        "end": null,
+        "note": "2027 年中；目前时间线最靠后的一部"
+      },
+      "key_characters": [
+        "Yelena Belova",
+        "Bucky Barnes",
+        "John Walker",
+        "Ghost",
+        "Red Guardian",
+        "Bob"
+      ],
+      "synopsis_cn": "一群“问题英雄”被瓦伦蒂娜拼凑成敢死队，在哨兵的操控下被迫直面各自的心魔，片尾改组为新复仇者。"
+    },
+    {
+      "id": "the-fantastic-four-first-steps-2025",
+      "title": "The Fantastic Four: First Steps",
+      "title_cn": "神奇四侠：初露锋芒",
+      "type": "film",
+      "phase": 6,
+      "saga": "Multiverse Saga",
+      "release_date": "2025-07-25",
+      "status": "released",
+      "universe": "earth-828",
+      "in_universe": {
+        "start": "1964",
+        "end": null,
+        "note": "Earth-828 复古未来宇宙；片尾彩蛋涉及毁灭博士"
+      },
+      "key_characters": [
+        "Reed Richards",
+        "Sue Storm",
+        "Johnny Storm",
+        "Ben Grimm",
+        "Galactus",
+        "Silver Surfer"
+      ],
+      "synopsis_cn": "1960 年代复古未来世界中，神奇四侠为保护地球与行星吞噬者加拉图斯展开决战。"
+    },
+    {
+      "id": "spider-man-brand-new-day-2026",
+      "title": "Spider-Man: Brand New Day",
+      "title_cn": "蜘蛛侠：崭新之日",
+      "type": "film",
+      "phase": 6,
+      "saga": "Multiverse Saga",
+      "release_date": "2026-07-31",
+      "status": "released",
+      "universe": "sacred",
+      "in_universe": {
+        "start": null,
+        "end": null,
+        "note": "官方未明确宇宙内时间点，待核实；剧情细节官方保密"
+      },
+      "key_characters": [
+        "Peter Parker",
+        "Frank Castle"
+      ],
+      "synopsis_cn": "被世界遗忘的彼得·帕克在纽约街头重新开始，惩罚者的出现把他卷入新的纷争。"
+    },
+    {
+      "id": "avengers-doomsday-2026",
+      "title": "Avengers: Doomsday",
+      "title_cn": "复仇者联盟5：毁灭日",
+      "type": "film",
+      "phase": 6,
+      "saga": "Multiverse Saga",
+      "release_date": "2026-12-18",
+      "status": "upcoming",
+      "universe": "sacred",
+      "in_universe": {
+        "start": null,
+        "end": null,
+        "note": "待上映；官方称三个不同宇宙的英雄迎来致命碰撞"
+      },
+      "key_characters": [
+        "Victor von Doom",
+        "Steve Rogers",
+        "Thor",
+        "Sam Wilson",
+        "Reed Richards",
+        "Yelena Belova"
+      ],
+      "synopsis_cn": "来自三个不同宇宙的英雄迎来致命碰撞，共同面对毁灭博士带来的生存威胁。（占位，上映后更新）"
+    },
+    {
+      "id": "avengers-secret-wars-2027",
+      "title": "Avengers: Secret Wars",
+      "title_cn": "复仇者联盟6：秘密战争",
+      "type": "film",
+      "phase": 6,
+      "saga": "Multiverse Saga",
+      "release_date": "2027-12-17",
+      "status": "upcoming",
+      "universe": "sacred",
+      "in_universe": {
+        "start": null,
+        "end": null,
+        "note": "待上映；传闻将统合多元宇宙并重启 MCU 连续性"
+      },
+      "key_characters": [],
+      "synopsis_cn": "多元宇宙传奇的终章，大决战之后 MCU 连续性或将重启。（占位，上映后更新）"
+    },
+    {
+      "id": "wandavision-2021",
+      "title": "WandaVision",
+      "title_cn": "旺达幻视",
+      "type": "series",
+      "phase": 4,
+      "saga": "Multiverse Saga",
+      "release_date": "2021-01-15",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 9,
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2023",
+        "end": null,
+        "note": "《终局之战》约三周后"
+      },
+      "key_characters": [
+        "Wanda Maximoff",
+        "Vision",
+        "Agatha Harkness",
+        "Monica Rambeau"
+      ],
+      "synopsis_cn": "旺达在西景镇用混沌魔法构建出情景喜剧般的完美生活，幻视之死的心魔与阿加莎的阴谋逐渐浮出水面。"
+    },
+    {
+      "id": "the-falcon-and-the-winter-soldier-2021",
+      "title": "The Falcon and the Winter Soldier",
+      "title_cn": "猎鹰与冬兵",
+      "type": "series",
+      "phase": 4,
+      "saga": "Multiverse Saga",
+      "release_date": "2021-03-19",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 6,
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2024",
+        "end": null,
+        "note": "《终局之战》约半年后"
+      },
+      "key_characters": [
+        "Sam Wilson",
+        "Bucky Barnes",
+        "John Walker",
+        "Sharon Carter"
+      ],
+      "synopsis_cn": "山姆与巴基在“旗帜破坏者”的动乱中争夺美队盾牌的归属，约翰·沃克的失控让传承蒙上阴影。"
+    },
+    {
+      "id": "loki-season-1-2021",
+      "title": "Loki",
+      "title_cn": "洛基 第一季",
+      "type": "series",
+      "phase": 4,
+      "saga": "Multiverse Saga",
+      "release_date": "2021-06-09",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 6,
+      "universe": "tva",
+      "in_universe": {
+        "start": null,
+        "end": null,
+        "note": "TVA 时间之外；分支自 2012 年时间劫持点"
+      },
+      "key_characters": [
+        "Loki",
+        "Sylvie",
+        "Mobius",
+        "Hunter B-15"
+      ],
+      "synopsis_cn": "2012 年带着宇宙魔方逃跑的洛基被 TVA 抓获，被迫与女洛基希尔维合作追查“残存者”康。"
+    },
+    {
+      "id": "what-if-season-1-2021",
+      "title": "What If...?",
+      "title_cn": "无限可能：假如…？ 第一季",
+      "type": "series",
+      "phase": 4,
+      "saga": "Multiverse Saga",
+      "release_date": "2021-08-11",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 9,
+      "universe": "branch",
+      "in_universe": {
+        "start": null,
+        "end": null,
+        "note": "观察者讲述的多元宇宙分支故事"
+      },
+      "key_characters": [
+        "The Watcher",
+        "Captain Carter",
+        "Strange Supreme",
+        "Ultron"
+      ],
+      "synopsis_cn": "观察者乌阿图讲述一个个“假如历史改写”的分支宇宙，卡特队长、至尊奇异博士等登场，终局集结多元宇宙守护者。"
+    },
+    {
+      "id": "hawkeye-2021",
+      "title": "Hawkeye",
+      "title_cn": "鹰眼",
+      "type": "series",
+      "phase": 4,
+      "saga": "Multiverse Saga",
+      "release_date": "2021-11-24",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 6,
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2024",
+        "end": null,
+        "note": "圣诞节期间"
+      },
+      "key_characters": [
+        "Clint Barton",
+        "Kate Bishop",
+        "Yelena Belova",
+        "Kingpin"
+      ],
+      "synopsis_cn": "克林特在圣诞季把浪人战衣惹出的麻烦甩给粉丝少女凯特·毕肖普，两代鹰眼联手对抗金并。"
+    },
+    {
+      "id": "moon-knight-2022",
+      "title": "Moon Knight",
+      "title_cn": "月光骑士",
+      "type": "series",
+      "phase": 4,
+      "saga": "Multiverse Saga",
+      "release_date": "2022-03-30",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 6,
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2025",
+        "end": null,
+        "note": "官方未明确年份，普遍推测 2025 年，存疑"
+      },
+      "key_characters": [
+        "Marc Spector",
+        "Steven Grant",
+        "Layla",
+        "Arthur Harrow"
+      ],
+      "synopsis_cn": "患解离性身份障碍的史蒂文发现自己是埃及月神孔苏的化身，在多重人格间挣扎着阻止哈罗复活阿米特。"
+    },
+    {
+      "id": "ms-marvel-2022",
+      "title": "Ms. Marvel",
+      "title_cn": "惊奇少女",
+      "type": "series",
+      "phase": 4,
+      "saga": "Multiverse Saga",
+      "release_date": "2022-06-08",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 6,
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2025",
+        "end": null,
+        "note": "官方未明确年份，普遍推测 2025 年，存疑"
+      },
+      "key_characters": [
+        "Kamala Khan",
+        "Bruno",
+        "Nakia"
+      ],
+      "synopsis_cn": "泽西城穆斯林少女卡玛拉得到手镯获得光子能量，追溯家族印巴分治历史，成为惊奇少女。"
+    },
+    {
+      "id": "she-hulk-2022",
+      "title": "She-Hulk: Attorney at Law",
+      "title_cn": "女浩克",
+      "type": "series",
+      "phase": 4,
+      "saga": "Multiverse Saga",
+      "release_date": "2022-08-18",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 9,
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2025",
+        "end": null,
+        "note": "官方未明确年份，普遍推测 2025 年，存疑"
+      },
+      "key_characters": [
+        "Jennifer Walters",
+        "Bruce Banner",
+        "Wong",
+        "Titania"
+      ],
+      "synopsis_cn": "律师珍妮弗·沃尔特斯因输血获得浩克之力，在法庭辩护与超级英雄生活的双重混乱中寻找平衡。"
+    },
+    {
+      "id": "werewolf-by-night-2022",
+      "title": "Werewolf by Night",
+      "title_cn": "暗夜狼人",
+      "type": "series",
+      "phase": 4,
+      "saga": "Multiverse Saga",
+      "release_date": "2022-10-07",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 1,
+      "universe": "sacred",
+      "in_universe": {
+        "start": null,
+        "end": null,
+        "note": "官方未给出明确时间点，待核实"
+      },
+      "key_characters": [
+        "Jack Russell",
+        "Elsa Bloodstone",
+        "Man-Thing"
+      ],
+      "synopsis_cn": "黑白复古恐怖特别篇：怪物猎人们为争夺血石大打出手，杰克·罗素在满月下变身狼人。"
+    },
+    {
+      "id": "guardians-holiday-special-2022",
+      "title": "The Guardians of the Galaxy Holiday Special",
+      "title_cn": "银河护卫队：圣诞特别篇",
+      "type": "series",
+      "phase": 4,
+      "saga": "Multiverse Saga",
+      "release_date": "2022-11-25",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 1,
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2025",
+        "end": null,
+        "note": "圣诞节；《银河护卫队3》之前"
+      },
+      "key_characters": [
+        "Peter Quill",
+        "Drax",
+        "Mantis",
+        "Nebula"
+      ],
+      "synopsis_cn": "德拉克斯和螳螂女为逗星爵开心，跑到地球“绑架”了凯文·贝肯当圣诞礼物。"
+    },
+    {
+      "id": "secret-invasion-2023",
+      "title": "Secret Invasion",
+      "title_cn": "秘密入侵",
+      "type": "series",
+      "phase": 5,
+      "saga": "Multiverse Saga",
+      "release_date": "2023-06-21",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 6,
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2026",
+        "end": null,
+        "note": "官方未明确年份，普遍推测 2026 年，存疑"
+      },
+      "key_characters": [
+        "Nick Fury",
+        "Talos",
+        "Gravik",
+        "Maria Hill"
+      ],
+      "synopsis_cn": "斯克鲁反叛派格拉维克渗透地球高层，尼克·弗瑞在无人可信的局势下独自阻止全面战争。"
+    },
+    {
+      "id": "loki-season-2-2023",
+      "title": "Loki",
+      "title_cn": "洛基 第二季",
+      "type": "series",
+      "phase": 5,
+      "saga": "Multiverse Saga",
+      "release_date": "2023-10-05",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 6,
+      "universe": "tva",
+      "in_universe": {
+        "start": null,
+        "end": null,
+        "note": "TVA 时间之外；承接第一季季终"
+      },
+      "key_characters": [
+        "Loki",
+        "Sylvie",
+        "Mobius",
+        "Ouroboros"
+      ],
+      "synopsis_cn": "洛基在时间滑动中穿梭，为阻止 TVA 崩溃与康的变体，他最终坐上了时间王座，守护所有时间线。"
+    },
+    {
+      "id": "what-if-season-2-2023",
+      "title": "What If...?",
+      "title_cn": "无限可能：假如…？ 第二季",
+      "type": "series",
+      "phase": 5,
+      "saga": "Multiverse Saga",
+      "release_date": "2023-12-22",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 9,
+      "universe": "branch",
+      "in_universe": {
+        "start": null,
+        "end": null,
+        "note": "观察者讲述的多元宇宙分支故事"
+      },
+      "key_characters": [
+        "The Watcher",
+        "Captain Carter",
+        "Kahhori"
+      ],
+      "synopsis_cn": "新一批分支宇宙故事：卡特队长集结多元宇宙英雄对抗至尊斯特兰奇，莫霍克原创英雄卡霍里登场。"
+    },
+    {
+      "id": "echo-2024",
+      "title": "Echo",
+      "title_cn": "回声",
+      "type": "series",
+      "phase": 5,
+      "saga": "Multiverse Saga",
+      "release_date": "2024-01-09",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 5,
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2025",
+        "end": null,
+        "note": "《鹰眼》约五个月后"
+      },
+      "key_characters": [
+        "Maya Lopez",
+        "Kingpin"
+      ],
+      "synopsis_cn": "玛雅·洛佩兹逃离纽约回到俄克拉荷马家乡，在祖先之力觉醒中与金并彻底决裂。"
+    },
+    {
+      "id": "x-men-97-season-1-2024",
+      "title": "X-Men '97",
+      "title_cn": "X战警97 第一季",
+      "type": "series",
+      "phase": 5,
+      "saga": "Multiverse Saga",
+      "release_date": "2024-03-20",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 10,
+      "universe": "xmen",
+      "in_universe": {
+        "start": "1997",
+        "end": null,
+        "note": "延续 1990 年代动画版 X 战警宇宙"
+      },
+      "key_characters": [
+        "Cyclops",
+        "Jean Grey",
+        "Wolverine",
+        "Magneto",
+        "Rogue"
+      ],
+      "synopsis_cn": "致敬 1992 年经典动画的续作：X 教授离世后万磁王接管学院，“零容忍行动”将变种人推向战争边缘。"
+    },
+    {
+      "id": "agatha-all-along-2024",
+      "title": "Agatha All Along",
+      "title_cn": "阿加莎：混沌女巫之路",
+      "type": "series",
+      "phase": 5,
+      "saga": "Multiverse Saga",
+      "release_date": "2024-09-18",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 9,
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2026",
+        "end": null,
+        "note": "《旺达幻视》约三年后；官方未明确年份，存疑"
+      },
+      "key_characters": [
+        "Agatha Harkness",
+        "Billy Maximoff",
+        "Rio Vidal"
+      ],
+      "synopsis_cn": "失去魔法的阿加莎组建女巫集会踏上女巫之路，少年“提恩”的真实身份在终点揭晓。"
+    },
+    {
+      "id": "what-if-season-3-2024",
+      "title": "What If...?",
+      "title_cn": "无限可能：假如…？ 第三季",
+      "type": "series",
+      "phase": 5,
+      "saga": "Multiverse Saga",
+      "release_date": "2024-12-22",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 8,
+      "universe": "branch",
+      "in_universe": {
+        "start": null,
+        "end": null,
+        "note": "最终季；观察者讲述的多元宇宙分支故事"
+      },
+      "key_characters": [
+        "The Watcher",
+        "Captain Carter"
+      ],
+      "synopsis_cn": "最终季：观察者干预分支宇宙的代价浮出水面，卡特队长迎来她的终局之战。"
+    },
+    {
+      "id": "your-friendly-neighborhood-spider-man-season-1-2025",
+      "title": "Your Friendly Neighborhood Spider-Man",
+      "title_cn": "你的友好邻居蜘蛛侠 第一季",
+      "type": "series",
+      "phase": 5,
+      "saga": "Multiverse Saga",
+      "release_date": "2025-01-29",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 10,
+      "universe": "branch",
+      "in_universe": {
+        "start": null,
+        "end": null,
+        "note": "独立分支宇宙：诺曼·奥斯本成为彼得的导师"
+      },
+      "key_characters": [
+        "Peter Parker",
+        "Norman Osborn",
+        "Nico Minoru"
+      ],
+      "synopsis_cn": "动画版蜘蛛侠起源新编：在这个分支宇宙里，诺曼·奥斯本而非托尼·斯塔克成为了彼得的导师。"
+    },
+    {
+      "id": "daredevil-born-again-season-1-2025",
+      "title": "Daredevil: Born Again",
+      "title_cn": "夜魔侠：重生 第一季",
+      "type": "series",
+      "phase": 5,
+      "saga": "Multiverse Saga",
+      "release_date": "2025-03-04",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 9,
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2026",
+        "end": null,
+        "note": "《回声》之后；官方未明确年份，存疑"
+      },
+      "key_characters": [
+        "Matt Murdock",
+        "Wilson Fisk",
+        "Frank Castle",
+        "Karen Page"
+      ],
+      "synopsis_cn": "马特·梅多克重披战袍，对阵当选市长的金并；反义警特遣队的崛起让地狱厨房风声鹤唳。"
+    },
+    {
+      "id": "ironheart-2025",
+      "title": "Ironheart",
+      "title_cn": "钢铁之心",
+      "type": "series",
+      "phase": 5,
+      "saga": "Multiverse Saga",
+      "release_date": "2025-06-24",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 6,
+      "universe": "sacred",
+      "in_universe": {
+        "start": "2026",
+        "end": null,
+        "note": "《黑豹2》之后；官方未明确年份，存疑"
+      },
+      "key_characters": [
+        "Riri Williams",
+        "The Hood"
+      ],
+      "synopsis_cn": "天才少女莉莉·威廉姆斯回到芝加哥，在科技与魔法的夹缝中打造自己的钢铁战甲，对抗神秘反派“兜帽”。"
+    },
+    {
+      "id": "eyes-of-wakanda-2025",
+      "title": "Eyes of Wakanda",
+      "title_cn": "瓦坎达之眼",
+      "type": "series",
+      "phase": 6,
+      "saga": "Multiverse Saga",
+      "release_date": "2025-08-06",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 4,
+      "universe": "sacred",
+      "in_universe": {
+        "start": null,
+        "end": null,
+        "note": "诗选动画，故事横跨瓦坎达数千年历史，官方未给出统一时间点"
+      },
+      "key_characters": [
+        "The Hatut Zeraze"
+      ],
+      "synopsis_cn": "诗选动画：瓦坎达“猎犬”特工穿越数千年历史，追回流落世界各地的振金神器。"
+    },
+    {
+      "id": "marvel-zombies-2025",
+      "title": "Marvel Zombies",
+      "title_cn": "漫威丧尸",
+      "type": "series",
+      "phase": 6,
+      "saga": "Multiverse Saga",
+      "release_date": "2025-10-03",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 4,
+      "universe": "branch",
+      "in_universe": {
+        "start": null,
+        "end": null,
+        "note": "《无限可能》丧尸宇宙的延续"
+      },
+      "key_characters": [
+        "Kamala Khan",
+        "Shang-Chi",
+        "Blade"
+      ],
+      "synopsis_cn": "丧尸病毒席卷漫威宇宙，惊奇少女率领幸存英雄在末日中求生。"
+    },
+    {
+      "id": "wonder-man-2026",
+      "title": "Wonder Man",
+      "title_cn": "神奇人",
+      "type": "series",
+      "phase": 6,
+      "saga": "Multiverse Saga",
+      "release_date": "2026-01-27",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 8,
+      "universe": "sacred",
+      "in_universe": {
+        "start": null,
+        "end": null,
+        "note": "官方未明确宇宙内时间点，待核实"
+      },
+      "key_characters": [
+        "Simon Williams",
+        "Trevor Slattery",
+        "Eric Williams"
+      ],
+      "synopsis_cn": "好莱坞过气演员西蒙·威廉姆斯试镜超级英雄“神奇人”一角，却在片场内外卷入真正的超能力纷争。"
+    },
+    {
+      "id": "daredevil-born-again-season-2-2026",
+      "title": "Daredevil: Born Again",
+      "title_cn": "夜魔侠：重生 第二季",
+      "type": "series",
+      "phase": 6,
+      "saga": "Multiverse Saga",
+      "release_date": "2026-03-24",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 8,
+      "universe": "sacred",
+      "in_universe": {
+        "start": null,
+        "end": null,
+        "note": "紧接第一季；官方未明确年份，待核实"
+      },
+      "key_characters": [
+        "Matt Murdock",
+        "Wilson Fisk",
+        "Jessica Jones",
+        "Bullseye"
+      ],
+      "synopsis_cn": "金并的反义警统治升级，马特集结杰西卡·琼斯等义警展开反击。"
+    },
+    {
+      "id": "punisher-one-last-kill-2026",
+      "title": "The Punisher: One Last Kill",
+      "title_cn": "惩罚者：最后一杀",
+      "type": "series",
+      "phase": 6,
+      "saga": "Multiverse Saga",
+      "release_date": "2026-05-12",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 1,
+      "universe": "sacred",
+      "in_universe": {
+        "start": null,
+        "end": null,
+        "note": "紧接《夜魔侠：重生》第二季；为《蜘蛛侠：崭新之日》铺垫"
+      },
+      "key_characters": [
+        "Frank Castle"
+      ],
+      "synopsis_cn": "漫威特别呈现：弗兰克·卡斯特逃出反义警特遣队后，迎来属于自己的独立篇章。"
+    },
+    {
+      "id": "x-men-97-season-2-2026",
+      "title": "X-Men '97",
+      "title_cn": "X战警97 第二季",
+      "type": "series",
+      "phase": 6,
+      "saga": "Multiverse Saga",
+      "release_date": "2026-06-13",
+      "status": "released",
+      "seasons": 1,
+      "episodes": 10,
+      "universe": "xmen",
+      "in_universe": {
+        "start": "1997",
+        "end": null,
+        "note": "延续 1990 年代动画版 X 战警宇宙；6 月 13 日翠贝卡电影节首映，Disney+ 具体上线日期待核实"
+      },
+      "key_characters": [
+        "Cyclops",
+        "Jean Grey",
+        "Wolverine",
+        "Magneto"
+      ],
+      "synopsis_cn": "第二季延续第一季“零容忍行动”后的格局，变种人与人类的战争全面升级。"
+    },
+    {
+      "id": "visionquest-2026",
+      "title": "VisionQuest",
+      "title_cn": "幻视探索",
+      "type": "series",
+      "phase": 6,
+      "saga": "Multiverse Saga",
+      "release_date": "2026-10-14",
+      "status": "upcoming",
+      "seasons": 1,
+      "episodes": null,
+      "universe": "sacred",
+      "in_universe": {
+        "start": null,
+        "end": null,
+        "note": "待上映"
+      },
+      "key_characters": [
+        "Vision",
+        "Ultron"
+      ],
+      "synopsis_cn": "白幻视在《旺达幻视》后寻找自我与记忆，奥创回归。（占位，上映后更新）"
+    },
+    {
+      "id": "your-friendly-neighborhood-spider-man-season-2-2026",
+      "title": "Your Friendly Neighborhood Spider-Man",
+      "title_cn": "你的友好邻居蜘蛛侠 第二季",
+      "type": "series",
+      "phase": 6,
+      "saga": "Multiverse Saga",
+      "release_date": null,
+      "status": "upcoming",
+      "seasons": 1,
+      "episodes": null,
+      "universe": "branch",
+      "in_universe": {
+        "start": null,
+        "end": null,
+        "note": "待上映；预计 2026 年秋季，具体日期待核实"
+      },
+      "key_characters": [
+        "Peter Parker",
+        "Norman Osborn"
+      ],
+      "synopsis_cn": "动画蜘蛛侠第二季，诺曼·奥斯本的导师身份迎来考验。（占位，上映后更新）"
+    }
+  ]
+};
+const CHRONO_ORDER = ["eyes-of-wakanda-2025","captain-america-the-first-avenger-2011","captain-marvel-2019","x-men-97-season-1-2024","x-men-97-season-2-2026","iron-man-2008","iron-man-2-2010","the-incredible-hulk-2008","thor-2011","the-avengers-2012","thor-the-dark-world-2013","iron-man-3-2013","captain-america-the-winter-soldier-2014","guardians-of-the-galaxy-2014","guardians-of-the-galaxy-vol-2-2017","avengers-age-of-ultron-2015","ant-man-2015","captain-america-civil-war-2016","black-widow-2021","spider-man-homecoming-2017","doctor-strange-2016","black-panther-2018","thor-ragnarok-2017","ant-man-and-the-wasp-2018","avengers-infinity-war-2018","avengers-endgame-2019","loki-season-1-2021","what-if-season-1-2021","marvel-zombies-2025","loki-season-2-2023","wandavision-2021","the-falcon-and-the-winter-soldier-2021","shang-chi-2021","eternals-2021","spider-man-far-from-home-2019","spider-man-no-way-home-2021","doctor-strange-in-the-multiverse-of-madness-2022","hawkeye-2021","echo-2024","moon-knight-2022","black-panther-wakanda-forever-2022","ironheart-2025","she-hulk-2022","ms-marvel-2022","thor-love-and-thunder-2022","werewolf-by-night-2022","guardians-holiday-special-2022","ant-man-and-the-wasp-quantumania-2023","guardians-of-the-galaxy-vol-3-2023","secret-invasion-2023","the-marvels-2023","agatha-all-along-2024","what-if-season-2-2023","what-if-season-3-2024","your-friendly-neighborhood-spider-man-season-1-2025","deadpool-and-wolverine-2024","daredevil-born-again-season-1-2025","captain-america-brave-new-world-2025","thunderbolts-2025","the-fantastic-four-first-steps-2025","wonder-man-2026","daredevil-born-again-season-2-2026","punisher-one-last-kill-2026","spider-man-brand-new-day-2026","your-friendly-neighborhood-spider-man-season-2-2026","visionquest-2026","avengers-doomsday-2026","avengers-secret-wars-2027"];
 const rank=Object.fromEntries(CHRONO_ORDER.map((x,i)=>[x,i]));
-const statusOverrides=new Set(["Your Friendly Neighborhood Spider-Man S2","VisionQuest","Avengers: Doomsday","Daredevil: Born Again S3","Avengers: Secret Wars"]);
-const notes={"Loki S1":"TVA 位于时间线之外；此处按叙事顺序排列。","Loki S2":"TVA 位于时间线之外；此处按叙事顺序排列。","What If...? S1":"多元宇宙选集，没有单一年份。","What If...? S2":"多元宇宙选集，没有单一年份。","What If...? S3":"多元宇宙选集，没有单一年份。","Deadpool & Wolverine":"主体横跨 Earth-10005、TVA 与虚空。","X-Men '97 S1":"漫威未正式划入具体阶段；按首播时间纳入 Phase 5 筛选。","X-Men '97 S2":"漫威未正式划入具体阶段；按首播时间纳入 Phase 6 筛选。","The Fantastic Four: First Steps":"Earth-828 的 1960 年代故事；按《毁灭日》叙事关联置于后段。","Spider-Man: Brand New Day":"具体宇宙内年份尚未由漫威官方确认。","VisionQuest":"首播日期采用 2026-10-14；具体宇宙内年份待官方确认。","Avengers: Doomsday":"剧情仍未公开，时间点为《雷霆特攻队*》片尾线索推断。","Avengers: Secret Wars":"剧情、完整阵容与连续性归属仍待公布。"};
-function normalize(){DATA.forEach((x,i)=>{x.idx=i;x.line=x.continuity.startsWith('Earth-828')?'Earth-828':x.continuity.startsWith('Mutant')?'变种人宇宙':x.continuity.startsWith('Branch')?'分支':x.continuity.startsWith('Sacred')?'神圣时间线':'分支';x.typeKey=x.format.includes('电影')?'电影':'剧集';x.releaseKey=/^\d{4}-\d{2}-\d{2}/.test(x.release)?x.release.slice(0,10):x.release.includes('2026')?'2026-11-30':x.release.includes('2027')?'2027-12-01':'2099-12-31';x.chrono=rank[x.en]??999;x.upcoming=statusOverrides.has(x.en);x.note=notes[x.en]||''})}normalize();
+const UNIVERSE_LABELS={sacred:'神圣时间线','earth-828':'Earth-828',xmen:'变种人宇宙',branch:'分支',tva:'分支'};
+function formatInUniverse(value){if(!value||!value.start)return '时间未定/时间之外';const start=String(value.start),end=value.end==null?'':String(value.end);if(end&&end!==start){if(/^\d{4}$/.test(start)&&/^\d{4}$/.test(end))return start+'–'+end+'年';return start+'–'+end}return /^\d{4}$/.test(start)?start+'年':start}
+function formatWorkType(x){if(x.type==='film')return '电影';if(x.episodes===1)return '特别篇';return x.episodes?'剧集（'+x.episodes+'集）':'剧集'}
+function formatSaga(value){return value==='Infinity Saga'?'无限传奇':'多元宇宙传奇'}
+const DATA=SOURCE_DATA.works.map((x,i)=>({
+  ...x,idx:i,zh:x.title_cn,en:x.title,format:formatWorkType(x),sagaLabel:formatSaga(x.saga),release:x.release_date||'日期待定',
+  desc:x.synopsis_cn,chars:x.key_characters||[],line:UNIVERSE_LABELS[x.universe]||'分支',typeKey:x.type==='film'?'电影':'剧集',
+  releaseKey:x.release_date||'9999-12-31',chrono:rank[x.id]??999,upcoming:x.status==='upcoming',time:formatInUniverse(x.in_universe),
+  note:x.in_universe&&x.in_universe.note?x.in_universe.note:''
+}));
 const state={sort:'chrono',phase:'all',saga:'all',line:'all',type:'all',q:''};
 function eraFor(x){if(state.sort==='release')return{key:'p'+x.phase,title:'PHASE '+x.phase,sub:x.phase<=3?'无限传奇':'多元宇宙传奇'};const n=x.chrono;if(n<=4)return{key:'origin',title:'起源与旧世界',sub:'公元前 1260 — 1998'};if(n<=17)return{key:'heroes',title:'英雄纪元',sub:'2008 — 2015'};if(n<=32)return{key:'war',title:'分裂与终局',sub:'2016 — 2023'};if(n<=57)return{key:'multiverse',title:'多元宇宙开启',sub:'2024 — 2026'};return{key:'collision',title:'三界汇流',sub:'2027 → 待揭晓'}}
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function renderCard(x){const phaseLabel=x.en.startsWith("X-Men '97")?`P${x.phase} · 非官方`:`PHASE ${x.phase}`;return `<article class="card" data-line="${esc(x.line)}"><div class="meta"><span class="badge phase">${phaseLabel}</span><span class="badge">${esc(x.format)}</span><span class="badge line">${esc(x.line)}</span>${x.upcoming?'<span class="badge status">待上映</span>':''}</div><h3>${esc(x.zh)}</h3><p class="en">${esc(x.en)}</p><div class="dates"><div class="datecell"><span>宇宙内时间点</span><b>${esc(x.time)}</b></div><div class="datecell"><span>${x.upcoming?'计划上线 / 上映':'首映 / 上线'}</span><b>${esc(x.release)}</b></div></div><p class="desc">${esc(x.desc)}</p><div class="cast">${x.chars.slice(0,6).map(c=>`<span>${esc(c)}</span>`).join('')}</div>${x.note?`<div class="note">${esc(x.note)}</div>`:''}</article>`}
-function render(){const q=state.q.trim().toLowerCase();let rows=DATA.filter(x=>(state.phase==='all'||String(x.phase)===state.phase)&&(state.saga==='all'||x.saga===state.saga)&&(state.line==='all'||x.line===state.line)&&(state.type==='all'||x.typeKey===state.type)&&(!q||[x.zh,x.en,x.desc,x.time,x.chars.join(' ')].join(' ').toLowerCase().includes(q)));rows.sort(state.sort==='chrono'?(a,b)=>a.chrono-b.chrono:(a,b)=>a.releaseKey.localeCompare(b.releaseKey)||a.idx-b.idx);document.getElementById('result-count').textContent=`显示 ${rows.length} / ${DATA.length} 部作品`;document.getElementById('view-title').textContent=state.sort==='chrono'?'宇宙内编年史':'上映顺序';const el=document.getElementById('timeline');if(!rows.length){el.innerHTML='<div class="empty"><h3>没有匹配作品</h3><p>试试清除搜索词或调整筛选条件。</p></div>';return}const groups=[];rows.forEach(x=>{const g=eraFor(x);let last=groups[groups.length-1];if(!last||last.key!==g.key){last={...g,items:[]};groups.push(last)}last.items.push(x)});el.innerHTML=groups.map(g=>`<section class="group"><header class="group-label"><b>${g.title}</b><span>${g.sub}</span></header><div class="cards">${g.items.map(renderCard).join('')}</div></section>`).join('')}
+function render(){const q=state.q.trim().toLowerCase();let rows=DATA.filter(x=>(state.phase==='all'||String(x.phase)===state.phase)&&(state.saga==='all'||x.sagaLabel===state.saga)&&(state.line==='all'||x.line===state.line)&&(state.type==='all'||x.typeKey===state.type)&&(!q||[x.zh,x.en,x.desc,x.time,x.chars.join(' ')].join(' ').toLowerCase().includes(q)));rows.sort(state.sort==='chrono'?(a,b)=>a.chrono-b.chrono:(a,b)=>a.releaseKey.localeCompare(b.releaseKey)||a.idx-b.idx);document.getElementById('result-count').textContent=`显示 ${rows.length} / ${DATA.length} 部作品`;document.getElementById('view-title').textContent=state.sort==='chrono'?'宇宙内编年史':'上映顺序';const el=document.getElementById('timeline');if(!rows.length){el.innerHTML='<div class="empty"><h3>没有匹配作品</h3><p>试试清除搜索词或调整筛选条件。</p></div>';return}const groups=[];rows.forEach(x=>{const g=eraFor(x);let last=groups[groups.length-1];if(!last||last.key!==g.key){last={...g,items:[]};groups.push(last)}last.items.push(x)});el.innerHTML=groups.map(g=>`<section class="group"><header class="group-label"><b>${g.title}</b><span>${g.sub}</span></header><div class="cards">${g.items.map(renderCard).join('')}</div></section>`).join('')}
 document.querySelectorAll('[data-sort]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-sort]').forEach(b=>b.classList.remove('active'));btn.classList.add('active');state.sort=btn.dataset.sort;render()}));document.querySelectorAll('[data-filter]').forEach(group=>group.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;group.querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');state[group.dataset.filter]=b.dataset.value;render()}));document.getElementById('search').addEventListener('input',e=>{state.q=e.target.value;render()});document.getElementById('clear').addEventListener('click',()=>{Object.assign(state,{sort:state.sort,phase:'all',saga:'all',line:'all',type:'all',q:''});document.getElementById('search').value='';document.querySelectorAll('[data-filter]').forEach(g=>{g.querySelectorAll('button').forEach((b,i)=>b.classList.toggle('active',i===0))});render()});
-function tick(){const diff=new Date('2026-12-18T00:00:00-05:00')-new Date();if(diff<=0){document.querySelector('.clock').innerHTML='<div class="timebox" style="grid-column:1/-1"><b>已上映</b><small>时间线等待揭晓</small></div>';return}const d=Math.floor(diff/864e5),h=Math.floor(diff/36e5)%24,m=Math.floor(diff/6e4)%60,s=Math.floor(diff/1e3)%60;['days','hours','mins','secs'].forEach((id,i)=>document.getElementById(id).textContent=String([d,h,m,s][i]).padStart(2,'0'))}tick();setInterval(tick,1000);document.getElementById('total-stat').textContent=DATA.length;render();
+function getCountdownTarget(){const now=Date.now();return DATA.filter(x=>x.upcoming&&x.type==='film'&&/^\d{4}-\d{2}-\d{2}$/.test(x.release_date||'')).map(x=>({...x,targetTime:new Date(x.release_date+'T00:00:00').getTime()})).filter(x=>x.targetTime>now).sort((a,b)=>a.targetTime-b.targetTime)[0]||null}
+function tick(){const panel=document.getElementById('countdown'),target=getCountdownTarget();if(!target){panel.hidden=true;return}panel.hidden=false;document.getElementById('countdown-name').textContent='《'+target.zh+'》';document.getElementById('countdown-en').textContent=target.en.toUpperCase();document.getElementById('countdown-date').textContent=target.release_date.split('-').join(' · ');const diff=target.targetTime-Date.now();const d=Math.floor(diff/864e5),h=Math.floor(diff/36e5)%24,m=Math.floor(diff/6e4)%60,s=Math.floor(diff/1e3)%60;['days','hours','mins','secs'].forEach((id,i)=>document.getElementById(id).textContent=String([d,h,m,s][i]).padStart(2,'0'))}
+tick();setInterval(tick,1000);document.getElementById('total-stat').textContent=DATA.length;render();
 </script>
 </body>
 </html>

@@ -27,7 +27,9 @@
         "James Rhodes",
         "Obadiah Stane"
       ],
-      "synopsis_cn": "军火商托尼·斯塔克在阿富汗遇袭重伤，被迫在山洞中打造出第一套钢铁战甲，从此走上超级英雄之路。"
+      "synopsis_cn": "军火商托尼·斯塔克在阿富汗遇袭重伤，被迫在山洞中打造出第一套钢铁战甲，从此走上超级英雄之路。",
+      "director": "Jon Favreau",
+      "runtime_min": 126
     },
     {
       "id": "the-incredible-hulk-2008",
@@ -50,7 +52,9 @@
         "Emil Blonsky",
         "Thaddeus Ross"
       ],
-      "synopsis_cn": "布鲁斯·班纳为治愈体内的浩克而四处逃亡，却被军方改造成“憎恶”的布朗斯基逼入绝境。"
+      "synopsis_cn": "布鲁斯·班纳为治愈体内的浩克而四处逃亡，却被军方改造成“憎恶”的布朗斯基逼入绝境。",
+      "director": "Louis Leterrier",
+      "runtime_min": 112
     },
     {
       "id": "iron-man-2-2010",
@@ -74,7 +78,9 @@
         "Natasha Romanoff",
         "Ivan Vanko"
       ],
-      "synopsis_cn": "托尼被钯元素毒害生命垂危，俄国物理学家之子伊万·万科打造鞭索战甲前来复仇，罗德首次披上战争机器。"
+      "synopsis_cn": "托尼被钯元素毒害生命垂危，俄国物理学家之子伊万·万科打造鞭索战甲前来复仇，罗德首次披上战争机器。",
+      "director": "Jon Favreau",
+      "runtime_min": 125
     },
     {
       "id": "thor-2011",
@@ -97,7 +103,9 @@
         "Jane Foster",
         "Odin"
       ],
-      "synopsis_cn": "被放逐到地球的雷神索尔失去神力，在与弟弟洛基的阴谋对抗中重新证明自己配得上雷神之锤。"
+      "synopsis_cn": "被放逐到地球的雷神索尔失去神力，在与弟弟洛基的阴谋对抗中重新证明自己配得上雷神之锤。",
+      "director": "Kenneth Branagh",
+      "runtime_min": 114
     },
     {
       "id": "captain-america-the-first-avenger-2011",
@@ -120,7 +128,9 @@
         "Bucky Barnes",
         "Red Skull"
       ],
-      "synopsis_cn": "瘦弱青年史蒂夫·罗杰斯接受超级士兵改造成为美国队长，在二战中率领咆哮突击队对抗九头蛇。"
+      "synopsis_cn": "瘦弱青年史蒂夫·罗杰斯接受超级士兵改造成为美国队长，在二战中率领咆哮突击队对抗九头蛇。",
+      "director": "Joe Johnston",
+      "runtime_min": 124
     },
     {
       "id": "the-avengers-2012",
@@ -146,7 +156,9 @@
         "Clint Barton",
         "Loki"
       ],
-      "synopsis_cn": "洛基率齐塔瑞大军入侵地球，尼克·弗瑞集结六位英雄组成复仇者联盟，在纽约展开决战。"
+      "synopsis_cn": "洛基率齐塔瑞大军入侵地球，尼克·弗瑞集结六位英雄组成复仇者联盟，在纽约展开决战。",
+      "director": "Joss Whedon",
+      "runtime_min": 143
     },
     {
       "id": "iron-man-3-2013",
@@ -169,7 +181,9 @@
         "James Rhodes",
         "Aldrich Killian"
       ],
-      "synopsis_cn": "托尼遭遇绝境病毒改造人基利安的恐怖袭击，在失去战甲的绝境中重新找回钢铁侠的本心。"
+      "synopsis_cn": "托尼遭遇绝境病毒改造人基利安的恐怖袭击，在失去战甲的绝境中重新找回钢铁侠的本心。",
+      "director": "Shane Black",
+      "runtime_min": 130
     },
     {
       "id": "thor-the-dark-world-2013",
@@ -192,7 +206,9 @@
         "Jane Foster",
         "Malekith"
       ],
-      "synopsis_cn": "黑暗精灵玛勒基斯为夺取以太粒子（现实宝石）重现宇宙，索尔被迫与洛基联手迎战。"
+      "synopsis_cn": "黑暗精灵玛勒基斯为夺取以太粒子（现实宝石）重现宇宙，索尔被迫与洛基联手迎战。",
+      "director": "Alan Taylor",
+      "runtime_min": 112
     },
     {
       "id": "captain-america-the-winter-soldier-2014",
@@ -216,7 +232,9 @@
         "Bucky Barnes",
         "Nick Fury"
       ],
-      "synopsis_cn": "美国队长发现神盾局已被九头蛇渗透，还要面对失忆的昔日挚友——冬日战士巴基。"
+      "synopsis_cn": "美国队长发现神盾局已被九头蛇渗透，还要面对失忆的昔日挚友——冬日战士巴基。",
+      "director": "Anthony Russo / Joe Russo",
+      "runtime_min": 136
     },
     {
       "id": "guardians-of-the-galaxy-2014",
@@ -240,7 +258,9 @@
         "Rocket",
         "Groot"
       ],
-      "synopsis_cn": "星爵为争夺宇宙灵球与四个怪咖结成乌合之众，在被追杀的逃亡中逐渐成为真正的团队。"
+      "synopsis_cn": "星爵为争夺宇宙灵球与四个怪咖结成乌合之众，在被追杀的逃亡中逐渐成为真正的团队。",
+      "director": "James Gunn",
+      "runtime_min": 122
     },
     {
       "id": "avengers-age-of-ultron-2015",
@@ -266,7 +286,9 @@
         "Clint Barton",
         "Wanda Maximoff"
       ],
-      "synopsis_cn": "托尼打造的维和 AI 奥创失控，复仇者们在索科维亚阻止其灭世计划，团队自此出现裂痕。"
+      "synopsis_cn": "托尼打造的维和 AI 奥创失控，复仇者们在索科维亚阻止其灭世计划，团队自此出现裂痕。",
+      "director": "Joss Whedon",
+      "runtime_min": 141
     },
     {
       "id": "ant-man-2015",
@@ -289,7 +311,9 @@
         "Hope van Dyne",
         "Darren Cross"
       ],
-      "synopsis_cn": "刑满释放的斯科特·朗被汉克·皮姆招募，穿上蚁人战衣阻止黄衫侠达伦·克劳斯的阴谋。"
+      "synopsis_cn": "刑满释放的斯科特·朗被汉克·皮姆招募，穿上蚁人战衣阻止黄衫侠达伦·克劳斯的阴谋。",
+      "director": "Peyton Reed",
+      "runtime_min": 117
     },
     {
       "id": "captain-america-civil-war-2016",
@@ -315,7 +339,9 @@
         "T'Challa",
         "Peter Parker"
       ],
-      "synopsis_cn": "索科维亚协议让复仇者分裂为美队与钢铁侠两派，在莱比锡机场爆发内战，蜘蛛侠与黑豹首次登场。"
+      "synopsis_cn": "索科维亚协议让复仇者分裂为美队与钢铁侠两派，在莱比锡机场爆发内战，蜘蛛侠与黑豹首次登场。",
+      "director": "Anthony Russo / Joe Russo",
+      "runtime_min": 147
     },
     {
       "id": "doctor-strange-2016",
@@ -338,7 +364,9 @@
         "Kaecilius",
         "The Ancient One"
       ],
-      "synopsis_cn": "车祸致手部重伤的外科医生斯特兰奇拜师古一，学会神秘术对抗多玛姆，最终成为至尊法师。"
+      "synopsis_cn": "车祸致手部重伤的外科医生斯特兰奇拜师古一，学会神秘术对抗多玛姆，最终成为至尊法师。",
+      "director": "Scott Derrickson",
+      "runtime_min": 115
     },
     {
       "id": "guardians-of-the-galaxy-vol-2-2017",
@@ -363,7 +391,9 @@
         "Groot",
         "Ego"
       ],
-      "synopsis_cn": "星爵找到自称其父的天神族伊戈，却发现对方的真实目的是吞噬星球，团队为守护彼此而战。"
+      "synopsis_cn": "星爵找到自称其父的天神族伊戈，却发现对方的真实目的是吞噬星球，团队为守护彼此而战。",
+      "director": "James Gunn",
+      "runtime_min": 136
     },
     {
       "id": "spider-man-homecoming-2017",
@@ -386,7 +416,9 @@
         "Adrian Toomes",
         "Michelle Jones"
       ],
-      "synopsis_cn": "高中生彼得·帕克在钢铁侠的注视下打击军火贩秃鹫，证明自己配得上复仇者之名。"
+      "synopsis_cn": "高中生彼得·帕克在钢铁侠的注视下打击军火贩秃鹫，证明自己配得上复仇者之名。",
+      "director": "Jon Watts",
+      "runtime_min": 133
     },
     {
       "id": "thor-ragnarok-2017",
@@ -410,7 +442,9 @@
         "Hela",
         "Valkyrie"
       ],
-      "synopsis_cn": "索尔被流放到萨卡星，在角斗场重遇浩克，与女武神联手对抗死亡女神海拉，诸神黄昏降临阿斯加德。"
+      "synopsis_cn": "索尔被流放到萨卡星，在角斗场重遇浩克，与女武神联手对抗死亡女神海拉，诸神黄昏降临阿斯加德。",
+      "director": "Taika Waititi",
+      "runtime_min": 130
     },
     {
       "id": "black-panther-2018",
@@ -434,7 +468,9 @@
         "Nakia",
         "Okoye"
       ],
-      "synopsis_cn": "特查拉继位为瓦坎达国王，堂弟埃里克·克尔芒戈为王位与振金归来复仇，瓦坎达向世界敞开大门。"
+      "synopsis_cn": "特查拉继位为瓦坎达国王，堂弟埃里克·克尔芒戈为王位与振金归来复仇，瓦坎达向世界敞开大门。",
+      "director": "Ryan Coogler",
+      "runtime_min": 134
     },
     {
       "id": "avengers-infinity-war-2018",
@@ -459,7 +495,9 @@
         "Doctor Strange",
         "Peter Parker"
       ],
-      "synopsis_cn": "灭霸集齐六颗无限宝石打出响指，宇宙半数生命灰飞烟灭，英雄们在瓦坎达与泰坦星双线惨败。"
+      "synopsis_cn": "灭霸集齐六颗无限宝石打出响指，宇宙半数生命灰飞烟灭，英雄们在瓦坎达与泰坦星双线惨败。",
+      "director": "Anthony Russo / Joe Russo",
+      "runtime_min": 149
     },
     {
       "id": "ant-man-and-the-wasp-2018",
@@ -482,7 +520,9 @@
         "Hank Pym",
         "Janet van Dyne"
       ],
-      "synopsis_cn": "斯科特与霍普深入量子领域营救初代黄蜂女珍妮特，却在归来时撞上响指，斯科特被困量子领域五年。"
+      "synopsis_cn": "斯科特与霍普深入量子领域营救初代黄蜂女珍妮特，却在归来时撞上响指，斯科特被困量子领域五年。",
+      "director": "Peyton Reed",
+      "runtime_min": 118
     },
     {
       "id": "captain-marvel-2019",
@@ -505,7 +545,9 @@
         "Talos",
         "Yon-Rogg"
       ],
-      "synopsis_cn": "失忆的克里族战士卡罗尔·丹弗斯回到 1995 年的地球，找回身为惊奇队长的记忆，并揭开斯克鲁人的真相。"
+      "synopsis_cn": "失忆的克里族战士卡罗尔·丹弗斯回到 1995 年的地球，找回身为惊奇队长的记忆，并揭开斯克鲁人的真相。",
+      "director": "Anna Boden / Ryan Fleck",
+      "runtime_min": 124
     },
     {
       "id": "avengers-endgame-2019",
@@ -530,7 +572,9 @@
         "Bruce Banner",
         "Clint Barton"
       ],
-      "synopsis_cn": "幸存英雄们穿越回过去集齐宝石逆转响指，钢铁侠以响指终结灭霸，自己也献出生命；美队回到过去与佩吉团聚。"
+      "synopsis_cn": "幸存英雄们穿越回过去集齐宝石逆转响指，钢铁侠以响指终结灭霸，自己也献出生命；美队回到过去与佩吉团聚。",
+      "director": "Anthony Russo / Joe Russo",
+      "runtime_min": 181
     },
     {
       "id": "spider-man-far-from-home-2019",
@@ -553,7 +597,9 @@
         "Michelle Jones",
         "Nick Fury"
       ],
-      "synopsis_cn": "彼得在欧洲修学旅行中被神秘客利用，在无人接班的真空里学会独当一面；片尾身份曝光埋下危机。"
+      "synopsis_cn": "彼得在欧洲修学旅行中被神秘客利用，在无人接班的真空里学会独当一面；片尾身份曝光埋下危机。",
+      "director": "Jon Watts",
+      "runtime_min": 129
     },
     {
       "id": "black-widow-2021",
@@ -576,7 +622,9 @@
         "Alexei Shostakov",
         "Melina"
       ],
-      "synopsis_cn": "娜塔莎直面红房子与“模仿大师”，与妹妹叶莲娜联手摧毁这个培养黑寡妇的组织。"
+      "synopsis_cn": "娜塔莎直面红房子与“模仿大师”，与妹妹叶莲娜联手摧毁这个培养黑寡妇的组织。",
+      "director": "Cate Shortland",
+      "runtime_min": 134
     },
     {
       "id": "shang-chi-2021",
@@ -599,7 +647,9 @@
         "Katy",
         "Xialing"
       ],
-      "synopsis_cn": "隐姓埋名的尚气被父亲文武召回争夺十环，在大罗村直面家族宿命，十环的来历成谜。"
+      "synopsis_cn": "隐姓埋名的尚气被父亲文武召回争夺十环，在大罗村直面家族宿命，十环的来历成谜。",
+      "director": "Destin Daniel Cretton",
+      "runtime_min": 132
     },
     {
       "id": "eternals-2021",
@@ -623,7 +673,9 @@
         "Kingo",
         "Phastos"
       ],
-      "synopsis_cn": "隐居地球数千年的永恒族为阻止“神现”重新集结，伊卡瑞斯的背叛撕裂了团队，蒂亚穆特化作孤岛。"
+      "synopsis_cn": "隐居地球数千年的永恒族为阻止“神现”重新集结，伊卡瑞斯的背叛撕裂了团队，蒂亚穆特化作孤岛。",
+      "director": "Chloe Zhao",
+      "runtime_min": 156
     },
     {
       "id": "spider-man-no-way-home-2021",
@@ -647,7 +699,9 @@
         "Doc Ock",
         "Michelle Jones"
       ],
-      "synopsis_cn": "奇异博士的咒语失控撕开多元宇宙，三代蜘蛛侠联手对抗来自各宇宙的反派，彼得选择被世界遗忘。"
+      "synopsis_cn": "奇异博士的咒语失控撕开多元宇宙，三代蜘蛛侠联手对抗来自各宇宙的反派，彼得选择被世界遗忘。",
+      "director": "Jon Watts",
+      "runtime_min": 148
     },
     {
       "id": "doctor-strange-in-the-multiverse-of-madness-2022",
@@ -670,7 +724,9 @@
         "America Chavez",
         "Wong"
       ],
-      "synopsis_cn": "旺达为夺取穿越多元宇宙的能力化身绯红女巫，奇异博士带着阿美莉卡穿越万界阻止她。"
+      "synopsis_cn": "旺达为夺取穿越多元宇宙的能力化身绯红女巫，奇异博士带着阿美莉卡穿越万界阻止她。",
+      "director": "Sam Raimi",
+      "runtime_min": 126
     },
     {
       "id": "thor-love-and-thunder-2022",
@@ -693,7 +749,9 @@
         "Valkyrie",
         "Gorr"
       ],
-      "synopsis_cn": "简·福斯特举起雷神之锤成为女雷神，与索尔并肩对抗弑神者格尔。"
+      "synopsis_cn": "简·福斯特举起雷神之锤成为女雷神，与索尔并肩对抗弑神者格尔。",
+      "director": "Taika Waititi",
+      "runtime_min": 119
     },
     {
       "id": "black-panther-wakanda-forever-2022",
@@ -717,7 +775,9 @@
         "Okoye",
         "Riri Williams"
       ],
-      "synopsis_cn": "瓦坎达在失去国王后遭纳摩与塔洛坎袭击，苏睿继承黑豹之名，带领瓦坎达迎战海底王国。"
+      "synopsis_cn": "瓦坎达在失去国王后遭纳摩与塔洛坎袭击，苏睿继承黑豹之名，带领瓦坎达迎战海底王国。",
+      "director": "Ryan Coogler",
+      "runtime_min": 161
     },
     {
       "id": "ant-man-and-the-wasp-quantumania-2023",
@@ -740,7 +800,9 @@
         "Kang",
         "Cassie Lang"
       ],
-      "synopsis_cn": "一家五口被吸入量子领域，遭遇被放逐的征服者康，量子领域的秘密与康议会就此揭开。"
+      "synopsis_cn": "一家五口被吸入量子领域，遭遇被放逐的征服者康，量子领域的秘密与康议会就此揭开。",
+      "director": "Peyton Reed",
+      "runtime_min": 124
     },
     {
       "id": "guardians-of-the-galaxy-vol-3-2023",
@@ -764,7 +826,9 @@
         "Nebula",
         "Adam Warlock"
       ],
-      "synopsis_cn": "银河护卫队为救火箭深入反地球对抗至高进化者，团队迎来告别与新生。"
+      "synopsis_cn": "银河护卫队为救火箭深入反地球对抗至高进化者，团队迎来告别与新生。",
+      "director": "James Gunn",
+      "runtime_min": 150
     },
     {
       "id": "the-marvels-2023",
@@ -786,7 +850,9 @@
         "Monica Rambeau",
         "Kamala Khan"
       ],
-      "synopsis_cn": "三位“漫威”因能量纠缠不断互换位置，被迫组队对抗克里指控者达尔-本恩；片尾彩蛋通向变种人宇宙。"
+      "synopsis_cn": "三位“漫威”因能量纠缠不断互换位置，被迫组队对抗克里指控者达尔-本恩；片尾彩蛋通向变种人宇宙。",
+      "director": "Nia DaCosta",
+      "runtime_min": 105
     },
     {
       "id": "deadpool-and-wolverine-2024",
@@ -809,7 +875,9 @@
         "Cassandra Nova",
         "Paradox"
       ],
-      "synopsis_cn": "死侍被 TVA 招募，在虚空之地找到“最差金刚狼”，联手阻止卡桑德拉·诺瓦吞噬多元宇宙。"
+      "synopsis_cn": "死侍被 TVA 招募，在虚空之地找到“最差金刚狼”，联手阻止卡桑德拉·诺瓦吞噬多元宇宙。",
+      "director": "Shawn Levy",
+      "runtime_min": 128
     },
     {
       "id": "captain-america-brave-new-world-2025",
@@ -832,7 +900,9 @@
         "Isaiah Bradley",
         "Joaquin Torres"
       ],
-      "synopsis_cn": "山姆·威尔逊正式接任美国队长，卷入罗斯总统与“天神岛”振金争夺的阴谋，还要面对红浩克。"
+      "synopsis_cn": "山姆·威尔逊正式接任美国队长，卷入罗斯总统与“天神岛”振金争夺的阴谋，还要面对红浩克。",
+      "director": "Julius Onah",
+      "runtime_min": 118
     },
     {
       "id": "thunderbolts-2025",
@@ -857,7 +927,9 @@
         "Red Guardian",
         "Bob"
       ],
-      "synopsis_cn": "一群“问题英雄”被瓦伦蒂娜拼凑成敢死队，在哨兵的操控下被迫直面各自的心魔，片尾改组为新复仇者。"
+      "synopsis_cn": "一群“问题英雄”被瓦伦蒂娜拼凑成敢死队，在哨兵的操控下被迫直面各自的心魔，片尾改组为新复仇者。",
+      "director": "Jake Schreier",
+      "runtime_min": 127
     },
     {
       "id": "the-fantastic-four-first-steps-2025",
@@ -882,7 +954,9 @@
         "Galactus",
         "Silver Surfer"
       ],
-      "synopsis_cn": "1960 年代复古未来世界中，神奇四侠为保护地球与行星吞噬者加拉图斯展开决战。"
+      "synopsis_cn": "1960 年代复古未来世界中，神奇四侠为保护地球与行星吞噬者加拉图斯展开决战。",
+      "director": "Matt Shakman",
+      "runtime_min": 114
     },
     {
       "id": "spider-man-brand-new-day-2026",
@@ -895,15 +969,17 @@
       "status": "released",
       "universe": "sacred",
       "in_universe": {
-        "start": null,
+        "start": "2028",
         "end": null,
-        "note": "官方未明确宇宙内时间点，待核实；剧情细节官方保密"
+        "note": "官方确认：官方剧情梗概确认是《英雄无归》（2024）的四年后"
       },
       "key_characters": [
         "Peter Parker",
         "Frank Castle"
       ],
-      "synopsis_cn": "被世界遗忘的彼得·帕克在纽约街头重新开始，惩罚者的出现把他卷入新的纷争。"
+      "synopsis_cn": "被世界遗忘的彼得·帕克在纽约街头重新开始，惩罚者的出现把他卷入新的纷争。",
+      "director": "Destin Daniel Cretton",
+      "runtime_min": null
     },
     {
       "id": "avengers-doomsday-2026",
@@ -916,9 +992,9 @@
       "status": "upcoming",
       "universe": "sacred",
       "in_universe": {
-        "start": null,
+        "start": "2028",
         "end": null,
-        "note": "待上映；官方称三个不同宇宙的英雄迎来致命碰撞"
+        "note": "按剧情推断：《雷霆特攻队*》片尾14个月跳跃后直接接本片片段，推断为2028年末–2029年初；未上映，待官方确认"
       },
       "key_characters": [
         "Victor von Doom",
@@ -928,7 +1004,9 @@
         "Reed Richards",
         "Yelena Belova"
       ],
-      "synopsis_cn": "来自三个不同宇宙的英雄迎来致命碰撞，共同面对毁灭博士带来的生存威胁。（占位，上映后更新）"
+      "synopsis_cn": "来自三个不同宇宙的英雄迎来致命碰撞，共同面对毁灭博士带来的生存威胁。（占位，上映后更新）",
+      "director": "Anthony Russo / Joe Russo",
+      "runtime_min": null
     },
     {
       "id": "avengers-secret-wars-2027",
@@ -943,10 +1021,12 @@
       "in_universe": {
         "start": null,
         "end": null,
-        "note": "待上映；传闻将统合多元宇宙并重启 MCU 连续性"
+        "note": "未上映，故事时间未知"
       },
       "key_characters": [],
-      "synopsis_cn": "多元宇宙传奇的终章，大决战之后 MCU 连续性或将重启。（占位，上映后更新）"
+      "synopsis_cn": "多元宇宙传奇的终章，大决战之后 MCU 连续性或将重启。（占位，上映后更新）",
+      "director": "Anthony Russo / Joe Russo",
+      "runtime_min": null
     },
     {
       "id": "wandavision-2021",
@@ -1013,7 +1093,7 @@
       "in_universe": {
         "start": null,
         "end": null,
-        "note": "TVA 时间之外；分支自 2012 年时间劫持点"
+        "note": "时间变异管理局位于时间之外，无神圣时间线年份；故事始于《复联4》中2012年分支洛基被捕"
       },
       "key_characters": [
         "Loki",
@@ -1038,7 +1118,7 @@
       "in_universe": {
         "start": null,
         "end": null,
-        "note": "观察者讲述的多元宇宙分支故事"
+        "note": "诗选剧：每集为独立分支宇宙，由观察者串联，无统一神圣时间线年份"
       },
       "key_characters": [
         "The Watcher",
@@ -1160,9 +1240,9 @@
       "episodes": 1,
       "universe": "sacred",
       "in_universe": {
-        "start": null,
+        "start": "2025",
         "end": null,
-        "note": "官方未给出明确时间点，待核实"
+        "note": "官方确认：漫威官方时间线书《The Marvel Cinematic Universe: An Official Timeline》定为2025年秋季，位于《雷神4》之后、《银河护卫队：圣诞特别篇》之前"
       },
       "key_characters": [
         "Jack Russell",
@@ -1236,7 +1316,7 @@
       "in_universe": {
         "start": null,
         "end": null,
-        "note": "TVA 时间之外；承接第一季季终"
+        "note": "时间变异管理局位于时间之外，无神圣时间线年份；第一季的直接延续"
       },
       "key_characters": [
         "Loki",
@@ -1261,7 +1341,7 @@
       "in_universe": {
         "start": null,
         "end": null,
-        "note": "观察者讲述的多元宇宙分支故事"
+        "note": "诗选剧：每集为独立分支宇宙，由观察者串联，无统一神圣时间线年份"
       },
       "key_characters": [
         "The Watcher",
@@ -1358,7 +1438,7 @@
       "in_universe": {
         "start": null,
         "end": null,
-        "note": "最终季；观察者讲述的多元宇宙分支故事"
+        "note": "诗选剧：每集为独立分支宇宙，由观察者串联，无统一神圣时间线年份"
       },
       "key_characters": [
         "The Watcher",
@@ -1381,7 +1461,7 @@
       "in_universe": {
         "start": null,
         "end": null,
-        "note": "独立分支宇宙：诺曼·奥斯本成为彼得的导师"
+        "note": "平行宇宙：故事始于《美国队长3》同期（2016年前后）的分支，诺曼·奥斯本取代托尼·斯塔克成为彼得的导师"
       },
       "key_characters": [
         "Peter Parker",
@@ -1453,7 +1533,7 @@
       "in_universe": {
         "start": null,
         "end": null,
-        "note": "诗选动画，故事横跨瓦坎达数千年历史，官方未给出统一时间点"
+        "note": "诗选剧：四集分别发生在公元前1260年（克里特）、公元前1200年（特洛伊战争）、公元1400年（中国明初）、公元1896年（埃塞俄比亚阿杜瓦），无单一故事年份"
       },
       "key_characters": [
         "The Hatut Zeraze"
@@ -1475,7 +1555,7 @@
       "in_universe": {
         "start": null,
         "end": null,
-        "note": "《无限可能》丧尸宇宙的延续"
+        "note": "《假如…？》第一季丧尸集的分支宇宙延续，平行宇宙，无神圣时间线年份"
       },
       "key_characters": [
         "Kamala Khan",
@@ -1497,9 +1577,9 @@
       "episodes": 8,
       "universe": "sacred",
       "in_universe": {
-        "start": null,
+        "start": "2026",
         "end": null,
-        "note": "官方未明确宇宙内时间点，待核实"
+        "note": "按剧情推断：漫威宣传物料确认剧中《神奇人》电影2026年1月开拍，故事约2025年末–2026年；Disney+官方时间线将其排在末尾"
       },
       "key_characters": [
         "Simon Williams",
@@ -1521,9 +1601,9 @@
       "episodes": 8,
       "universe": "sacred",
       "in_universe": {
-        "start": null,
+        "start": "2027",
         "end": null,
-        "note": "紧接第一季；官方未明确年份，待核实"
+        "note": "官方确认：主创Dario Scardapane确认是第一季六个月后；漫威官方时间线排在《雷霆特攻队*》之后、《神奇人》之前"
       },
       "key_characters": [
         "Matt Murdock",
@@ -1546,9 +1626,9 @@
       "episodes": 1,
       "universe": "sacred",
       "in_universe": {
-        "start": null,
+        "start": "2027",
         "end": null,
-        "note": "紧接《夜魔侠：重生》第二季；为《蜘蛛侠：崭新之日》铺垫"
+        "note": "按主创说法推断：主创确认故事与《夜魔侠：重生》第二季同期，衔接《夜魔侠：重生》第一季与《蜘蛛侠：崭新之日》之间"
       },
       "key_characters": [
         "Frank Castle"
@@ -1565,12 +1645,12 @@
       "release_date": "2026-06-13",
       "status": "released",
       "seasons": 1,
-      "episodes": 10,
+      "episodes": 9,
       "universe": "xmen",
       "in_universe": {
         "start": "1997",
         "end": null,
-        "note": "延续 1990 年代动画版 X 战警宇宙；6 月 13 日翠贝卡电影节首映，Disney+ 具体上线日期待核实"
+        "note": "官方确认：主线为1997年（部分集数穿插公元前3000年古埃及与3960年）"
       },
       "key_characters": [
         "Cyclops",
@@ -1593,9 +1673,9 @@
       "episodes": null,
       "universe": "sacred",
       "in_universe": {
-        "start": null,
+        "start": "2028",
         "end": null,
-        "note": "待上映"
+        "note": "官方确认：主创Terry Matalas确认与《蜘蛛侠：崭新之日》同期，约2028年"
       },
       "key_characters": [
         "Vision",
@@ -1618,28 +1698,155 @@
       "in_universe": {
         "start": null,
         "end": null,
-        "note": "待上映；预计 2026 年秋季，具体日期待核实"
+        "note": "平行宇宙：第一季的直接延续，诺曼·奥斯本 mentor 时间线"
       },
       "key_characters": [
         "Peter Parker",
         "Norman Osborn"
       ],
       "synopsis_cn": "动画蜘蛛侠第二季，诺曼·奥斯本的导师身份迎来考验。（占位，上映后更新）"
+    },
+    {
+      "director": "Leythum",
+      "id": "the-consultant-2011",
+      "in_universe": {
+        "end": null,
+        "note": "剧情直接承接《无敌浩克》片尾彩蛋（罗斯将军酒吧会面），官方未给出明确年份，按站内《无敌浩克》的 2008 年设定推断",
+        "start": "2008"
+      },
+      "key_characters": [
+        "Phil Coulson",
+        "Jasper Sitwell",
+        "Tony Stark",
+        "Thaddeus Ross"
+      ],
+      "phase": 1,
+      "release_date": "2011-09-13",
+      "runtime_min": 4,
+      "saga": "Infinity Saga",
+      "status": "released",
+      "synopsis_cn": "世界安全理事会想把憎恶纳入复仇者计划，科尔森和西特维尔两位特工只好想办法搅黄这场会面——而他们派去的人选，出人意料。",
+      "title": "The Consultant",
+      "title_cn": "神盾顾问",
+      "type": "short",
+      "universe": "sacred"
+    },
+    {
+      "director": "Leythum",
+      "id": "a-funny-thing-happened-on-the-way-to-thors-hammer-2011",
+      "in_universe": {
+        "end": null,
+        "note": "故事接《钢铁侠2》结尾、科尔森驱车前往新墨西哥调查雷神之锤途中，与《无敌浩克》《雷神》同期；官方对具体年份有争议，此处沿用站内《钢铁侠2》/《雷神》的 2009 年设定",
+        "start": "2009"
+      },
+      "key_characters": [
+        "Phil Coulson"
+      ],
+      "phase": 1,
+      "release_date": "2011-10-25",
+      "runtime_min": 4,
+      "saga": "Infinity Saga",
+      "status": "released",
+      "synopsis_cn": "奉命前往新墨西哥调查异象的科尔森特工，半路在加油站便利店撞上一场持枪抢劫，只好用一点也不“特工”的方式解决问题。",
+      "title": "A Funny Thing Happened on the Way to Thor's Hammer",
+      "title_cn": "寻找雷神之锤路上发生的趣事",
+      "type": "short",
+      "universe": "sacred"
+    },
+    {
+      "director": "Louis D'Esposito",
+      "id": "item-47-2012",
+      "in_universe": {
+        "end": null,
+        "note": "官方定位为《复仇者联盟》的直接衍生故事，纽约大战后遗落的齐塔瑞武器流入民间，时间紧接大战之后",
+        "start": "2012"
+      },
+      "key_characters": [
+        "Bennie Pollack",
+        "Claire Wise",
+        "Jasper Sitwell",
+        "Felix Blake"
+      ],
+      "phase": 1,
+      "release_date": "2012-09-25",
+      "runtime_min": 12,
+      "saga": "Infinity Saga",
+      "status": "released",
+      "synopsis_cn": "一对落魄小情侣捡到纽约大战后遗落的齐塔瑞武器，靠抢银行发了家；神盾局派出西特维尔特工，前来回收这件“47号物品”。",
+      "title": "Item 47",
+      "title_cn": "47号物品",
+      "type": "short",
+      "universe": "sacred"
+    },
+    {
+      "director": "Louis D'Esposito",
+      "id": "agent-carter-2013",
+      "in_universe": {
+        "end": null,
+        "note": "片头字幕为二战结束“一年之后”（1945→1946），佩姬·卡特时任战略科学团（SSR）特工；该短片后被扩写为《特工卡特》剧集",
+        "start": "1946"
+      },
+      "key_characters": [
+        "Peggy Carter",
+        "Howard Stark",
+        "John Flynn",
+        "Dum Dum Dugan"
+      ],
+      "phase": 2,
+      "release_date": "2013-09-03",
+      "runtime_min": 15,
+      "saga": "Infinity Saga",
+      "status": "released",
+      "synopsis_cn": "二战结束一年后，佩姬·卡特在战略科学团被上司晾在一边做文书工作；一通深夜的神秘来电，让她决定独自去追查代号“十二宫”的神秘物品。",
+      "title": "Agent Carter",
+      "title_cn": "探员卡特",
+      "type": "short",
+      "universe": "sacred"
+    },
+    {
+      "director": "Drew Pearce",
+      "id": "all-hail-the-king-2014",
+      "in_universe": {
+        "end": null,
+        "note": "官方定位为《钢铁侠3》的尾声，特雷弗·斯莱特里已在监狱关押一段时间；官方未明确具体年份，按剧情推断为 2013 年",
+        "start": "2013"
+      },
+      "key_characters": [
+        "Trevor Slattery",
+        "Jackson Norriss",
+        "Justin Hammer",
+        "Herman"
+      ],
+      "phase": 2,
+      "release_date": "2014-02-04",
+      "runtime_min": 14,
+      "saga": "Infinity Saga",
+      "status": "released",
+      "synopsis_cn": "《钢铁侠3》事件后，假扮满大人的演员特雷弗·斯莱特里成了监狱里的名人；一位纪录片导演前来对他进行专访，却似乎另有所图。",
+      "title": "All Hail the King",
+      "title_cn": "王者万岁",
+      "type": "short",
+      "universe": "sacred"
     }
   ],
   "chrono_order": [
     "eyes-of-wakanda-2025",
     "captain-america-the-first-avenger-2011",
+    "agent-carter-2013",
     "captain-marvel-2019",
     "x-men-97-season-1-2024",
     "x-men-97-season-2-2026",
     "iron-man-2008",
     "iron-man-2-2010",
     "the-incredible-hulk-2008",
+    "the-consultant-2011",
     "thor-2011",
+    "a-funny-thing-happened-on-the-way-to-thors-hammer-2011",
     "the-avengers-2012",
+    "item-47-2012",
     "thor-the-dark-world-2013",
     "iron-man-3-2013",
+    "all-hail-the-king-2014",
     "captain-america-the-winter-soldier-2014",
     "guardians-of-the-galaxy-2014",
     "guardians-of-the-galaxy-vol-2-2017",

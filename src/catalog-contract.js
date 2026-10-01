@@ -4,7 +4,7 @@ export function assertLegacyCatalog(catalog) {
   const ids = new Set();
   for (const work of catalog.works) {
     if (!work || typeof work.id !== 'string' || !work.id || ids.has(work.id)) throw new Error('Missing or duplicate work id');
-    if (typeof work.title !== 'string' || typeof work.title_cn !== 'string' || !Array.isArray(work.key_characters) || !['film','series'].includes(work.type)) throw new Error('Invalid work fields: ' + work.id);
+    if (typeof work.title !== 'string' || typeof work.title_cn !== 'string' || !Array.isArray(work.key_characters) || !['film','series','short'].includes(work.type)) throw new Error('Invalid work fields: ' + work.id);
     ids.add(work.id);
   }
   const ordered = new Set(catalog.chrono_order);

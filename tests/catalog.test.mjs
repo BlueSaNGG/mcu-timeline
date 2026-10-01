@@ -9,8 +9,8 @@ const legacy = await read('../data/catalog.json');
 const ids = await read('../docs/legacy-ids.json');
 const fixture = await read('../docs/specs/fixtures/catalog.synthetic.json');
 
-test('all 68 original ids and chronology entries survive extraction', () => {
-  assert.equal(legacy.works.length, 68);
+test('all 73 ids (68 original + 5 One-Shot shorts) and chronology entries survive extraction', () => {
+  assert.equal(legacy.works.length, 73);
   assert.equal(validateCatalog(legacy, {legacy:true, baselineIds:ids}), legacy);
   assert.deepEqual(legacy.works.map(w => w.id), ids);
 });

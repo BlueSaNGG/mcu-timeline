@@ -16,9 +16,9 @@ function setup(data=catalog, now=fixed, saved={}) {
   return {dom,document:dom.window.document,dispose,scheduled:()=>scheduled,cancelled:()=>cancelled};
 }
 const cards=document=>[...document.querySelectorAll('.card h3')].map(el=>el.textContent);
-test('renders 68 cards in release order and chronology toggle works', () => {
+test('renders 73 cards in release order and chronology toggle works', () => {
   const x=setup();
-  assert.equal(cards(x.document).length,68);
+  assert.equal(cards(x.document).length,73);
   assert.equal(cards(x.document)[0],'钢铁侠');
   x.document.querySelector('[data-sort="chrono"]').click();
   assert.equal(cards(x.document)[0],'瓦坎达之眼');
@@ -28,10 +28,10 @@ test('search, combined filters, reset and empty state remain functional', () => 
   const x=setup(),d=x.document;
   d.querySelector('[data-spoiler="full"]').click(); d.getElementById('confirm-spoiler').click();
   const search=d.getElementById('search'); search.value='Tony Stark'; search.dispatchEvent(new x.dom.window.Event('input'));
-  assert.equal(cards(d).length,9);
-  d.querySelector('[data-filter="phase"] [data-value="1"]').click(); assert.equal(cards(d).length,3);
+  assert.equal(cards(d).length,10);
+  d.querySelector('[data-filter="phase"] [data-value="1"]').click(); assert.equal(cards(d).length,4);
   d.querySelector('[data-sort="release"]').click(); d.getElementById('clear').click();
-  assert.equal(cards(d).length,68); assert.equal(d.getElementById('view-title').textContent,'上映顺序');
+  assert.equal(cards(d).length,73); assert.equal(d.getElementById('view-title').textContent,'上映顺序');
   d.querySelector('[data-filter="type"] [data-value="剧集"]').click(); assert.equal(cards(d).length,28);
   search.value='no-such-work';search.dispatchEvent(new x.dom.window.Event('input'));assert.equal(cards(d).length,0);assert.match(d.getElementById('timeline').textContent,/没有匹配作品/);
   x.dispose();x.dom.window.close();
@@ -48,7 +48,7 @@ test('failed load has retry; success re-enables controls and mounts only once', 
   const dom=new JSDOM(html),d=dom.window.document;let loads=0,mounts=0;
   const app=startApplication({document:d,load:async()=>{loads++;if(loads===1)throw new Error('offline');return catalog;},mount:(data,options)=>{mounts++;return mountCatalog(data,{...options,now:()=>fixed,schedule:()=>1,cancel:()=>{}});}});
   await app.ready;assert.match(d.getElementById('timeline').textContent,/作品资料加载失败/);assert.equal(d.getElementById('search').disabled,true);
-  d.querySelector('#timeline button').click();await new Promise(resolve=>setImmediate(resolve));assert.equal(cards(d).length,68);assert.equal(d.getElementById('search').disabled,false);
+  d.querySelector('#timeline button').click();await new Promise(resolve=>setImmediate(resolve));assert.equal(cards(d).length,73);assert.equal(d.getElementById('search').disabled,false);
   await app.retry();assert.equal(mounts,1);assert.equal(loads,2);app.dispose();dom.window.close();
 });
 
@@ -57,7 +57,7 @@ test('safe mode omits plot from DOM and search; spoiler activation requires conf
  assert.equal(d.querySelector('.desc'),null);assert.equal(d.querySelector('.cast'),null);assert.equal(d.querySelector('.note'),null);
  const search=d.getElementById('search');search.value='Tony Stark';search.dispatchEvent(new x.dom.window.Event('input'));assert.equal(cards(d).length,0);
  d.querySelector('[data-spoiler="full"]').click();assert.equal(d.querySelector('.desc'),null);d.getElementById('cancel-spoiler').click();assert.equal(d.querySelector('.desc'),null);
- d.querySelector('[data-spoiler="full"]').click();d.getElementById('confirm-spoiler').click();assert.equal(cards(d).length,9);assert.ok(d.querySelector('.desc'));
+ d.querySelector('[data-spoiler="full"]').click();d.getElementById('confirm-spoiler').click();assert.equal(cards(d).length,10);assert.ok(d.querySelector('.desc'));
  d.querySelector('[data-spoiler="safe"]').click();assert.equal(cards(d).length,0);assert.equal(d.querySelector('.desc'),null);x.dispose();x.dom.window.close();
 });
 test('watched state persists and progress navigation shows watched works',()=>{
@@ -65,7 +65,7 @@ test('watched state persists and progress navigation shows watched works',()=>{
  assert.deepEqual(JSON.parse(x.dom.window.localStorage.getItem('mcu-watched-v1')),[id]);
  d.getElementById('progress-link').click();assert.equal(cards(d).length,1);assert.equal(d.getElementById('view-title').textContent,'我的进度');
  d.querySelector('[data-watch]').click();assert.match(d.getElementById('timeline').textContent,/还没有观看记录/);
- d.getElementById('clear').click();assert.equal(cards(d).length,68);x.dispose();x.dom.window.close();
+ d.getElementById('clear').click();assert.equal(cards(d).length,73);x.dispose();x.dom.window.close();
 });
 
 test('loose watched records do not activate a route; preview and activation are separate',()=>{
@@ -104,8 +104,39 @@ test('route preview tab and sort persist across reload; hero phase is not zero-p
 test('timeline tab exits the progress view on mobile and desktop',()=>{
  const x=setup(),d=x.document;
  d.getElementById('mobile-progress').click();assert.equal(d.getElementById('view-title').textContent,'我的进度');
- d.getElementById('mobile-timeline').click();assert.equal(d.getElementById('view-title').textContent,'上映顺序');assert.equal(cards(d).length,68);
+ d.getElementById('mobile-timeline').click();assert.equal(d.getElementById('view-title').textContent,'上映顺序');assert.equal(cards(d).length,73);
  d.getElementById('progress-link').click();assert.equal(d.getElementById('view-title').textContent,'我的进度');
- d.getElementById('all-link').click();assert.equal(d.getElementById('view-title').textContent,'上映顺序');assert.equal(cards(d).length,68);
+ d.getElementById('all-link').click();assert.equal(d.getElementById('view-title').textContent,'上映顺序');assert.equal(cards(d).length,73);
+ x.dispose();x.dom.window.close();
+});
+test('shorts have their own type filter and cards show credits',()=>{
+ const x=setup(),d=x.document;
+ d.querySelector('[data-filter="type"] [data-value="短片"]').click();
+ assert.equal(cards(d).length,5);
+ const first=d.querySelector('.card');
+ assert.match(first.querySelector('.credits').textContent,/导演/);
+ assert.match(first.textContent,/短片/);
+ x.dispose();x.dom.window.close();
+});
+test('multiverse cards filter the collection by universe',()=>{
+ const x=setup(),d=x.document;
+ assert.equal(d.querySelectorAll('.universe-card').length,4);
+ d.querySelector('[data-spoiler="full"]').click();d.getElementById('confirm-spoiler').click();
+ d.querySelector('[data-universe="神圣时间线"]').click();
+ const shown=cards(d);
+ assert.ok(shown.length>0&&shown.length<73);
+ assert.ok(shown.includes('钢铁侠'));
+ assert.ok(!shown.includes('洛基 第一季'));
+ x.dispose();x.dom.window.close();
+});
+test('multiverse card in safe mode asks for spoiler confirmation first',()=>{
+ const x=setup(),d=x.document;
+ d.querySelector('[data-universe="分支"]').click();
+ assert.equal(d.querySelector('dialog').hasAttribute('open'),true);
+ d.getElementById('confirm-spoiler').click();
+ assert.equal(d.querySelector('dialog').hasAttribute('open'),false);
+ const shown=cards(d);
+ assert.ok(shown.includes('洛基 第一季'));
+ assert.ok(!shown.includes('钢铁侠'));
  x.dispose();x.dom.window.close();
 });

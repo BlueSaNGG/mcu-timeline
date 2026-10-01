@@ -88,3 +88,16 @@ test('completed route shows complete state and does not reset or recommend outsi
  const ids=catalog.works.filter(x=>x.type==='film'&&x.phase<=3).map(x=>x.id);const x=setup(catalog,fixed,{'mcu-watched-v1':JSON.stringify(ids),'mcu-route-v1':'release'}),d=x.document;
  assert.equal(d.getElementById('feature-title').textContent,'路线已完成');assert.match(d.getElementById('start-route').textContent,/完成/);assert.equal(d.getElementById('route-progress').value,23);assert.equal(d.getElementById('feature-image').hidden,true);assert.equal(JSON.parse(x.dom.window.localStorage.getItem('mcu-watched-v1')).length,23);x.dispose();x.dom.window.close();
 });
+test('route preview tab and sort persist across reload; hero phase is not zero-padded',()=>{
+ const x=setup(),d=x.document;
+ assert.equal(d.getElementById('feature-phase').textContent,'PHASE 1');
+ d.querySelector('[data-route="chrono"]').click();d.querySelector('[data-sort="chrono"]').click();
+ assert.equal(x.dom.window.localStorage.getItem('mcu-route-tab-v1'),'chrono');
+ assert.equal(x.dom.window.localStorage.getItem('mcu-sort-v1'),'chrono');
+ x.dispose();x.dom.window.close();
+ const y=setup(catalog,fixed,{'mcu-route-tab-v1':'chrono','mcu-sort-v1':'chrono'}),dy=y.document;
+ assert.equal(dy.querySelector('[data-route="chrono"]').getAttribute('aria-pressed'),'true');
+ assert.equal(dy.querySelector('[data-sort="chrono"]').getAttribute('aria-pressed'),'true');
+ assert.equal(cards(dy)[0],'瓦坎达之眼');
+ y.dispose();y.dom.window.close();
+});

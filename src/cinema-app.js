@@ -1,5 +1,5 @@
 import {loadCatalog} from './data.js';
-import {mountCatalog} from './timeline.js?v=cinema-1';
+import {mountCatalog} from './cinema-timeline.js';
 
 export function startApplication({document, load = loadCatalog, mount = mountCatalog} = {}) {
   if (!document) throw new TypeError('document is required');

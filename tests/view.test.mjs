@@ -2,8 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {JSDOM} from 'jsdom';
-import {mountCatalog} from '../src/timeline.js';
-import {startApplication} from '../src/app.js';
+import {mountCatalog} from '../src/cinema-timeline.js';
+import {startApplication} from '../src/cinema-app.js';
 
 const html=await readFile(new URL('../index.html',import.meta.url),'utf8');
 const catalog=JSON.parse(await readFile(new URL('../data/catalog.json',import.meta.url),'utf8'));

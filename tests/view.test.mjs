@@ -140,3 +140,31 @@ test('multiverse card in safe mode asks for spoiler confirmation first',()=>{
  assert.ok(!shown.includes('钢铁侠'));
  x.dispose();x.dom.window.close();
 });
+test('doomsday route lists 11 works in release order with spoiler-safe whys',()=>{
+ const x=setup(),d=x.document;
+ d.querySelector('[data-route="doomsday"]').click();
+ const items=[...d.querySelectorAll('#route-list .route-work b')].map(el=>el.textContent);
+ assert.equal(items.length,11);
+ assert.equal(items[0],'复仇者联盟3：无限战争');
+ assert.equal(items[items.length-1],'复仇者联盟5：毁灭日');
+ assert.equal(d.getElementById('route-title').textContent,'毁灭日补课 · 三宇宙前传');
+ const why=d.querySelector('#route-work-thunderbolts-2025 .route-why');
+ assert.ok(why&&why.textContent.includes('留到最后'));
+ assert.ok(!d.querySelector('#route-list').textContent.includes('undefined'));
+ x.dispose();x.dom.window.close();
+});
+test('multiverse map renders nodes, gates event labels by spoiler mode, node click focuses work',()=>{
+ const x=setup(),d=x.document;
+ const nodes=d.querySelectorAll('#multiverse-map .map-node');
+ assert.equal(nodes.length,12);
+ assert.ok(!d.querySelector('#multiverse-map').textContent.includes('时间穿越，分叉开始'));
+ d.querySelector('[data-spoiler="full"]').click();d.getElementById('confirm-spoiler').click();
+ assert.ok(d.querySelector('#multiverse-map').textContent.includes('时间穿越，分叉开始'));
+ assert.ok(d.querySelector('#multiverse-map').textContent.includes('三宇宙碰撞'));
+ let scrolled=null;
+ x.dom.window.Element.prototype.scrollIntoView=function(){scrolled=this.id;};
+ d.querySelector('[data-node="loki-season-1-2021"]').dispatchEvent(new x.dom.window.Event('click',{bubbles:true}));
+ assert.equal(scrolled,'work-loki-season-1-2021');
+ assert.ok(d.getElementById('work-loki-season-1-2021').classList.contains('flash'));
+ x.dispose();x.dom.window.close();
+});

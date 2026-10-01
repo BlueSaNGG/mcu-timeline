@@ -1,4 +1,5 @@
 import {buildRoutes, routeProgress} from './routes.js';
+import {renderMap} from './multiverse-map.js';
 import {ARTWORK} from './artwork.js';
 // Compatibility view: preserves legacy behavior until the audited model cutover.
 export function mountCatalog(catalog, {document, now = () => Date.now(), schedule = setInterval, cancel = clearInterval} = {}) {
@@ -33,7 +34,7 @@ function heroProgress(){
  document.getElementById('journey-status').textContent=activeRoute?route.title+' · '+status.seen+' / '+status.total+' 已看':(watched.size?'已记录 '+watched.size+' 部 · 选择路线后开始旅程':'上映顺序 · 适合首次观看');
  document.getElementById('start-route').textContent=activeRoute?(next?'继续浏览：'+next.zh+' ↗':'查看已完成路线 ↗'):'开始首次观看路线 ↗';
  document.getElementById('feature-title').textContent=next?next.zh:'路线已完成';
- document.getElementById('feature-year').textContent=next?(next.release.slice(0,4)+' / 第 '+next.phase+' 阶段'):'23 / 23 部电影';
+ document.getElementById('feature-year').textContent=next?(next.release.slice(0,4)+' / 第 '+next.phase+' 阶段'):route.works.length+' / '+route.works.length+' 部';
  document.getElementById('feature-phase').textContent=next?'PHASE '+next.phase:'COMPLETE';
  document.getElementById('feature-label').textContent=activeRoute?(next?'UP NEXT':'JOURNEY COMPLETE'):'THE BEGINNING';
  document.getElementById('feature-caption').textContent=next?(activeRoute?'你的下一部作品。':'一段旅程的开始。'):'保留你的记录，开启新的探索。';
@@ -56,14 +57,16 @@ function renderRoute(){
  document.getElementById('route-remaining').setAttribute('aria-pressed',String(routeRemaining));
  document.getElementById('route-size').textContent=routeRemaining?'剩余 '+(status.total-status.seen)+' 部':status.total+' 部';
  document.querySelectorAll('[data-route]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.route===selectedRoute)));
- document.getElementById('route-list').innerHTML=route.works.map((x,i)=>({x,i})).filter(({x})=>!routeRemaining||!watched.has(x.id)).map(({x,i})=>`<li class="${watched.has(x.id)?'watched':''} ${status.next?.id===x.id?'next':''}" id="route-work-${esc(x.id)}"><span class="route-index">${String(i+1).padStart(2,'0')}</span><div class="route-work"><b>${esc(x.zh)}</b><small>${esc(x.release.slice(0,4))} · ${status.next?.id===x.id?'下一部':watched.has(x.id)?'已看':'未看'}</small></div><button class="watch-button" data-watch="${esc(x.id)}" aria-pressed="${watched.has(x.id)}" aria-label="${watched.has(x.id)?'标记未看':'标记已看'}：${esc(x.zh)}">${watched.has(x.id)?'✓ 已看 · 撤销':'＋ 已看'}</button></li>`).join('')||'<li>全部看完了。切换到完整路线查看记录。</li>';
+ document.getElementById('route-list').innerHTML=route.works.map((x,i)=>({x,i})).filter(({x})=>!routeRemaining||!watched.has(x.id)).map(({x,i})=>`<li class="${watched.has(x.id)?'watched':''} ${status.next?.id===x.id?'next':''}" id="route-work-${esc(x.id)}"><span class="route-index">${String(i+1).padStart(2,'0')}</span><div class="route-work"><b>${esc(x.zh)}</b>${route.why&&route.why[x.id]?`<span class="route-why">${esc(route.why[x.id])}</span>`:''}<small>${esc(x.release.slice(0,4))} · ${status.next?.id===x.id?'下一部':watched.has(x.id)?'已看':'未看'}</small></div><button class="watch-button" data-watch="${esc(x.id)}" aria-pressed="${watched.has(x.id)}" aria-label="${watched.has(x.id)?'标记未看':'标记已看'}：${esc(x.zh)}">${watched.has(x.id)?'✓ 已看 · 撤销':'＋ 已看'}</button></li>`).join('')||'<li>全部看完了。切换到完整路线查看记录。</li>';
 }
 function activateSelection(){activeRoute=selectedRoute;save();heroProgress();renderRoute();document.getElementById('route-details').open=true;document.getElementById('routes').scrollIntoView?.();}
 on(document.getElementById('feature-image'),'load',()=>{document.getElementById('feature').classList.add('has-art');});
 on(document.getElementById('feature-image'),'error',()=>{document.getElementById('feature-image').hidden=true;document.getElementById('feature').classList.remove('has-art');document.getElementById('art-credit').hidden=true;});
 on(document.getElementById('activate-route'),'click',activateSelection);
 on(document.getElementById('route-remaining'),'click',()=>{routeRemaining=!routeRemaining;renderRoute();document.getElementById('route-details').open=true;});
-function applySpoiler(){if(state.spoiler==='safe'){state.line='all';const group=document.querySelector('[data-filter="line"]');group.closest('.filter-group').hidden=true;document.querySelector('.legend').hidden=true;group.querySelectorAll('button').forEach((b,i)=>{b.classList.toggle('active',i===0);b.setAttribute('aria-pressed',String(i===0));});}else{document.querySelector('[data-filter="line"]').closest('.filter-group').hidden=false;document.querySelector('.legend').hidden=false;}document.querySelectorAll('[data-spoiler]').forEach(b=>{const active=b.dataset.spoiler===state.spoiler;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});document.getElementById('search').placeholder=state.spoiler==='safe'?'搜索中文名或英文名':'搜索作品、剧情或角色';save();render();}
+function applySpoiler(){if(state.spoiler==='safe'){state.line='all';const group=document.querySelector('[data-filter="line"]');group.closest('.filter-group').hidden=true;document.querySelector('.legend').hidden=true;group.querySelectorAll('button').forEach((b,i)=>{b.classList.toggle('active',i===0);b.setAttribute('aria-pressed',String(i===0));});}else{document.querySelector('[data-filter="line"]').closest('.filter-group').hidden=false;document.querySelector('.legend').hidden=false;}document.querySelectorAll('[data-spoiler]').forEach(b=>{const active=b.dataset.spoiler===state.spoiler;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});document.getElementById('search').placeholder=state.spoiler==='safe'?'搜索中文名或英文名':'搜索作品、剧情或角色';save();render();drawMap();}
+function focusWork(id){Object.assign(state,{phase:'all',saga:'all',line:'all',type:'all',q:'',remaining:false,progress:false});resetControls();render();const el=document.getElementById('work-'+id);if(!el)return;el.scrollIntoView({block:'center'});el.classList.add('flash');setTimeout(()=>el.classList.remove('flash'),1800);}
+function drawMap(){renderMap(document,DATA,{spoiler:state.spoiler,onNode:focusWork});}
 
 function eraFor(x){if(state.spoiler==='safe'&&state.sort==='chrono')return{key:'safe-chrono',title:'故事时间',sub:'剧情时间与宇宙说明已隐藏'};if(state.sort==='release')return{key:'p'+x.phase,title:'PHASE '+x.phase,sub:x.phase<=3?'无限传奇':'多元宇宙传奇'};const n=x.chrono;if(n<=4)return{key:'origin',title:'起源与旧世界',sub:'公元前 1260 — 1998'};if(n<=17)return{key:'heroes',title:'英雄纪元',sub:'2008 — 2015'};if(n<=32)return{key:'war',title:'分裂与终局',sub:'2016 — 2023'};if(n<=57)return{key:'multiverse',title:'多元宇宙开启',sub:'2024 — 2026'};return{key:'collision',title:'三界汇流',sub:'2027 → 待揭晓'}}
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
@@ -109,7 +112,7 @@ on(document.getElementById('confirm-spoiler'),'click',()=>{state.spoiler='full';
 on(document.getElementById('cancel-spoiler'),'click',()=>{pendingUniverse=null;closeDialog()});
 function getCountdownTarget(){const timestamp=now();return DATA.filter(x=>x.upcoming&&x.type==='film'&&/^\d{4}-\d{2}-\d{2}$/.test(x.release_date||'')).map(x=>({...x,targetTime:new Date(x.release_date+'T00:00:00').getTime()})).filter(x=>x.targetTime>timestamp).sort((a,b)=>a.targetTime-b.targetTime)[0]||null}
 function tick(){const panel=document.getElementById('countdown'),target=getCountdownTarget();if(!target){panel.hidden=true;return}panel.hidden=false;document.getElementById('countdown-name').textContent='《'+target.zh+'》';document.getElementById('countdown-en').textContent=target.en.toUpperCase();document.getElementById('countdown-date').textContent=target.release_date.split('-').join(' · ');const diff=target.targetTime-now();const d=Math.floor(diff/864e5),h=Math.floor(diff/36e5)%24,m=Math.floor(diff/6e4)%60,s=Math.floor(diff/1e3)%60;['days','hours','mins','secs'].forEach((id,i)=>document.getElementById(id).textContent=String([d,h,m,s][i]).padStart(2,'0'))}
-tick();const timer=schedule(tick,1000);document.getElementById('total-stat').textContent=DATA.length;resetControls();heroProgress();renderRoute();renderMultiverse();applySpoiler();changeSort(state.sort);
+tick();const timer=schedule(tick,1000);document.getElementById('total-stat').textContent=DATA.length;resetControls();heroProgress();renderRoute();renderMultiverse();drawMap();applySpoiler();changeSort(state.sort);
 
   return () => {cancel(timer);removers.forEach(remove=>remove());};
 }

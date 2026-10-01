@@ -1,0 +1,371 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-30",
+  "works": [
+    {
+      "id": "fixture-alpha",
+      "titleZh": "测试作品甲",
+      "titleEn": "fixture-alpha",
+      "aliases": [],
+      "type": "film",
+      "phase": 1,
+      "saga": "infinity",
+      "status": "released",
+      "releaseEvents": [
+        {
+          "id": "fixture-alpha-release",
+          "kind": "theatrical",
+          "region": "US",
+          "date": "2001-01-01",
+          "certainty": "confirmed",
+          "sourceIds": [
+            "fixture-source"
+          ]
+        }
+      ],
+      "displayReleaseEventId": "fixture-alpha-release",
+      "universeLinks": [
+        {
+          "entityId": "fixture-main",
+          "role": "primary",
+          "visibility": "safe",
+          "spoilerWorkIds": [],
+          "sourceIds": [
+            "fixture-source"
+          ]
+        }
+      ],
+      "timeline": {
+        "kind": "known",
+        "label": {
+          "text": "虚构年代 1",
+          "visibility": "safe",
+          "spoilerWorkIds": [],
+          "sourceIds": [
+            "fixture-source"
+          ]
+        },
+        "safeRank": 1,
+        "fullRank": 1
+      },
+      "characterLinks": [
+        {
+          "id": "fixture-hero",
+          "visibility": "safe",
+          "spoilerWorkIds": [],
+          "sourceIds": [
+            "fixture-source"
+          ]
+        }
+      ],
+      "spoilerFreeSynopsis": {
+        "text": "测试用安全简介",
+        "visibility": "safe",
+        "spoilerWorkIds": [],
+        "sourceIds": [
+          "fixture-source"
+        ]
+      },
+      "spoilerSections": [
+        {
+          "text": "测试用结局 fixture-alpha",
+          "visibility": "spoiler",
+          "spoilerWorkIds": [
+            "fixture-alpha"
+          ],
+          "sourceIds": [
+            "fixture-source"
+          ]
+        }
+      ],
+      "runtimeMinutes": 100,
+      "runtimeCertainty": "confirmed",
+      "sourceIds": [
+        "fixture-source"
+      ],
+      "verification": "verified"
+    },
+    {
+      "id": "fixture-beta",
+      "titleZh": "测试作品乙",
+      "titleEn": "fixture-beta",
+      "aliases": [],
+      "type": "film",
+      "phase": 1,
+      "saga": "infinity",
+      "status": "released",
+      "releaseEvents": [
+        {
+          "id": "fixture-beta-release",
+          "kind": "theatrical",
+          "region": "US",
+          "date": "2002-01-01",
+          "certainty": "confirmed",
+          "sourceIds": [
+            "fixture-source"
+          ]
+        }
+      ],
+      "displayReleaseEventId": "fixture-beta-release",
+      "universeLinks": [
+        {
+          "entityId": "fixture-main",
+          "role": "primary",
+          "visibility": "safe",
+          "spoilerWorkIds": [],
+          "sourceIds": [
+            "fixture-source"
+          ]
+        }
+      ],
+      "timeline": {
+        "kind": "known",
+        "label": {
+          "text": "虚构年代 2",
+          "visibility": "safe",
+          "spoilerWorkIds": [],
+          "sourceIds": [
+            "fixture-source"
+          ]
+        },
+        "safeRank": 2,
+        "fullRank": 2
+      },
+      "characterLinks": [
+        {
+          "id": "fixture-hero",
+          "visibility": "safe",
+          "spoilerWorkIds": [],
+          "sourceIds": [
+            "fixture-source"
+          ]
+        },
+        {
+          "id": "fixture-secret",
+          "visibility": "spoiler",
+          "spoilerWorkIds": [
+            "fixture-beta"
+          ],
+          "sourceIds": [
+            "fixture-source"
+          ]
+        }
+      ],
+      "spoilerFreeSynopsis": {
+        "text": "测试用安全简介",
+        "visibility": "safe",
+        "spoilerWorkIds": [],
+        "sourceIds": [
+          "fixture-source"
+        ]
+      },
+      "spoilerSections": [
+        {
+          "text": "测试用结局 fixture-beta",
+          "visibility": "spoiler",
+          "spoilerWorkIds": [
+            "fixture-beta"
+          ],
+          "sourceIds": [
+            "fixture-source"
+          ]
+        },
+        {
+          "text": "跨作品测试结局",
+          "visibility": "spoiler",
+          "spoilerWorkIds": [
+            "fixture-alpha",
+            "fixture-beta"
+          ],
+          "sourceIds": [
+            "fixture-source"
+          ]
+        }
+      ],
+      "runtimeMinutes": null,
+      "runtimeCertainty": "unknown",
+      "sourceIds": [
+        "fixture-source"
+      ],
+      "verification": "verified"
+    },
+    {
+      "id": "fixture-gamma",
+      "titleZh": "测试作品丙",
+      "titleEn": "fixture-gamma",
+      "aliases": [],
+      "type": "film",
+      "phase": 1,
+      "saga": "infinity",
+      "status": "released",
+      "releaseEvents": [
+        {
+          "id": "fixture-gamma-release",
+          "kind": "theatrical",
+          "region": "US",
+          "date": "2003-01-01",
+          "certainty": "confirmed",
+          "sourceIds": [
+            "fixture-source"
+          ]
+        }
+      ],
+      "displayReleaseEventId": "fixture-gamma-release",
+      "universeLinks": [
+        {
+          "entityId": "fixture-outside",
+          "role": "location",
+          "visibility": "safe",
+          "spoilerWorkIds": [],
+          "sourceIds": [
+            "fixture-source"
+          ]
+        }
+      ],
+      "timeline": {
+        "kind": "outsideTime",
+        "label": {
+          "text": "时间之外",
+          "visibility": "safe",
+          "spoilerWorkIds": [],
+          "sourceIds": [
+            "fixture-source"
+          ]
+        },
+        "safeRank": null,
+        "fullRank": null
+      },
+      "characterLinks": [
+        {
+          "id": "fixture-hero",
+          "visibility": "safe",
+          "spoilerWorkIds": [],
+          "sourceIds": [
+            "fixture-source"
+          ]
+        }
+      ],
+      "spoilerFreeSynopsis": {
+        "text": "测试用安全简介",
+        "visibility": "safe",
+        "spoilerWorkIds": [],
+        "sourceIds": [
+          "fixture-source"
+        ]
+      },
+      "spoilerSections": [
+        {
+          "text": "测试用结局 fixture-gamma",
+          "visibility": "spoiler",
+          "spoilerWorkIds": [
+            "fixture-gamma"
+          ],
+          "sourceIds": [
+            "fixture-source"
+          ]
+        }
+      ],
+      "runtimeMinutes": 100,
+      "runtimeCertainty": "confirmed",
+      "sourceIds": [
+        "fixture-source"
+      ],
+      "verification": "verified"
+    }
+  ],
+  "characters": [
+    {
+      "id": "fixture-hero",
+      "nameZh": "测试英雄",
+      "nameEn": "Fixture Hero",
+      "aliases": [
+        "测试侠"
+      ]
+    },
+    {
+      "id": "fixture-secret",
+      "nameZh": "测试秘密角色",
+      "nameEn": "Fixture Secret",
+      "aliases": [
+        "秘密身份"
+      ]
+    }
+  ],
+  "universes": [
+    {
+      "id": "fixture-main",
+      "labelSafe": "测试主宇宙",
+      "kind": "universe"
+    },
+    {
+      "id": "fixture-outside",
+      "labelSafe": "测试时间之外",
+      "kind": "outsideTime"
+    }
+  ],
+  "sources": [
+    {
+      "id": "fixture-source",
+      "url": "https://example.invalid/test-only",
+      "labelSafe": "虚构测试依据，不是 MCU 来源",
+      "sourceType": "editorial",
+      "verifiedAt": "2026-09-30",
+      "supports": [
+        "fixture-only"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": "fixture-route",
+      "titleSafe": "虚构测试路线",
+      "descriptionSafe": "测试甲乙顺序与缺失时长",
+      "region": "US",
+      "workIds": [
+        "fixture-alpha",
+        "fixture-beta"
+      ],
+      "reasons": [
+        {
+          "workId": "fixture-alpha",
+          "safe": {
+            "text": "测试用开场理由",
+            "visibility": "safe",
+            "spoilerWorkIds": [],
+            "sourceIds": [
+              "fixture-source"
+            ]
+          },
+          "full": null
+        },
+        {
+          "workId": "fixture-beta",
+          "safe": {
+            "text": "测试用续作理由",
+            "visibility": "safe",
+            "spoilerWorkIds": [],
+            "sourceIds": [
+              "fixture-source"
+            ]
+          },
+          "full": {
+            "text": "测试用剧情衔接",
+            "visibility": "spoiler",
+            "spoilerWorkIds": [
+              "fixture-alpha",
+              "fixture-beta"
+            ],
+            "sourceIds": [
+              "fixture-source"
+            ]
+          }
+        }
+      ],
+      "sourceIds": [
+        "fixture-source"
+      ],
+      "verification": "verified"
+    }
+  ],
+  "relations": []
+}

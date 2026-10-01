@@ -1,0 +1,761 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MCU catalog v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date"
+    },
+    "works": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/work"
+      }
+    },
+    "characters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/character"
+      }
+    },
+    "universes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/universe"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/route"
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/relation"
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "updatedAt",
+    "works",
+    "characters",
+    "universes",
+    "sources",
+    "routes",
+    "relations"
+  ],
+  "$defs": {
+    "block": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "visibility": {
+          "enum": [
+            "safe",
+            "spoiler"
+          ]
+        },
+        "spoilerWorkIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "uniqueItems": true
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "text",
+        "visibility",
+        "spoilerWorkIds",
+        "sourceIds"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "visibility": {
+                "const": "safe"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "spoilerWorkIds": {
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "visibility": {
+                "const": "spoiler"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "spoilerWorkIds": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "link": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "visibility": {
+          "enum": [
+            "safe",
+            "spoiler"
+          ]
+        },
+        "spoilerWorkIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "uniqueItems": true
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "visibility",
+        "spoilerWorkIds",
+        "sourceIds"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "visibility": {
+                "const": "safe"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "spoilerWorkIds": {
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "visibility": {
+                "const": "spoiler"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "spoilerWorkIds": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "labelSafe": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceType": {
+          "enum": [
+            "official",
+            "secondary",
+            "editorial"
+          ]
+        },
+        "verifiedAt": {
+          "type": "string",
+          "format": "date"
+        },
+        "supports": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "id",
+        "url",
+        "labelSafe",
+        "sourceType",
+        "verifiedAt",
+        "supports"
+      ]
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "kind": {
+          "enum": [
+            "festival",
+            "theatrical",
+            "streaming"
+          ]
+        },
+        "region": {
+          "type": "string",
+          "minLength": 1
+        },
+        "date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "certainty": {
+          "enum": [
+            "confirmed",
+            "estimated",
+            "unknown"
+          ]
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "region",
+        "date",
+        "certainty",
+        "sourceIds"
+      ]
+    },
+    "timeline": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "known",
+            "estimated",
+            "unknown",
+            "outsideTime",
+            "anthology"
+          ]
+        },
+        "label": {
+          "$ref": "#/$defs/block"
+        },
+        "safeRank": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "fullRank": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      },
+      "required": [
+        "kind",
+        "label",
+        "safeRank",
+        "fullRank"
+      ]
+    },
+    "work": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "titleZh": {
+          "type": "string",
+          "minLength": 1
+        },
+        "titleEn": {
+          "type": "string",
+          "minLength": 1
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "type": {
+          "enum": [
+            "film",
+            "seriesSeason",
+            "special"
+          ]
+        },
+        "phase": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 6
+        },
+        "saga": {
+          "enum": [
+            "infinity",
+            "multiverse",
+            null
+          ]
+        },
+        "status": {
+          "enum": [
+            "announced",
+            "scheduled",
+            "partiallyReleased",
+            "released",
+            "unverified"
+          ]
+        },
+        "releaseEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/event"
+          }
+        },
+        "displayReleaseEventId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "universeLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "entityId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]*$"
+              },
+              "role": {
+                "enum": [
+                  "primary",
+                  "visited",
+                  "location"
+                ]
+              },
+              "visibility": {
+                "enum": [
+                  "safe",
+                  "spoiler"
+                ]
+              },
+              "spoilerWorkIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9-]*$"
+                },
+                "uniqueItems": true
+              },
+              "sourceIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9-]*$"
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "entityId",
+              "role",
+              "visibility",
+              "spoilerWorkIds",
+              "sourceIds"
+            ],
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "visibility": {
+                      "const": "safe"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "spoilerWorkIds": {
+                      "maxItems": 0
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "visibility": {
+                      "const": "spoiler"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "spoilerWorkIds": {
+                      "minItems": 1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "timeline": {
+          "$ref": "#/$defs/timeline"
+        },
+        "characterLinks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/link"
+          }
+        },
+        "spoilerFreeSynopsis": {
+          "$ref": "#/$defs/block"
+        },
+        "spoilerSections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/block"
+          }
+        },
+        "runtimeMinutes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "runtimeCertainty": {
+          "enum": [
+            "confirmed",
+            "estimated",
+            "unknown"
+          ]
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "uniqueItems": true
+        },
+        "verification": {
+          "enum": [
+            "verified",
+            "partial",
+            "unverified",
+            "conflict"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "titleZh",
+        "titleEn",
+        "aliases",
+        "type",
+        "phase",
+        "saga",
+        "status",
+        "releaseEvents",
+        "displayReleaseEventId",
+        "universeLinks",
+        "timeline",
+        "characterLinks",
+        "spoilerFreeSynopsis",
+        "spoilerSections",
+        "runtimeMinutes",
+        "runtimeCertainty",
+        "sourceIds",
+        "verification"
+      ]
+    },
+    "character": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "nameZh": {
+          "type": "string",
+          "minLength": 1
+        },
+        "nameEn": {
+          "type": "string",
+          "minLength": 1
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "id",
+        "nameZh",
+        "nameEn",
+        "aliases"
+      ]
+    },
+    "universe": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "labelSafe": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "universe",
+            "outsideTime",
+            "location"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "labelSafe",
+        "kind"
+      ]
+    },
+    "route": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "titleSafe": {
+          "type": "string",
+          "minLength": 1
+        },
+        "descriptionSafe": {
+          "type": "string",
+          "minLength": 1
+        },
+        "region": {
+          "type": "string",
+          "minLength": 1
+        },
+        "workIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "uniqueItems": true
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "workId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]*$"
+              },
+              "safe": {
+                "$ref": "#/$defs/block"
+              },
+              "full": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/block"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "workId",
+              "safe",
+              "full"
+            ]
+          }
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "uniqueItems": true
+        },
+        "verification": {
+          "enum": [
+            "verified",
+            "draft"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "titleSafe",
+        "descriptionSafe",
+        "region",
+        "workIds",
+        "reasons",
+        "sourceIds",
+        "verification"
+      ]
+    },
+    "relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "fromWorkId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "toWorkId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "kind": {
+          "enum": [
+            "prerequisite",
+            "sequel",
+            "storyBefore",
+            "branchOrigin",
+            "crossUniverseVisit"
+          ]
+        },
+        "label": {
+          "$ref": "#/$defs/block"
+        },
+        "certainty": {
+          "enum": [
+            "confirmed",
+            "estimated"
+          ]
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "fromWorkId",
+        "toWorkId",
+        "kind",
+        "label",
+        "certainty",
+        "sourceIds"
+      ]
+    }
+  }
+}

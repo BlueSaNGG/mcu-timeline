@@ -81,6 +81,8 @@ on(document.getElementById('clear'),'click',()=>{Object.assign(state,{phase:'all
 on(document.getElementById('remaining'),'click',()=>{state.progress=false;state.remaining=!state.remaining;document.getElementById('remaining').setAttribute('aria-pressed',String(state.remaining));render();});
 function showProgress(){Object.assign(state,{phase:'all',saga:'all',line:'all',type:'all',q:'',remaining:false,progress:true});resetControls();render();}
 on(document.getElementById('progress-link'),'click',showProgress);on(document.getElementById('mobile-progress'),'click',showProgress);
+function showAll(){if(!state.progress)return;state.progress=false;render();}
+on(document.getElementById('all-link'),'click',showAll);on(document.getElementById('mobile-timeline'),'click',showAll);
 function toggleWatched(e){const b=e.target.closest('[data-watch]');if(!b)return;const id=b.dataset.watch,container=e.currentTarget;watched.has(id)?watched.delete(id):watched.add(id);save();heroProgress();render();renderRoute();const target=container.querySelector('[data-watch="'+id+'"]');if(target)target.focus({preventScroll:true});else document.getElementById(container.id==='route-list'?'route-remaining':'remaining').focus({preventScroll:true});}
 on(document.getElementById('timeline'),'click',toggleWatched);on(document.getElementById('route-list'),'click',toggleWatched);
 const dialog=document.getElementById('spoiler-dialog');let trigger=null;

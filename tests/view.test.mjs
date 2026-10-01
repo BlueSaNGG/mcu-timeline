@@ -101,3 +101,11 @@ test('route preview tab and sort persist across reload; hero phase is not zero-p
  assert.equal(cards(dy)[0],'瓦坎达之眼');
  y.dispose();y.dom.window.close();
 });
+test('timeline tab exits the progress view on mobile and desktop',()=>{
+ const x=setup(),d=x.document;
+ d.getElementById('mobile-progress').click();assert.equal(d.getElementById('view-title').textContent,'我的进度');
+ d.getElementById('mobile-timeline').click();assert.equal(d.getElementById('view-title').textContent,'上映顺序');assert.equal(cards(d).length,68);
+ d.getElementById('progress-link').click();assert.equal(d.getElementById('view-title').textContent,'我的进度');
+ d.getElementById('all-link').click();assert.equal(d.getElementById('view-title').textContent,'上映顺序');assert.equal(cards(d).length,68);
+ x.dispose();x.dom.window.close();
+});

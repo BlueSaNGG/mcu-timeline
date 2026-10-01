@@ -11,7 +11,7 @@
 <div class="page">
 <header class="topbar">
 <a class="brand" href="#discover" aria-label="MCU Timeline 首页"><b>MCU</b><span>TIMELINE<small>漫威观看指南</small></span></a>
-<nav class="desktop-nav" aria-label="主要导航"><a href="#discover">发现</a><a href="#routes">观看路线</a><a href="#collection">全部作品</a><a href="#collection" id="progress-link">我的进度</a></nav>
+<nav class="desktop-nav" aria-label="主要导航"><a href="#discover">发现</a><a href="#routes">观看路线</a><a href="#collection" id="all-link">全部作品</a><a href="#collection" id="progress-link">我的进度</a></nav>
 <div class="spoiler-control" role="group" aria-label="剧透模式"><button data-spoiler="safe" aria-pressed="true" class="active">无剧透</button><button data-spoiler="full" aria-pressed="false">剧透版</button></div>
 </header>
 <main>
@@ -39,7 +39,7 @@
 <footer class="shell footer"><div class="footer-brand">MCU <span>TIMELINE</span></div><p>你的旅程，由你决定。</p><details class="method"><summary>资料口径与来源</summary><p>现有目录包含不同宇宙及待上映作品；故事时间和未来日期仍在逐项核验。无剧透模式只展示基础信息，避免使用尚未审核的剧情简介。已看记录保存在当前浏览器。</p><nav class="sources" aria-label="资料来源"><a href="https://www.marvel.com/articles/movies/mcu-timeline-order-disney-plus" target="_blank" rel="noopener">Marvel 官方时间线 ↗</a><a href="https://en.wikipedia.org/wiki/List_of_Marvel_Cinematic_Universe_films" target="_blank" rel="noopener">电影资料索引 ↗</a></nav></details>
 <details class="release-panel"><summary>目录中的待上映日期 <span>待核验</span></summary><aside id="countdown" class="countdown" aria-label="目录记录的待上映电影"><div class="countdown-title"><strong id="countdown-name">—</strong><span id="countdown-en">—</span></div><div class="clock"><div><b id="days">—</b><small>天</small></div><div><b id="hours">—</b><small>时</small></div><div><b id="mins">—</b><small>分</small></div><div><b id="secs">—</b><small>秒</small></div></div><p id="countdown-date">—</p></aside></details><p class="artwork-policy">海报来自 Marvel / Disney 官方作品页面，版权归权利人所有；图片不可用时自动显示文字版。</p><p class="storage-notice" id="storage-notice" role="status"></p><p class="snapshot">非官方观看指南 · 目录快照 2026.09.30</p></footer>
 </main>
-<nav class="mobile-nav" aria-label="手机导航"><a href="#discover">发现</a><a href="#collection">时间线</a><a href="#collection" id="mobile-progress">我的进度</a></nav>
+<nav class="mobile-nav" aria-label="手机导航"><a href="#discover">发现</a><a href="#collection" id="mobile-timeline">时间线</a><a href="#collection" id="mobile-progress">我的进度</a></nav>
 </div>
 <dialog id="spoiler-dialog" aria-labelledby="spoiler-title"><h2 id="spoiler-title">开启剧透版？</h2><p>将显示剧情、人物信息和时间线说明，可能包含结局与身份反转。</p><div><button id="cancel-spoiler">保留无剧透</button><button id="confirm-spoiler" class="primary">开启剧透版</button></div></dialog>
 <script type="module" src="./src/journey-app.js"></script>

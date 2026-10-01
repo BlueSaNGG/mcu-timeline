@@ -108,7 +108,8 @@
           "then": {
             "properties": {
               "spoilerWorkIds": {
-                "maxItems": 0
+                "maxItems": 0,
+                "type": "array"
               }
             }
           }
@@ -124,7 +125,8 @@
           "then": {
             "properties": {
               "spoilerWorkIds": {
-                "minItems": 1
+                "minItems": 1,
+                "type": "array"
               }
             }
           }
@@ -180,7 +182,8 @@
           "then": {
             "properties": {
               "spoilerWorkIds": {
-                "maxItems": 0
+                "maxItems": 0,
+                "type": "array"
               }
             }
           }
@@ -196,7 +199,8 @@
           "then": {
             "properties": {
               "spoilerWorkIds": {
-                "minItems": 1
+                "minItems": 1,
+                "type": "array"
               }
             }
           }
@@ -467,7 +471,8 @@
                 "then": {
                   "properties": {
                     "spoilerWorkIds": {
-                      "maxItems": 0
+                      "maxItems": 0,
+                      "type": "array"
                     }
                   }
                 }
@@ -483,7 +488,8 @@
                 "then": {
                   "properties": {
                     "spoilerWorkIds": {
-                      "minItems": 1
+                      "minItems": 1,
+                      "type": "array"
                     }
                   }
                 }

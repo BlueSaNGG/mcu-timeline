@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Temporary legacy catalog (D01 compatibility)",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "updated": {
+          "type": "string",
+          "format": "date"
+        },
+        "project": {
+          "type": "string",
+          "minLength": 1
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "version",
+        "updated",
+        "project",
+        "notes"
+      ]
+    },
+    "works": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title_cn": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "enum": [
+              "film",
+              "series"
+            ]
+          },
+          "phase": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          },
+          "saga": {
+            "enum": [
+              "Infinity Saga",
+              "Multiverse Saga"
+            ]
+          },
+          "release_date": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "status": {
+            "enum": [
+              "released",
+              "upcoming"
+            ]
+          },
+          "universe": {
+            "enum": [
+              "sacred",
+              "earth-828",
+              "xmen",
+              "branch",
+              "tva"
+            ]
+          },
+          "in_universe": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "start": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "end": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "note": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "start",
+              "end",
+              "note"
+            ]
+          },
+          "key_characters": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "synopsis_cn": {
+            "type": "string",
+            "minLength": 1
+          },
+          "seasons": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "episodes": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "title_cn",
+          "type",
+          "phase",
+          "saga",
+          "release_date",
+          "status",
+          "universe",
+          "in_universe",
+          "key_characters",
+          "synopsis_cn"
+        ]
+      }
+    },
+    "chrono_order": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "meta",
+    "works",
+    "chrono_order"
+  ]
+}

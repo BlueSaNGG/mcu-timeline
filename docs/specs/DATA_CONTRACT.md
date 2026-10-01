@@ -4,7 +4,8 @@
 
 ## DATA-01 文件和兼容
 
-MVP 数据统一输出 data/catalog.json，按 schema 验证，避免多文件发布中途版本不一致。后续可拆编辑输入文件，但运行时必须使用同版本合成 catalog。
+最终 MVP 数据统一输出 data/catalog.json，按规范 v1 schema 验证，避免多文件发布中途版本不一致。后续可拆编辑输入文件，但运行时必须使用同版本合成 catalog。
+D01 兼容阶段先用 scripts/catalog.legacy.schema.json 校验原字段，避免未查源时机械认定事实；D02 切换本合约的规范模型并移除兼容入口。不得把兼容校验声称为生产资料审核通过。
 旧计划的 data/works.json 等是编辑职责示意，本规格决定首版实际格式。
 初次迁移建立 docs/LEGACY_ID_MAP.md，列出全部原有 id；禁止删除或改名以掩盖迁移错误。旧字段映射：
 - title_cn/title → titleZh/titleEn；type/episodes → 明确审核后的 type。

@@ -1,41 +1,45 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="color-scheme" content="light dark">
-  <link rel="icon" href="data:,">
-  <title>MCU 时间线</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles/main.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark"><meta name="description" content="找到你的下一部漫威。按上映顺序或故事时间浏览作品，选择无剧透模式，记录本机观看进度。">
+<link rel="icon" href="data:,"><title>MCU Timeline · 你的下一部漫威</title>
+<link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
+<a class="skip" href="#collection">跳到作品列表</a>
 <div class="page">
-  <header class="hero">
-    <div class="stamp">资料快照：2026 年 9 月 30 日</div>
-    <div class="hero-grid">
-      <div><h1>从远古<br>到<strong>毁灭日</strong></h1><p class="lead">把六个阶段、四条连续性与六十八部作品排进同一张图谱。默认按宇宙内编年史浏览，也可切回上映顺序；争议时间点均保留说明。</p><div class="stats"><div class="stat"><b id="total-stat">68</b><span>部作品</span></div><div class="stat"><b>6</b><span>个阶段</span></div><div class="stat"><b>4</b><span>条连续性</span></div></div></div>
-      <aside class="countdown" id="countdown" aria-label="下一部待上映电影倒计时"><div class="countdown-title"><strong id="countdown-name">—</strong><span id="countdown-en">—</span></div><div class="clock" aria-live="polite"><div class="timebox"><b id="days">—</b><small>天</small></div><div class="timebox"><b id="hours">—</b><small>时</small></div><div class="timebox"><b id="mins">—</b><small>分</small></div><div class="timebox"><b id="secs">—</b><small>秒</small></div></div><p class="release-date"><span>北美上映</span><em id="countdown-date">—</em></p></aside>
-    </div>
-  </header>
-  <main class="shell">
-    <section class="controls" aria-label="时间线筛选">
-      <div class="control-main"><div class="segmented" role="group" aria-label="排序方式"><button class="active" data-sort="chrono">宇宙内编年史</button><button data-sort="release">上映顺序</button></div><label class="search-wrap"><span class="sr-only">搜索作品或角色</span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="search" type="search" placeholder="搜索作品、英文原名或角色"></label></div>
+<header class="topbar">
+<a class="brand" href="#discover" aria-label="MCU Timeline 首页"><b>MCU</b><span>TIMELINE<small>漫威观看指南</small></span></a>
+<nav class="desktop-nav" aria-label="主要导航"><a href="#discover">发现</a><a href="#collection">全部作品</a><a href="#collection" id="progress-link">我的进度</a></nav>
+<div class="spoiler-control" role="group" aria-label="剧透模式"><button data-spoiler="safe" aria-pressed="true" class="active">无剧透</button><button data-spoiler="full" aria-pressed="false">剧透版</button></div>
+</header>
+<main>
+<section class="hero shell" id="discover" aria-labelledby="hero-title">
+<div class="hero-copy"><p class="eyebrow"><span></span> YOUR MARVEL JOURNEY</p><h1 id="hero-title">每个宇宙，<br>都有一个起点。</h1><p class="lead">找到下一部值得看的漫威。<br>从第一部开始，或沿着故事的时间探索。</p><a class="primary" id="start-route" href="#collection">从这里开始 <span aria-hidden="true">↗</span></a><p class="hero-caption" id="journey-status">上映顺序 · 适合首次观看</p></div>
+<article class="feature" aria-label="观看起点"><div class="feature-top"><span>THE BEGINNING</span><span>PHASE 01</span></div><div class="feature-type" aria-hidden="true">IRON<br><i>MAN.</i></div><div class="feature-bottom"><div><span class="eyebrow">2008 / 第一阶段</span><h2>钢铁侠</h2><p>一段旅程的开始。</p></div><span class="feature-number" aria-hidden="true">01</span></div></article>
+</section>
+<section class="route-strip shell" aria-label="选择浏览顺序"><button data-route="release"><span class="route-number">01</span><span><b>第一次看漫威</b><small>按上映顺序，保留故事的惊喜</small></span><span class="route-arrow" aria-hidden="true">↗</span></button><button data-route="chrono"><span class="route-number">02</span><span><b>探索宇宙时间线</b><small>按故事时间，串起不同的篇章</small></span><span class="route-arrow" aria-hidden="true">↗</span></button></section>
+<section class="shell collection" id="collection" aria-labelledby="view-title">
+<div class="resultbar"><div><p class="eyebrow">THE COLLECTION / <span id="total-stat">—</span> WORKS</p><h2 id="view-title">上映顺序</h2><p id="result-count" role="status">正在整理时间线…</p></div><button class="clear" id="clear">重置筛选</button></div>
+<section class="controls" aria-label="时间线筛选"><div class="control-main"><div class="segmented" role="group" aria-label="排序方式"><button data-sort="release" class="active">上映顺序</button><button data-sort="chrono">故事时间</button></div><label class="search-wrap"><span class="sr-only">搜索作品</span><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索中文名或英文名"></label><button class="chip" id="remaining" aria-pressed="false">只看未看</button></div><details class="filter-panel"><summary>更多筛选 <span aria-hidden="true">＋</span></summary>
       <div class="filter-grid">
         <div class="filter-group"><span class="filter-label">阶段</span><div class="chips" data-filter="phase"><button class="chip active" data-value="all">全部</button><button class="chip" data-value="1">1</button><button class="chip" data-value="2">2</button><button class="chip" data-value="3">3</button><button class="chip" data-value="4">4</button><button class="chip" data-value="5">5</button><button class="chip" data-value="6">6</button></div></div>
         <div class="filter-group"><span class="filter-label">传奇</span><div class="chips" data-filter="saga"><button class="chip active" data-value="all">全部</button><button class="chip" data-value="无限传奇">无限</button><button class="chip" data-value="多元宇宙传奇">多元宇宙</button></div></div>
         <div class="filter-group"><span class="filter-label">时间线</span><div class="chips" data-filter="line"><button class="chip active" data-value="all">全部</button><button class="chip" data-value="神圣时间线">神圣</button><button class="chip" data-value="Earth-828">828</button><button class="chip" data-value="变种人宇宙">变种人</button><button class="chip" data-value="分支">分支</button></div></div>
         <div class="filter-group"><span class="filter-label">类型</span><div class="chips" data-filter="type"><button class="chip active" data-value="all">全部</button><button class="chip" data-value="电影">电影</button><button class="chip" data-value="剧集">剧集 / 特别篇</button></div></div>
       </div><div class="legend"><span><i class="s"></i>神圣时间线</span><span><i class="e"></i>Earth-828</span><span><i class="m"></i>变种人宇宙</span><span><i class="b"></i>分支 / TVA</span></div>
+    </details>
     </section>
-    <div class="resultbar"><div><h2 id="view-title">宇宙内编年史</h2><p id="result-count">正在整理时间线…</p></div><button class="clear" id="clear">重置筛选</button></div>
-    <section class="timeline" id="timeline" aria-live="polite"></section>
-    <noscript><p>请启用 JavaScript 以浏览和筛选作品。</p></noscript>
-    <details class="method"><summary>口径、争议与来源</summary><div class="method-grid"><div><p>编年史以 Marvel 官方 Disney+ 时间线为骨架，并用影片内明确年份与可靠二级资料补足。神圣时间线指 MCU 主宇宙；TVA、《无限可能：假如…？》等无固定年份的作品归为“分支”。《X战警 ’97》与《你的友好邻居蜘蛛侠》不在 Disney+ 官方主时间线内，但因多元宇宙叙事相关而单列。</p><ul><li>《洛基》与《无限可能：假如…？》位于时间之外；其排序是叙事顺序，不是年份。</li><li>《死侍与金刚狼》横跨 Earth-10005、TVA 与虚空，归入“变种人宇宙”。</li><li>《神奇四侠：初露锋芒》主体位于 Earth-828 的 1960 年代，按对《毁灭日》的叙事作用置于后段。</li><li>未上映作品使用已官宣信息；未公布的日期、剧情和宇宙内年份明确标为“待定”。</li></ul></div><nav class="sources" aria-label="资料来源"><a href="https://www.marvel.com/articles/movies/mcu-timeline-order-disney-plus" target="_blank" rel="noopener">Marvel 官方 · Disney+ 完整 MCU 时间线 ↗</a><a href="https://en.wikipedia.org/wiki/List_of_Marvel_Cinematic_Universe_films" target="_blank" rel="noopener">MCU 电影阶段与上映日期索引 ↗</a><a href="https://en.wikipedia.org/wiki/List_of_Marvel_Cinematic_Universe_television_series_(Marvel_Studios)" target="_blank" rel="noopener">Marvel Studios 剧集阶段索引 ↗</a><a href="https://en.wikipedia.org/wiki/Production_of_Avengers:_Doomsday_and_Avengers:_Secret_Wars" target="_blank" rel="noopener">《毁灭日》与《秘密战争》档期索引 ↗</a></nav></div></details>
-  </main>
+
+<section class="timeline" id="timeline" aria-live="polite"></section>
+<noscript><p>请启用 JavaScript 以浏览和筛选作品。</p></noscript>
+</section>
+<footer class="shell footer"><div class="footer-brand">MCU <span>TIMELINE</span></div><p>你的旅程，由你决定。</p><details class="method"><summary>资料口径与来源</summary><p>现有目录包含不同宇宙及待上映作品；故事时间和未来日期仍在逐项核验。无剧透模式只展示基础信息，避免使用尚未审核的剧情简介。已看记录保存在当前浏览器。</p><nav class="sources" aria-label="资料来源"><a href="https://www.marvel.com/articles/movies/mcu-timeline-order-disney-plus" target="_blank" rel="noopener">Marvel 官方时间线 ↗</a><a href="https://en.wikipedia.org/wiki/List_of_Marvel_Cinematic_Universe_films" target="_blank" rel="noopener">电影资料索引 ↗</a></nav></details>
+<details class="release-panel"><summary>目录中的待上映日期 <span>待核验</span></summary><aside id="countdown" class="countdown" aria-label="目录记录的待上映电影"><div class="countdown-title"><strong id="countdown-name">—</strong><span id="countdown-en">—</span></div><div class="clock"><div><b id="days">—</b><small>天</small></div><div><b id="hours">—</b><small>时</small></div><div><b id="mins">—</b><small>分</small></div><div><b id="secs">—</b><small>秒</small></div></div><p id="countdown-date">—</p></aside></details><p class="storage-notice" id="storage-notice" role="status"></p><p class="snapshot">非官方观看指南 · 目录快照 2026.09.30</p></footer>
+</main>
+<nav class="mobile-nav" aria-label="手机导航"><a href="#discover">发现</a><a href="#collection">时间线</a><a href="#collection" id="mobile-progress">我的进度</a></nav>
 </div>
+<dialog id="spoiler-dialog" aria-labelledby="spoiler-title"><h2 id="spoiler-title">开启剧透版？</h2><p>将显示剧情、人物信息和时间线说明，可能包含结局与身份反转。</p><div><button id="cancel-spoiler">保留无剧透</button><button id="confirm-spoiler" class="primary">开启剧透版</button></div></dialog>
 <script type="module" src="./src/app.js"></script>
-</body>
-</html>
+</body></html>

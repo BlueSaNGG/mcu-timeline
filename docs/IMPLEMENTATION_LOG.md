@@ -39,3 +39,12 @@ style 内容按原文提取，没有重新设计。npm dev 是本地静态预览
 
 本 PR 只改工作分支；不合并即可保持现网。若将来合并后需回滚，恢复此前 index.html、移除 module 入口；原目录 id 未改。
 下一任务 D02：查源审核 5 个代表条目，记录时间预算；随后规范模型与安全文本迁移。其后 D03 实施双模式和可见索引。
+
+## 2026-10-01 — Cinematic UI implementation
+
+- Replaced the oversized slogan, countdown hero and boxed filter dashboard with an editorial film-title composition, focused start action and two browse-order shortcuts. No unverified external artwork is required.
+- Rebuilt responsive styles, folded advanced filters, added mobile navigation and kept 68-work directory search/sort/filter behavior.
+- Safe mode defaults to title/basic metadata only. Plot, cast, chronology notes and universe membership are omitted from the safe DOM and search; full mode requires confirmation and preserves preference on this browser.
+- Added browser-local watched records, undo, remaining filter and a watched-only progress view. The start/continue action browses the catalog and never marks a work watched by itself. These are browsing shortcuts, not the complete curated-route model planned for subsequent phases.
+- `npm run check`: 14 tests passed, including new spoiler confirmation/search and local progress coverage. Data fact audit remains pending. Real browser deployment review is separate from these DOM tests.
+- Typography-first artwork fallback is intentional: verified movie artwork, normalized data migration, full route model and progress export/import remain outstanding.

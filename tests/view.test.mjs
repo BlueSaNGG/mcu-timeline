@@ -15,16 +15,17 @@ function setup(data=catalog, now=fixed) {
   return {dom,document:dom.window.document,dispose,scheduled:()=>scheduled,cancelled:()=>cancelled};
 }
 const cards=document=>[...document.querySelectorAll('.card h3')].map(el=>el.textContent);
-test('renders 68 cards in original chronology and release toggle works', () => {
+test('renders 68 cards in release order and chronology toggle works', () => {
   const x=setup();
   assert.equal(cards(x.document).length,68);
-  assert.equal(cards(x.document)[0],'瓦坎达之眼');
-  x.document.querySelector('[data-sort="release"]').click();
   assert.equal(cards(x.document)[0],'钢铁侠');
+  x.document.querySelector('[data-sort="chrono"]').click();
+  assert.equal(cards(x.document)[0],'瓦坎达之眼');
   x.dispose(); assert.equal(x.cancelled(),1); x.dom.window.close();
 });
 test('search, combined filters, reset and empty state remain functional', () => {
   const x=setup(),d=x.document;
+  d.querySelector('[data-spoiler="full"]').click(); d.getElementById('confirm-spoiler').click();
   const search=d.getElementById('search'); search.value='Tony Stark'; search.dispatchEvent(new x.dom.window.Event('input'));
   assert.equal(cards(d).length,9);
   d.querySelector('[data-filter="phase"] [data-value="1"]').click(); assert.equal(cards(d).length,3);
@@ -48,4 +49,20 @@ test('failed load has retry; success re-enables controls and mounts only once', 
   await app.ready;assert.match(d.getElementById('timeline').textContent,/作品资料加载失败/);assert.equal(d.getElementById('search').disabled,true);
   d.querySelector('#timeline button').click();await new Promise(resolve=>setImmediate(resolve));assert.equal(cards(d).length,68);assert.equal(d.getElementById('search').disabled,false);
   await app.retry();assert.equal(mounts,1);assert.equal(loads,2);app.dispose();dom.window.close();
+});
+
+test('safe mode omits plot from DOM and search; spoiler activation requires confirmation',()=>{
+ const x=setup(),d=x.document;
+ assert.equal(d.querySelector('.desc'),null);assert.equal(d.querySelector('.cast'),null);assert.equal(d.querySelector('.note'),null);
+ const search=d.getElementById('search');search.value='Tony Stark';search.dispatchEvent(new x.dom.window.Event('input'));assert.equal(cards(d).length,0);
+ d.querySelector('[data-spoiler="full"]').click();assert.equal(d.querySelector('.desc'),null);d.getElementById('cancel-spoiler').click();assert.equal(d.querySelector('.desc'),null);
+ d.querySelector('[data-spoiler="full"]').click();d.getElementById('confirm-spoiler').click();assert.equal(cards(d).length,9);assert.ok(d.querySelector('.desc'));
+ d.querySelector('[data-spoiler="safe"]').click();assert.equal(cards(d).length,0);assert.equal(d.querySelector('.desc'),null);x.dispose();x.dom.window.close();
+});
+test('watched state persists and progress navigation shows watched works',()=>{
+ const x=setup(),d=x.document;const b=d.querySelector('[data-watch]'),id=b.dataset.watch;b.click();
+ assert.deepEqual(JSON.parse(x.dom.window.localStorage.getItem('mcu-watched-v1')),[id]);
+ d.getElementById('progress-link').click();assert.equal(cards(d).length,1);assert.equal(d.getElementById('view-title').textContent,'我的进度');
+ d.querySelector('[data-watch]').click();assert.match(d.getElementById('timeline').textContent,/还没有观看记录/);
+ d.getElementById('clear').click();assert.equal(cards(d).length,68);x.dispose();x.dom.window.close();
 });

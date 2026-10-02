@@ -168,3 +168,27 @@ test('multiverse map renders nodes, gates event labels by spoiler mode, node cli
  assert.ok(d.getElementById('work-loki-season-1-2021').classList.contains('flash'));
  x.dispose();x.dom.window.close();
 });
+test('story beats render six gated cards; chips focus the work',()=>{
+ const x=setup(),d=x.document;
+ const cards=d.querySelectorAll('#story-track .story-card');
+ assert.equal(cards.length,6);
+ assert.ok(cards[1].textContent.includes('TVA 失去了它的主人'));
+ assert.ok(!cards[1].textContent.includes('希尔维杀死了'));
+ d.querySelector('[data-spoiler="full"]').click();d.getElementById('confirm-spoiler').click();
+ const cardsFull=d.querySelectorAll('#story-track .story-card');
+ assert.ok(cardsFull[1].textContent.includes('希尔维杀死了'));
+ let scrolled=null;
+ x.dom.window.Element.prototype.scrollIntoView=function(){scrolled=this.id;};
+ d.querySelector('#story-track [data-work="loki-season-1-2021"]').dispatchEvent(new x.dom.window.Event('click',{bubbles:true}));
+ assert.equal(scrolled,'work-loki-season-1-2021');
+ x.dispose();x.dom.window.close();
+});
+test('doomsday is the default route and cards collapse details by default',()=>{
+ const x=setup(),d=x.document;
+ assert.equal(d.getElementById('route-title').textContent,'毁灭日补课 · 三宇宙前传');
+ assert.equal(d.querySelector('.route-strip button').dataset.route,'doomsday');
+ const details=d.querySelector('#timeline .card-more');
+ assert.ok(details&&!details.open);
+ assert.ok(details.textContent.includes('首映'));
+ x.dispose();x.dom.window.close();
+});

@@ -20,3 +20,20 @@
 .map-note{font-size:12px;color:var(--muted);margin-top:10px}
 .card.flash{outline:2px solid var(--accent);outline-offset:3px;transition:outline-color 1.8s}
 @media(max-width:600px){.route-strip{grid-template-columns:1fr}}
+.story{padding-top:56px}
+.story h2{font-size:29px;font-weight:500;letter-spacing:-.5px;margin:8px 0}
+.story-track{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
+.story-card{border:1px solid var(--line);border-radius:8px;padding:22px;background:var(--surface)}
+.story-num{font-family:Georgia,serif;font-size:15px;color:var(--accent)}
+.story-card h3{font-size:17px;font-weight:600;margin:8px 0 6px}
+.story-card p{font-size:13px;color:var(--muted);line-height:1.8}
+.story-works{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.story-chip{font-size:12px;border:1px solid var(--line);border-radius:20px;padding:8px 14px;min-height:40px;color:var(--ink)}
+.story-chip:hover{border-color:var(--accent);color:var(--accent)}
+.card-more{margin-top:8px;border-top:1px dashed var(--line)}
+.card-more summary{cursor:pointer;font-size:12px;color:var(--muted);min-height:44px;display:flex;align-items:center;list-style:none}
+.card-more summary::-webkit-details-marker{display:none}
+.card-more summary::before{content:'＋';margin-right:8px;color:var(--accent)}
+.card-more[open] summary::before{content:'－'}
+.card-more summary:hover{color:var(--ink)}
+@media(max-width:600px){.story{padding-top:38px}.story h2{font-size:25px}.story-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:10px;-webkit-overflow-scrolling:touch}.story-card{min-width:78%;scroll-snap-align:start}}

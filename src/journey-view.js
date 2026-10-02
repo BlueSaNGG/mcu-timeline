@@ -1,6 +1,7 @@
 import {buildRoutes, routeProgress} from './routes.js';
 import {renderMap} from './multiverse-map.js';
 import {renderStory} from './multiverse-story.js';
+import {shareProgress} from './share-card.js';
 import {ARTWORK} from './artwork.js';
 // Compatibility view: preserves legacy behavior until the audited model cutover.
 export function mountCatalog(catalog, {document, now = () => Date.now(), schedule = setInterval, cancel = clearInterval} = {}) {
@@ -87,6 +88,8 @@ function changeSort(sort){state.progress=false;state.sort=sort;save();document.q
 document.querySelectorAll('[data-sort]').forEach(btn=>on(btn,'click',()=>changeSort(btn.dataset.sort)));
 document.querySelectorAll('[data-route]').forEach(btn=>on(btn,'click',()=>{selectedRoute=btn.dataset.route;routeRemaining=false;save();renderRoute();document.getElementById('routes').scrollIntoView?.();}));
 on(document.getElementById('start-route'),'click',e=>{e.preventDefault();selectedRoute=activeRoute||'doomsday';activateSelection();});
+const SHARE_LABELS={shared:'已分享',downloaded:'海报已保存',copied:'分享文案已复制',failed:'分享失败',cancelled:'分享进度 ↗'};
+on(document.getElementById('share-progress'),'click',async e=>{const btn=e.currentTarget;const route=routes[selectedRoute];const status=routeProgress(route,watched);btn.disabled=true;const result=await shareProgress(document,window.navigator,{title:route.title,seen:status.seen,total:status.total,next:status.next});btn.disabled=false;const label=SHARE_LABELS[result]||'分享进度 ↗';btn.textContent=label;if(result!=='cancelled')setTimeout(()=>{btn.textContent='分享进度 ↗';},2200);});
 document.querySelectorAll('[data-filter]').forEach(group=>on(group,'click',e=>{const b=e.target.closest('button');if(!b)return;group.querySelectorAll('button').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-pressed',String(x===b));});state[group.dataset.filter]=b.dataset.value;render();}));
 on(document.getElementById('search'),'input',e=>{if(e.isComposing)return;state.q=e.target.value;render();});
 on(document.getElementById('search'),'compositionend',e=>{state.q=e.target.value;render();});

@@ -227,3 +227,28 @@ test('marvel-inspired theme tokens are present', async ()=>{
  assert.ok(html.includes('family=Oswald'),'condensed display font loaded');
  assert.ok(html.includes('非官方观看指南'),'unofficial disclaimer kept');
 });
+test('seo head tags target doomsday catch-up queries', async ()=>{
+ const {readFile}=await import('node:fs/promises');
+ const html=await readFile(new URL('../index.html',import.meta.url),'utf8');
+ assert.ok(html.includes('《毁灭日》上映前看什么'));
+ assert.ok(html.includes('property="og:image" content="https://bluesangg.github.io/mcu-timeline/assets/og.png"'));
+ assert.ok(html.includes('name="twitter:card" content="summary_large_image"'));
+});
+test('share text and poster carry progress', async ()=>{
+ const {buildShareText,drawPoster}=await import('../src/share-card.js');
+ const text=buildShareText('毁灭日补课 · 三宇宙前传',8,11,'雷霆特攻队*');
+ assert.ok(text.includes('8/11')&&text.includes('雷霆特攻队')&&text.includes('https://bluesangg.github.io/mcu-timeline/'));
+ const ctx={texts:[],fillRect(){},fillText(t){this.texts.push(t);}};
+ drawPoster(ctx,{title:'毁灭日补课 · 三宇宙前传',seen:8,total:11,next:{zh:'雷霆特攻队*'}});
+ const joined=ctx.texts.join('|');
+ assert.ok(joined.includes('8/11')&&joined.includes('雷霆特攻队')&&joined.includes('bluesangg.github.io/mcu-timeline'));
+});
+test('share button exists and degrades gracefully without canvas', async ()=>{
+ const x=setup(),d=x.document;
+ const btn=d.getElementById('share-progress');
+ assert.ok(btn);
+ btn.dispatchEvent(new x.dom.window.Event('click',{bubbles:true}));
+ await new Promise(r=>setTimeout(r,80));
+ assert.equal(btn.textContent,'分享失败');
+ x.dispose();x.dom.window.close();
+});

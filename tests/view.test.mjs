@@ -192,3 +192,30 @@ test('doomsday is the default route and cards collapse details by default',()=>{
  assert.ok(details.textContent.includes('首映'));
  x.dispose();x.dom.window.close();
 });
+test('mobile stepper renders 12 full-title stops with gated event notes',()=>{
+ const x=setup(),d=x.document;
+ const steps=d.querySelectorAll('#multiverse-map .map-stepper .step');
+ assert.equal(steps.length,12);
+ const titles=[...d.querySelectorAll('#multiverse-map .step-title')].map(el=>el.textContent);
+ assert.ok(titles.includes('复仇者联盟4：终局之战'));
+ assert.ok(!d.querySelector('#multiverse-map .map-stepper').textContent.includes('…'));
+ assert.ok(d.querySelector('#multiverse-map .map-stepper').textContent.includes('分支点 →'));
+ assert.ok(!d.querySelector('#multiverse-map .map-stepper').textContent.includes('时间穿越，分叉开始'));
+ d.querySelector('[data-spoiler="full"]').click();d.getElementById('confirm-spoiler').click();
+ assert.ok(d.querySelector('#multiverse-map .map-stepper').textContent.includes('时间穿越，分叉开始'));
+ assert.ok(d.querySelector('#multiverse-map .map-stepper').textContent.includes('三宇宙碰撞'));
+ let scrolled=null;
+ x.dom.window.Element.prototype.scrollIntoView=function(){scrolled=this.id;};
+ d.querySelector('#multiverse-map .step[data-node="the-fantastic-four-first-steps-2025"]').dispatchEvent(new x.dom.window.Event('click',{bubbles:true}));
+ assert.equal(scrolled,'work-the-fantastic-four-first-steps-2025');
+ x.dispose();x.dom.window.close();
+});
+test('rivers svg inherits theme fill and css toggles stepper on small screens', async ()=>{
+ const {readFile}=await import('node:fs/promises');
+ const svg=await readFile(new URL('../src/multiverse-map.js',import.meta.url),'utf8');
+ assert.ok(svg.includes('fill="currentColor"'),'svg root must set fill for dark mode text');
+ const css=await readFile(new URL('../styles/journey.css',import.meta.url),'utf8');
+ assert.ok(css.includes('@media(max-width:699px)'),'stepper media query present');
+ assert.ok(/@media\(max-width:699px\)\{[\s\S]*?\.map-rivers\{display:none\}/.test(css),'rivers hidden on mobile');
+ assert.ok(/@media\(max-width:699px\)\{[\s\S]*?\.map-stepper\{display:block/.test(css),'stepper shown on mobile');
+});

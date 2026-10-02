@@ -219,3 +219,11 @@ test('rivers svg inherits theme fill and css toggles stepper on small screens', 
  assert.ok(/@media\(max-width:699px\)\{[\s\S]*?\.map-rivers\{display:none\}/.test(css),'rivers hidden on mobile');
  assert.ok(/@media\(max-width:699px\)\{[\s\S]*?\.map-stepper\{display:block/.test(css),'stepper shown on mobile');
 });
+test('marvel-inspired theme tokens are present', async ()=>{
+ const {readFile}=await import('node:fs/promises');
+ const css=await readFile(new URL('../styles/journey.css',import.meta.url),'utf8');
+ assert.ok(css.includes('--accent:#ED1D24'),'marvel red accent');
+ const html=await readFile(new URL('../index.html',import.meta.url),'utf8');
+ assert.ok(html.includes('family=Oswald'),'condensed display font loaded');
+ assert.ok(html.includes('非官方观看指南'),'unofficial disclaimer kept');
+});

@@ -58,3 +58,25 @@
 .step-note{display:block;font-size:12px;color:var(--muted);line-height:1.7}
 .step-note.converge{color:var(--accent);font-weight:600}
 }
+/* Marvel-official-inspired theme: black + Marvel red, condensed display type, hard edges */
+:root{--accent:#ED1D24;--bg:#0b0b0c;--surface:#141416;--line:#2b2b30}
+::selection{background:var(--accent);color:#fff}
+h1,h2,h3,.eyebrow,.brand>b,.feature-type,.route-number,.feature-number,.clock b,.story-num,.step-title{font-family:'Oswald','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif}
+h1,h2{letter-spacing:.5px}
+.eyebrow{font-weight:600}
+.brand>b{background:var(--accent);color:#fff;border:0;padding:2px 10px 4px;font-weight:700;letter-spacing:1px}
+.primary{background:var(--accent);color:#fff;border-radius:0;font-family:'Oswald','PingFang SC','Microsoft YaHei',sans-serif;letter-spacing:1px}
+.primary:hover{background:#ff2830;color:#fff}
+.chip,.story-chip{border-radius:0}
+.chip.active,.chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.spoiler-control{border-radius:0;background:#1a1a1d}
+.spoiler-control button{border-radius:0}
+.spoiler-control .active{background:var(--accent);color:#fff}
+.segmented .active{border-color:var(--accent)}
+.story-card{border-radius:0;border-top:2px solid var(--line)}
+.story-card:hover{border-top-color:var(--accent)}
+.card-more summary::before{color:var(--accent)}
+.route-strip button[aria-pressed=true] b{color:var(--accent)}
+.watch-button[aria-pressed=true]{color:var(--accent)}
+dialog{border-radius:0}
+.feature-type{font-family:'Oswald','Arial Narrow',sans-serif}
